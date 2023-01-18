@@ -1,0 +1,132 @@
+﻿@model Sunnet_NBFC.Models.clsBranch
+
+@{
+    ViewBag.Title = "Branch";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Branch</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    @Html.ActionLink("Back to List", "BranchView")
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+@using (Html.BeginForm("Branch", "Branch", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        @Html.HiddenFor(model => model.ReqType)
+                                        @Html.HiddenFor(model => model.BranchId)
+                                        @Html.HiddenFor(model => model.CompanyID)
+                                        @Html.HiddenFor(model => model.IsDelete)
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        @Html.LabelFor(model => model.BranchName, htmlAttributes: new { @class = "control-label" })
+                                        @Html.EditorFor(model => model.BranchName, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.BranchName, "", new { @class = "text-danger" })
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        @Html.LabelFor(model => model.BranchAddres, htmlAttributes: new { @class = "control-label" })
+                                        @Html.EditorFor(model => model.BranchAddres, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.BranchAddres, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            @Html.LabelFor(model => model.BranchContactNo, htmlAttributes: new { @class = "control-label" })
+                                            @Html.EditorFor(model => model.BranchContactNo, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.BranchContactNo, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="col-md-6">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card-footer">
+                                    @if (Model.BranchId != null && Model.BranchId != 0)
+                                    {
+                                        <input type="submit" value="Update" class="btn btn-primary" />
+                                    }
+                                    else
+                                    {
+                                        <input type="submit" value="Save" class="btn btn-primary" />
+                                    }
+                                    @Html.ActionLink("Cancel", "BranchView", "Branch", null, new { @class = "btn btn-danger btn-large" })
+                                </div>
+                                
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+    </section>
+
+}
+
+<script src="~/plugins/jquery/jquery.min.js"></script>
+<script src="~/plugins/jquery/jquery.validate.min.js"></script>
+<script src="~/plugins/jquery/jquery.validate.unobtrusive.min.js"></script>
+
+@if (ViewBag.Error != null && ViewBag.Error != "")
+{
+    <script type="text/javascript">
+
+            window.onload = function () {
+                alert("@ViewBag.Error");
+            };
+    </script>
+}
+@if (ViewBag.Success != null && ViewBag.Success != "")
+{
+    <script type="text/javascript">
+
+            window.onload = function () {
+                alert("@ViewBag.Success");
+            };
+    </script>
+}
+
+
+@*@if (ViewBag.Success != null && ViewBag.Success != "")
+    {
+        <script>
+            $(function () {
+                var Message = '@ViewBag.Success';
+                alert(Message);
+            });
+        </script>
+    }*@
+

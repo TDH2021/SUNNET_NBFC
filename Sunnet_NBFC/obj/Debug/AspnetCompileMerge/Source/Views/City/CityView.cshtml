@@ -1,0 +1,93 @@
+﻿@{
+	ViewBag.Title = "CityView";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<section class="content-header">
+	<div class="container-fluid">
+		<div class="row mb-2">
+			<div class="col-sm-6">
+				<h1>City View</h1>
+			</div>
+			<div class="col-sm-6">
+				<ol class="breadcrumb float-sm-right">
+					<h4>
+						@Html.ActionLink("Create New", "AddCity")
+					</h4>
+
+					@*<li class="breadcrumb-item"><a href="#">Home</a></li>
+						<li class="breadcrumb-item active">City View</li>*@
+				</ol>
+			</div>
+		</div>
+	</div><!-- /.container-fluid -->
+</section>
+
+
+<section class="content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-12">
+
+				<!-- /.card -->
+				<div class="card">
+					<!-- /.card-header -->
+					<div class="card-body">
+						<table id="example1" class="table table-bordered table-striped">
+							<thead>
+								<tr>
+									<th>Product Name</th>
+									<th>HSN Code</th>
+
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+								@foreach (var item in ViewBag.CityDetails)
+								{
+									<tr>
+										<td>@item.StateName</td>
+										<td>@item.CityName</td>
+
+										<td>
+											@Html.ActionLink("Edit", "EditCity", new { cityid = @item.Cityid })
+
+										</td>
+									</tr>
+								}
+							</tbody>
+							<tfoot>
+								<tr>
+									<th>Product Name</th>
+									<th>HSN Code</th>
+
+									<th></th>
+								</tr>
+							</tfoot>
+						</table>
+						<div class="card-footer">
+							@Html.ActionLink("Export to Excel", "ExportToExcel", new { @class = "btn btn-primary" })
+						</div>
+					</div>
+					<!-- /.card-body -->
+				</div>
+				<!-- /.card -->
+			</div>
+			<!-- /.col -->
+		</div>
+		<!-- /.row -->
+	</div>
+	<!-- /.container-fluid -->
+</section>
+
+@if (ViewBag.Message != null)
+{
+	<script type="text/javascript">
+
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+	</script>
+}
