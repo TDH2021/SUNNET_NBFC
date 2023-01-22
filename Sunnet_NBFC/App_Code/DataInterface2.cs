@@ -509,7 +509,7 @@ public class DataInterface2 : DataInterface, IDisposable
             cmd.Parameters.Add("@CompanyId", SqlDbType.Int).Value = ClsSession.CompanyID;
             cmd.Parameters.Add("@DocumentName", SqlDbType.VarChar).Value = cls.DocumentName;
             cmd.Parameters.Add("@ProdId", SqlDbType.Int).Value = cls.ProdID;
-            cmd.Parameters.Add("@IsRequried", SqlDbType.Int).Value = (cls.IsRequried? 1: 0);
+            cmd.Parameters.Add("@IsRequried", SqlDbType.Int).Value = (cls.IsRequried ? 1 : 0);
             cmd.Parameters.Add("@IsDelete", SqlDbType.Int).Value = cls.IsDelete;
             cmd.Parameters.Add("@CreatedBy", SqlDbType.Int).Value = ClsSession.UserID;// cls.CreatedBy ?? 0;
             cmd.Parameters.Add("@UpdatedBy", SqlDbType.Int).Value = ClsSession.UserID;// cls.UpdatedBy ?? 0;
@@ -709,6 +709,10 @@ public class DataInterface2 : DataInterface, IDisposable
 
 
     //--------------------------Employee Master-----------------------
+    // by chetan as himnshu change
+  
+
+
 
     #region Save Employee
     public static ClsReturnData SaveEmployee(clsEmployee cls)
@@ -741,7 +745,7 @@ public class DataInterface2 : DataInterface, IDisposable
             cmd.Parameters.Add("@WhatsAppNo", SqlDbType.VarChar).Value = cls.WhatsAppNo;
             cmd.Parameters.Add("@Email", SqlDbType.VarChar).Value = cls.Email;
             cmd.Parameters.Add("@DOB", SqlDbType.Date).Value = cls.DOB == null ? (object)DBNull.Value : cls.DOB;
-            cmd.Parameters.Add("@PAN", SqlDbType.VarChar).Value = cls.PAN; 
+            cmd.Parameters.Add("@PAN", SqlDbType.VarChar).Value = cls.PAN;
             cmd.Parameters.Add("@AadhaarNo", SqlDbType.VarChar).Value = cls.AadhaarNo;
             cmd.Parameters.Add("@MaritalStatus", SqlDbType.VarChar).Value = cls.MaritalStatus;
             cmd.Parameters.Add("@ImageName", SqlDbType.VarChar).Value = cls.ImageName;
@@ -787,7 +791,7 @@ public class DataInterface2 : DataInterface, IDisposable
     #endregion
 
     #region GET Employee
-    public static clsEmployee GetEmployee(int EmpID)
+    public static DataTable GetEmployee(int EmpID)
     {
         clsEmployee lst = new clsEmployee();
 
@@ -824,7 +828,7 @@ public class DataInterface2 : DataInterface, IDisposable
             dt.Dispose();
         }
 
-        return lst;
+        return dt;
 
     }
 
