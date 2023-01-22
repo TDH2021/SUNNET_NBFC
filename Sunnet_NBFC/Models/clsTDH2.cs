@@ -230,7 +230,9 @@ namespace Sunnet_NBFC.Models
         public string AadhaarNo { get; set; }
         [DisplayName("Marital Status")]
         public string MaritalStatus { get; set; }
+        
         [DisplayName("Photo")]
+        public HttpPostedFile Imagefile { get; set; }
         public string ImageName { get; set; }
         public int IsDelete { get; set; }
         public int CompId { get; set; }
@@ -238,6 +240,15 @@ namespace Sunnet_NBFC.Models
         public string Langtiute { get; set; }
         public int? EmployeeAttnStatus { get; set; }
         public DateTime? AttnDate { get; set; }
+
+        [Required(ErrorMessage = "Branch is required.")]
+        [DisplayName("Branch")]
+        public int BranchId { get; set; }
+
+        [Required(ErrorMessage = "Role is required.")]
+        [DisplayName("Role")]
+        public int RoleId { get; set; }
+
 
         bool disposed = false;
 
@@ -273,7 +284,7 @@ namespace Sunnet_NBFC.Models
     }
 
 
-    public class clsStateDDL 
+    public class clsStateDDL
     {
         public static SelectList GetStateDDL()
         {
