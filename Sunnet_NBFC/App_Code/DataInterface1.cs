@@ -115,6 +115,23 @@ public class DataInterface1 : IDisposable
         return dt;
     }
 
+    public static DataTable dbBranchddl()
+    {
+        DataTable dt = new DataTable();
+        using (DBOperation db = new DBOperation())
+        {
+            using (SqlCommand cmd = new SqlCommand())
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@ReqType", SqlDbType.VarChar).Value = "View";
+                cmd.Parameters.Add("@CompanyId", SqlDbType.Int).Value = ClsSession.CompanyID;
+                cmd.Parameters.Add("@IsDelete", SqlDbType.VarChar).Value = 0;
+                dt = db.FillTableProc(cmd, "USP_Branch");
+            }
+        }
+        return dt;
+    }
+
 
     public static clsEmployeeDetails GetEmployeedtlbyid(int EmpID)
     {
@@ -264,6 +281,8 @@ public class DataInterface1 : IDisposable
         }
         return dt;
     }
+
+
     public static DataTable dbEmployee(clsEmployee cls)
     {
         DataTable dt = new DataTable();
@@ -298,11 +317,50 @@ public class DataInterface1 : IDisposable
                 sqlCommand.Parameters.Add("@AttnDate", SqlDbType.DateTime).Value = cls.AttnDate == null ? (object)DBNull.Value : cls.AttnDate;
                 sqlCommand.Parameters.Add("@CreatedBy", SqlDbType.Int).Value = ClsSession.UserID;
                 sqlCommand.Parameters.Add("@UpdatedBy", SqlDbType.Int).Value = ClsSession.UserID;
+                sqlCommand.Parameters.Add("@BranchId", SqlDbType.Int).Value = cls.BranchId;
+                sqlCommand.Parameters.Add("@RoleId", SqlDbType.Int).Value = cls.RoleId;
                 dt = db.FillTableProc(sqlCommand, "USP_Employee");
             }
         }
         return dt;
     }
+
+    public static DataTable dbEmployeeDetails(clsEmployeeDetails cls)
+    {
+        DataTable dt = new DataTable();
+        using (DBOperation db = new DBOperation())
+        {
+            using (SqlCommand sqlCommand = new SqlCommand())
+            {
+                sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                sqlCommand.Parameters.AddWithValue("@ReqType", cls.ReqType);
+                sqlCommand.Parameters.AddWithValue("@EmpDtlID", cls.EmpDtlID);
+                sqlCommand.Parameters.AddWithValue("@EmpID", cls.EmpID);
+                sqlCommand.Parameters.AddWithValue("@DesignationID", cls.DesignationID);
+                sqlCommand.Parameters.AddWithValue("@DepartmentId", cls.DepartmentId);
+                sqlCommand.Parameters.AddWithValue("@DOJ", cls.DOJ);
+                sqlCommand.Parameters.AddWithValue("@LastESICNo", cls.LastESICNo);
+                sqlCommand.Parameters.AddWithValue("@LastPFNo", cls.LastPFNo);
+                sqlCommand.Parameters.AddWithValue("@LastAcadmicDegree", cls.LastAcadmicDegree);
+                sqlCommand.Parameters.AddWithValue("@LastProfDegree", cls.LastProfDegree);
+                sqlCommand.Parameters.AddWithValue("@LastCompany", cls.LastCompany);
+                sqlCommand.Parameters.AddWithValue("@LastExperienceDtls", cls.LastExperienceDtls);
+                sqlCommand.Parameters.AddWithValue("@Salary", cls.Salary);
+                sqlCommand.Parameters.AddWithValue("@IsLeave", cls.IsLeave);
+                sqlCommand.Parameters.AddWithValue("@DOL", cls.DOL);
+                sqlCommand.Parameters.AddWithValue("@LoginType", cls.LoginType);
+                sqlCommand.Parameters.AddWithValue("@Companyid", cls.Companyid);
+                sqlCommand.Parameters.AddWithValue("@IsActive", cls.IsActive);
+                sqlCommand.Parameters.AddWithValue("@IsDelete", cls.IsDelete);
+                sqlCommand.Parameters.AddWithValue("@Longtitute", cls.Longtitute);
+                sqlCommand.Parameters.AddWithValue("@Langtiute", cls.Langtiute);
+                dt = db.FillTableProc(sqlCommand, "USP_EmployeeDetails");
+
+            }
+        }
+        return dt;
+    }
+
 
     //=======commom fun
     public static T GetItem<T>(DataRow dr)

@@ -313,5 +313,22 @@ namespace Sunnet_NBFC.Models
     }
 
 
+    public class clsMiscDDL
+    {
+        public static SelectList GetMiscDDL(string mtype)
+        {
+            return ClsCommon.ToSelectList(DataInterface1.GetMiseddl(mtype), "MiscId", "MiscName");
+        }
+    }
+    public class clsBranchDDL
+    {
+        public static SelectList GetBranchDDL()
+        {
+            return ClsCommon.ToSelectList(DataInterface1.dbBranchddl(), "BranchId", "BranchName");
+        }
+    }
+
+    
+
     //========================
 }
