@@ -2496,6 +2496,7 @@
     <Content Include="Scripts\sweetalert.min.js" />
     <Content Include="dist\css\sweetalert.css" />
     <Content Include="Scripts\sweetalert2.js" />
+    <Content Include="UploadedFiles\sunitlogo.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

@@ -37,6 +37,7 @@ namespace Sunnet_NBFC.Controllers
                             cls.CompanyId = 1;
                             cls.LeadNo = "";
                             cls.LeadId = 0;
+                            cls.Empid = int.Parse(Session["EmpId"].ToString());
                             using (DataTable dt = DataInterface.GetLeadGenerationData(cls))
                             {
                                 if (dt != null)

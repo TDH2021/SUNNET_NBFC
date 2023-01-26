@@ -89,6 +89,7 @@ namespace Sunnet_NBFC.Controllers
                                             {
                                                 if (dt1.Rows.Count > 0)
                                                 {
+                                                    Session["EmpId"] = dt1.Rows[0]["EmpId"].ToString();
                                                     Session["EmpCode"] = dt1.Rows[0]["EmpCode"].ToString();
                                                     Session["EmpName"] = dt1.Rows[0]["EmpName"].ToString();
                                                     Session["CompanyId"] = dt1.Rows[0]["CompId"].ToString();

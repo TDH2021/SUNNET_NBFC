@@ -639,7 +639,7 @@ namespace Sunnet_NBFC.Models
         public string GeoTagging { get; set; }
         public string FORemarks { get; set; }
         public int BranchID { get; set; }
-        
+        public int Empid { get; set; }
 
         bool disposed = false;
 
