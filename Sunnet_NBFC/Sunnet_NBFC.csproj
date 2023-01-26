@@ -2527,8 +2527,6 @@
     <Content Include="Views\Company\CompanyView.cshtml" />
     <Content Include="Views\Customer\AddCustomer.cshtml" />
     <Content Include="Views\Customer\CustomerView.cshtml" />
-    <Content Include="Views\Lead\LeadDisplay.cshtml" />
-    <Content Include="Views\Lead\LeadPage.cshtml" />
     <Content Include="Views\Lead\LeadView.cshtml" />
     <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
     <Content Include="Views\Manage\ChangePassword.cshtml" />
@@ -2594,6 +2592,7 @@
     <Content Include="Views\SubMenu\AddSubMenu.cshtml" />
     <Content Include="Views\SubMenu\EditSubMenu.cshtml" />
     <Content Include="Views\SubMenu\SubMenuView.cshtml" />
+    <Content Include="Views\Lead\_LeadDetailsView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

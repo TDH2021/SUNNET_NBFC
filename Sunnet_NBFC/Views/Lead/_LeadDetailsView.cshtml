@@ -1,0 +1,270 @@
+﻿@model Sunnet_NBFC.Models.clsLeadGenerationMaster
+
+
+
+<div class="modal-dialog" style="max-width: 1000px;">
+
+    <!-- Modal content-->
+    <div class="modal-content" style="overflow-y: scroll; height:550px; width: 1050px;">
+        <div class="modal-header">
+            <h4 class="modal-title">Customer Details</h4>
+
+        </div>
+        <div class="modal-body">
+            <div class="panel-body">
+                <table class="table table-striped table-bordered table-hover table-responsive" style="display:table;"
+                       id="dataTables-example-Details">
+                    <thead>
+                        <tr>
+                            <th>Lead NO</th>
+                            <td>@Model.LeadNo</td>
+                            <th>Customer Name</th>
+                            <td>@Model.FirstName  @Model.MiddleName  @Model.LastName</td>
+
+
+                        </tr>
+                        <tr>
+                            <th>Father Name</th>
+                            <td>@Model.FatherName</td>
+                            <th>Mother Name</th>
+                            <td>@Model.MotherName</td>
+                        </tr>
+                        <tr>
+                            <th>Spouse Name</th>
+                            <td>@Model.SpouseName</td>
+                            <th>Gender</th>
+                            <td>@Model.Gender</td>
+                        </tr>
+                        <tr>
+                            <th>Date Of Birth</th>
+                            <td>@Model.DateofBirth</td>
+
+                            <th>Martial Status</th>
+                            <td>@Model.MartialStatus</td>
+                        </tr>
+                        <tr>
+                            <th>Present Address</th>
+                            <td>@Model.PresentAddress</td>
+                            <th>Present Pincode</th>
+                            <td>@Model.PresentPincode</td>
+                        </tr>
+                        <tr>
+                            <th>Present State</th>
+                            <td>@Model.PresentStateId</td>
+                            <th>Present City</th>
+                            <td>@Model.PresentCityId</td>
+                        </tr>
+
+
+                        <tr>
+                            <th>Permanent Address</th>
+                            <td>@Model.PermanentAddress</td>
+                            <th>Permanent Pincode</th>
+                            <td>@Model.PermanentPincode</td>
+                        </tr>
+                        <tr>
+                            <th>Permanent State</th>
+                            <td>@Model.PermanentStateId</td>
+                            <th>Permanent City</th>
+                            <td>@Model.PermanentCityId</td>
+                        </tr>
+
+                        <tr>
+                            <th>Cibil Score</th>
+                            <td>@Model.CibilScore</td>
+                            <th>Mobile No1</th>
+                            <td>@Model.MobileNo1</td>
+                        </tr>
+                        <tr>
+                            <th>Father Mobile No</th>
+                            <td>@Model.FatherMobileNo</td>
+                            <th>Mother Mobile No</th>
+                            <td>@Model.MotherMobileNo</td>
+                        </tr>
+
+
+                        <tr>
+                            <th>Spouse Mobile No</th>
+                            <td>@Model.SpouseMobileNo</td>
+                            <th>Aadhar No</th>
+                            <td>@Model.AadharNo</td>
+                        </tr>
+
+                        <tr>
+                            <th>Pan No</th>
+                            <td>@Model.PanNo</td>
+                            <th></th>
+                            <td></td>
+                        </tr>
+
+
+
+
+
+
+                        <tr>
+                            <th><b>Co Applicant Details:</b></th>
+                            <td colspan="4"></td>
+                        </tr>
+
+
+                        <tr>
+
+                            <th>CO Applicant Name</th>
+                            <td>@Model.CO_FirstName  @Model.CO_MiddleName  @Model.CO_LastName</td>
+
+
+                        </tr>
+
+                        <tr>
+
+                            <th>Gender</th>
+                            <td>@Model.CO_Gender</td>
+                            <th>Date Of Birth</th>
+                            <td>@Model.CO_DOB</td>
+
+                        </tr>
+                        <tr>
+
+                            <th>Martial Status</th>
+                            <td>@Model.CO_Marital_Status</td>
+                            <th>Present Address</th>
+                            <td>@Model.CO_PresentAddress</td>
+                        </tr>
+                        <tr>
+
+                            <th>Present Pincode</th>
+                            <td>@Model.CO_PresentPinCode</td>
+
+                            <th>Present State</th>
+                            <td>@Model.PresentStateId</td>
+                        </tr>
+                        <tr>
+
+                            <th>Present City</th>
+                            <td>@Model.PresentCityId</td>
+
+                            <th>Mobile No1</th>
+                            <td>@Model.CO_Mobile_No</td>
+                        </tr>
+
+
+
+
+
+                        <tr>
+
+                            <th>Aadhar No</th>
+                            <td>@Model.CO_Adhaar</td>
+
+                            <th>Pan No</th>
+                            <td>@Model.CO_PAN</td>
+                        </tr>
+
+                        <tr>
+                            <th>Email</th>
+                            <td>@Model.CO_Email_Id</td>
+                            <th></th>
+                            <td></td>
+                        </tr>
+
+
+                        <tr>
+                            <th>Email</th>
+                            <td>@Model.CO_Email_Id</td>
+                            <th></th>
+                            <td></td>
+                        </tr>
+
+
+                        <tr>
+
+                            <th>Main Product</th>
+                            <td>@Model.MainProductId</td>
+
+                            <th>Product</th>
+                            <td>@Model.ProductId</td>
+                        </tr>
+
+                        <tr>
+
+                            <th>Requested Loan Amount</th>
+                            <td>@Model.ReuestedLoanAmount</td>
+
+                            <th>Reuested Loan Tenure</th>
+                            <td>@Model.ReuestedLoanTenure</td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+
+
+            
+
+            <div class="panel-body">
+                <label class="col-sm-4 control-label">Approved Loan Amount<span style="color:red">*</span></label>
+                <div class="col-sm-4">
+                    <input type="number" id="rmark" name="rmark" autocomplete="off" class="form-control " />
+                </div>
+                <div class="col-sm-4">
+                </div>
+            </div>
+
+            <div class="panel-body">
+                <label class="col-sm-4 control-label">Approved Loan Tenure<span style="color:red">*</span></label>
+                <div class="col-sm-4">
+                    <input type="number" id="rmark" name="rmark" autocomplete="off" class="form-control " />
+                </div>
+                <div class="col-sm-4">
+                </div>
+            </div>
+            <div class="panel-body">
+                <label class="col-sm-4 control-label">Status<span style="color:red">*</span></label>
+                <div class="col-sm-4">
+                    <select class="form-control" id="VERIFICATION_TYPES" name="VERIFICATION_TYPES" autocomplete="off">
+                        <option value="0">Select Action</option>
+                        <option value="1">Approve</option>
+                        <option value="2">Send Back</option>
+                        <option value="3">Reject</option>
+
+                    </select>
+                </div>
+                <div class="col-sm-4">
+                </div>
+            </div>
+
+            <div class="panel-body">
+                <label class="col-sm-4 control-label">Comment/Remarks<span style="color:red">*</span></label>
+                <div class="col-sm-4">
+                    <textarea id="rmark" name="rmark" autocomplete="off" class="form-control "></textarea>
+                </div>
+                <div class="col-sm-4">
+                </div>
+            </div>
+
+
+
+
+            <div style="margin-bottom:10px;">
+                <div class="col-sm-4"></div>
+                <div class="col-md-6" style="margin-bottom:10%">
+                    <button type="submit" class="btn btn-success" onclick="return Validation();">
+                        Submit
+                        &nbsp; &nbsp; <i class="fa fa-save">
+                        </i>
+                    </button>
+                    &nbsp; &nbsp; &nbsp;
+                    <button class="btn btn-danger text-right" data-dismiss="modal" aria-hidden="true">
+                        Close
+                        &nbsp; &nbsp; <i class="fa fa-close"> </i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+
+</div>
+

@@ -508,7 +508,9 @@ namespace Sunnet_NBFC.Models
     }
     public class clsLeadGenerationMaster : IDisposable
     {
-
+        public string CustomerName { get; set; }
+        public string Status { get; set; }
+        public int LeadId { get; set; }
         public string LeadNo { get; set; }
         public string MainProductId { get; set; }
         public string ProductId { get; set; }

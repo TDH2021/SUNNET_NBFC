@@ -957,4 +957,54 @@ public class DataInterface : IDisposable
         return dt;
     }
 
+
+
+
+
+
+    public static DataTable GetLeadGenerationData(clsLeadGenerationMaster cls)
+    {
+        DataTable dt = new DataTable();
+        using (DBOperation db = new DBOperation())
+        {
+            using (SqlCommand sqlCommand = new SqlCommand())
+            {
+                sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                sqlCommand.Parameters.AddWithValue("@ReqType", cls.ReqType);
+                sqlCommand.Parameters.AddWithValue("@leadid", cls.LeadId);
+                sqlCommand.Parameters.AddWithValue("@LeadNo", cls.LeadNo);
+                sqlCommand.Parameters.AddWithValue("@CompanyID", cls.CompanyId);
+
+                dt = db.FillTableProc(sqlCommand, "USP_Lead");
+            }
+
+
+        }
+        return dt;
+    }
+
+
+
+
+    public static DataSet GetLeadGenerationDataSingle(clsLeadGenerationMaster cls)
+    {
+        DataSet dt = new DataSet();
+        using (DBOperation db = new DBOperation())
+        {
+            using (SqlCommand sqlCommand = new SqlCommand())
+            {
+                sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                sqlCommand.Parameters.AddWithValue("@ReqType", cls.ReqType);
+                sqlCommand.Parameters.AddWithValue("@leadid", cls.LeadId);
+                sqlCommand.Parameters.AddWithValue("@LeadNo", cls.LeadNo);
+                sqlCommand.Parameters.AddWithValue("@CompanyID", cls.CompanyId);
+
+                dt = db.FillDsProc(sqlCommand, "USP_Lead");
+            }
+
+
+        }
+        return dt;
+    }
+
 }

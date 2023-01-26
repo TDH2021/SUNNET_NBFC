@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -54,7 +54,7 @@ namespace Sunnet_NBFC.Controllers
             }
         }
         [HttpPost]
-        public ActionResult UpdateLogin()
+        public JsonResult UpdateLogin()
         {
             JavaScriptSerializer jss = new JavaScriptSerializer();
             using (clsLogin cls = jss.Deserialize<clsLogin>(Request.Form["LoginDetails"]))
@@ -62,7 +62,7 @@ namespace Sunnet_NBFC.Controllers
                 cls.SessionID = Session.SessionID;
                 cls.IsLogged = true;
                 string hostName = Dns.GetHostName();
-                cls.DeviceID = Dns.GetHostEntry(hostName).AddressList[3].ToString();
+                cls.DeviceID = "";// Dns.GetHostEntry(hostName).AddressList[3].ToString();
                 cls.DeviceType = "Web";
                 try
                 {
@@ -77,12 +77,12 @@ namespace Sunnet_NBFC.Controllers
                                 {
                                     Session["UserID"] = cls.UserID;
                                     Session["UserType"] = cls.Type;
-                                    Session["SessionId"] = cls.SessionID;
+                                   Session["SessionId"] = cls.SessionID;
                                     if (cls.Type == "E")
                                     {
                                         clsEmployee cls1 = new clsEmployee();
                                         cls1.EmpID = cls.RefID;
-
+                                        cls1.ReqType = "View";
                                         using (DataTable dt1 = DataInterface1.dbEmployee(cls1))
                                         {
                                             if (dt1 != null)
@@ -102,8 +102,17 @@ namespace Sunnet_NBFC.Controllers
                                     }
                                 }
                             }
+                          
                         }
                     }
+
+                    var data = new
+                    {
+                        Msg = "Success"
+                    };
+                    JSONresult = JsonConvert.SerializeObject(data);
+                    var jsonresult = Json(JSONresult, JsonRequestBehavior.AllowGet);
+                    return Json(jsonresult);
                 }
                 catch (Exception e1)
                 {
@@ -119,10 +128,19 @@ namespace Sunnet_NBFC.Controllers
                         clsE.UserId = "0";
                         DataInterface.PostError(clsE);
                     }
+
+                    var data = new
+                    {
+                        Msg = "Error"
+                    };
+                    JSONresult = JsonConvert.SerializeObject(data);
+                    var jsonresult = Json(JSONresult, JsonRequestBehavior.AllowGet);
+                    return Json(jsonresult);
                 }
-                return RedirectToAction("Index", "Home");
+                
 
             }
+
 
         }
 

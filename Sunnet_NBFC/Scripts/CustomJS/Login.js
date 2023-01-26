@@ -54,6 +54,42 @@ function Validation() {
                             processData: false,
                             data: filedata,
                             success: function (result) {
+                                debugger
+                                var msgdata = JSON.parse(result.Data).Msg;
+                                if (msgdata == "Success") {
+
+                                    swal({
+                                        title: "Success",
+                                        text: "Login Successfully",
+                                        icon: "success",
+                                        button: true,
+
+                                    })
+                                        .then((willConfirm) => {
+                                            if (willConfirm) {
+                                                window.location.pathname = 'Home/Index';
+
+                                            }
+                                        });
+
+
+
+                                   
+                                    
+                                } else {
+                                    swal({
+                                        title: "Error",
+                                        text: "Login Error",
+                                        icon: "error",
+                                        button: true,
+
+                                    })
+                                        .then((willConfirm) => {
+                                            if (willConfirm) {
+                                              
+                                            }
+                                        });
+                                }
                             }
                         })
                     }

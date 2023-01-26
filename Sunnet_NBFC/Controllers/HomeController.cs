@@ -10,6 +10,7 @@ namespace Sunnet_NBFC.Controllers
     {
         public ActionResult Index()
         {
+            
             if (Session["UserID"] != null)
             {
                 if (String.IsNullOrEmpty(Session["UserID"].ToString()) == true)
@@ -19,13 +20,14 @@ namespace Sunnet_NBFC.Controllers
                 else
                 {
                     return View();
+
                 }
             }
             else
             {
                 return RedirectToAction("Index", "Login");
             }
-            
+
         }
 
         public ActionResult About()

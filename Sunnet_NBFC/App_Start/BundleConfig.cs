@@ -70,6 +70,20 @@ namespace Sunnet_NBFC
                 "~/dist/js/demo.js"));
 
 
+
+            bundles.Add(new StyleBundle("~/bundles/Logincss").Include(
+                "~/plugins/fontawesome-free/css/all.min.css",
+                     "~/plugins/icheck-bootstrap/icheck-bootstrap.min.css",
+                     "~/dist/css/adminlte.min.css"));
+
+
+            bundles.Add(new ScriptBundle("~/bundles/Loginjs").Include(
+                "~/plugins/jquery/jquery.min.js", "~/plugins/jquery/jquery.validate.min.js",
+                "~/plugins/jquery/jquery.validate.unobtrusive.min.js", "~/Scripts/angular.min.js",
+                "~/plugins/bootstrap/js/bootstrap.bundle.min.js",
+                "~/dist/js/adminlte.min.js"));
+
+
         }
     }
 }

@@ -13,135 +13,199 @@ namespace Sunnet_NBFC.Controllers
 {
     public class LeadController : Controller
     {
-        // GET: Lead
-        [HttpGet]
-        public ActionResult LeadPage()
-        {
-            DataInterface db = new DataInterface();
-            ViewBag.Service = ToSelectList(db.GetService(), "ServiceID", "ServiceName");
-            db = null;
-            return View();
-        }
-        [HttpPost]
-      
-        [ValidateAntiForgeryToken]
-        public ActionResult LeadPage(clsLead cls)
-        {
-            if (ModelState.IsValid)
-            {
-                DataInterface dB = new DataInterface();
-                cls.OptType = 1;
-                cls.LeadId = 0;
-                if (DataInterface.PostLead(cls) > 0)
-                {
-                    ModelState.Clear();
-                    ViewBag.Message = "Lead Save successfully";
-                }
-            }
-            DataInterface db = new DataInterface();
-            ViewBag.Service = ToSelectList(db.GetService(), "ServiceID", "ServiceName");
-            db = null;
-            return View();
-        }
-        [NonAction]
-        public SelectList ToSelectList(DataTable table, string valueField, string textField)
-        {
-            List<SelectListItem> list = new List<SelectListItem>();
 
-            foreach (DataRow row in table.Rows)
-            {
-                list.Add(new SelectListItem()
-                {
-                    Text = row[textField].ToString(),
-                    Value = row[valueField].ToString()
-                });
-            }
-
-            return new SelectList(list, "Value", "Text");
-        }
-
-        [HttpGet]
         public ActionResult LeadView()
         {
-            DataTable dt = new DataTable();
-            List<clsLead> Lead = new List<clsLead>();
-            dt = GetLead();
-            Lead = DataInterface.ConvertDataTable<clsLead>(dt);
-            ViewBag.LeadDetails = Lead;
-           
+
+
+            if (Session["UserID"] != null)
+            {
+                if (String.IsNullOrEmpty(Session["UserID"].ToString()) == true)
+                {
+                    return RedirectToAction("Index", "Login");
+                }
+                else
+                {
+
+
+                    List<clsLeadGenerationMaster> lst = new List<clsLeadGenerationMaster>();
+                    try
+                    {
+                        using (clsLeadGenerationMaster cls = new clsLeadGenerationMaster())
+                        {
+                            cls.ReqType = "GetLeadAllData";
+                            cls.CompanyId = 1;
+                            cls.LeadNo = "";
+                            cls.LeadId = 0;
+                            using (DataTable dt = DataInterface.GetLeadGenerationData(cls))
+                            {
+                                if (dt != null)
+                                {
+                                    ViewBag.lst = DataInterface.ConvertDataTable<clsLeadGenerationMaster>(dt);
+
+
+                                }
+                            }
+                        }
+
+                    }
+                    catch (Exception e1)
+                    {
+                        using (clsError clsE = new clsError())
+                        {
+                            clsE.ReqType = "Insert";
+                            clsE.Mode = "WEB";
+                            clsE.ErrorDescrption = e1.Message;
+                            clsE.FunctionName = "Status View";
+                            clsE.Link = "Status/ViewStatus";
+                            clsE.PageName = "Status Controller";
+                            clsE.UserId = "1";
+                            DataInterface.PostError(clsE);
+                        }
+                    }
+
+                }
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
             return View();
         }
-        public DataTable GetLead()
-        {
-            clsLead cls = new clsLead();
-            cls.OptType = 4;
-            
-            DataInterface db = new DataInterface();
-            DataTable dt = new DataTable();
-            dt = db.GetLead(cls);
-            db = null;
-            cls = null;
-            return dt;
-        }
-        [HttpGet]
-        public ActionResult LeadDisplay(int id)
-        {
-            clsLead cls = new clsLead();
-            cls.OptType = 4;
-            cls.LeadId = id;
-            List<clsLead> Lead = new List<clsLead>();
-            DataInterface db = new DataInterface();
-            DataTable dt = new DataTable();
-            dt = db.GetLead(cls);
-            cls = null;
-            clsLead clsleaddtl = new clsLead();
 
-            if (dt.Rows.Count == 1)
+
+        public ActionResult LeadDetails(string LeadNo, string LeadId)
+        {
+            clsLeadGenerationMaster model = new clsLeadGenerationMaster();
+
+            try
             {
-                clsleaddtl.LeadId = int.Parse(dt.Rows[0]["Leadid"].ToString());
-                clsleaddtl.CustName = dt.Rows[0]["CustName"].ToString();
-                clsleaddtl.CustAdress = dt.Rows[0]["CustAdress"].ToString();
-                clsleaddtl.CustContNo = dt.Rows[0]["CustContNo"].ToString();
-                clsleaddtl.CustMail = dt.Rows[0]["CustMail"].ToString();
-                clsleaddtl.GenderName = dt.Rows[0]["Gender"].ToString();
-                clsleaddtl.ServiceName = dt.Rows[0]["ServiceName"].ToString();
-                clsleaddtl.Remarks = dt.Rows[0]["Remarks"].ToString();
+                using (clsLeadGenerationMaster cls = new clsLeadGenerationMaster())
+                {
+                    cls.ReqType = "ViewLead";
+                    cls.CompanyId = 1;
+                    cls.LeadNo = LeadNo;
+                    cls.LeadId = Convert.ToInt32(LeadId);
+                    using (DataSet ds = DataInterface.GetLeadGenerationDataSingle(cls))
+                    {
+                        if (ds != null)
+                        {
+                            DataTable dt = ds.Tables[0];
+                            if (dt != null)
+                            {
+
+                                for (int i = 0; i < ds.Tables[0].Rows.Count; i++) {
+
+
+                                    model.LeadNo = Convert.ToString(ds.Tables[0].Rows[i]["LeadNo"]);
+                                    model.ReuestedLoanAmount = Convert.ToString(ds.Tables[0].Rows[i]["ReqLoanAmt"]);
+                                    model.ReuestedLoanTenure = Convert.ToString(ds.Tables[0].Rows[i]["ReqLoanTenure"]);
+                                    model.MainProductId = Convert.ToString(ds.Tables[0].Rows[i]["MainProdId"]);
+                                    model.ProductId = Convert.ToString(ds.Tables[0].Rows[i]["ProdId"]);
+                                }
+
+                               
+
+
+
+
+                            }
+
+
+
+                            for (int i = 0; i < ds.Tables[1].Rows.Count; i++)
+                            {
+
+                                if (Convert.ToString(ds.Tables[1].Rows[i]["CustType"]) == "C")
+                                {
+                                    model.FirstName = Convert.ToString(ds.Tables[1].Rows[i]["FirstName"]);
+                                    model.MiddleName = Convert.ToString(ds.Tables[1].Rows[i]["MiddleName"]);
+                                    model.LastName = Convert.ToString(ds.Tables[1].Rows[i]["LastName"]);
+                                    model.FatherName = Convert.ToString(ds.Tables[1].Rows[i]["FatherName"]);
+                                    model.MotherName = Convert.ToString(ds.Tables[1].Rows[i]["MotherName"]);
+                                    model.SpouseName = Convert.ToString(ds.Tables[1].Rows[i]["SpouseName"]);
+                                    model.Gender = Convert.ToString(ds.Tables[1].Rows[i]["Gender"]);
+                                    model.DateofBirth = Convert.ToString(ds.Tables[1].Rows[i]["DateofBirth"]);
+                                    model.MartialStatus = Convert.ToString(ds.Tables[1].Rows[i]["MartialStatus"]);
+                                    model.PresentAddress = Convert.ToString(ds.Tables[1].Rows[i]["PresentAddress"]);
+                                    model.PresentPincode = Convert.ToString(ds.Tables[1].Rows[i]["PresentPincode"]);
+                                    model.PresentStateId = Convert.ToString(ds.Tables[1].Rows[i]["PresentStateId"]);
+                                    model.PresentCityId = Convert.ToString(ds.Tables[1].Rows[i]["PresentCityId"]);
+                                    model.PermanentAddress = Convert.ToString(ds.Tables[1].Rows[i]["PermanentAddress"]);
+                                    model.PermanentPincode = Convert.ToString(ds.Tables[1].Rows[i]["PermanentPincode"]);
+                                    model.PermanentStateId = Convert.ToString(ds.Tables[1].Rows[i]["PermanentStateId"]);
+                                    model.PermanentCityId = Convert.ToString(ds.Tables[1].Rows[i]["PermanentCityId"]);
+                                    model.CibilScore = Convert.ToString(ds.Tables[1].Rows[i]["CibilScore"]);
+                                    model.MobileNo1 = Convert.ToString(ds.Tables[1].Rows[i]["MobileNo1"]);
+                                    model.FatherMobileNo = Convert.ToString(ds.Tables[1].Rows[i]["FatherMobileNo"]);
+                                    model.MotherMobileNo = Convert.ToString(ds.Tables[1].Rows[i]["MotherMobileNo"]);
+                                    model.SpouseMobileNo = Convert.ToString(ds.Tables[1].Rows[i]["SpouseMobileNo"]);
+                                    model.AadharNo = Convert.ToString(ds.Tables[1].Rows[i]["AadharNo"]);
+                                    model.PanNo = Convert.ToString(ds.Tables[1].Rows[i]["PanNo"]);
+                                }
+                                else if (Convert.ToString(ds.Tables[1].Rows[i]["CustType"]) == "G")
+                                {
+                                   
+
+                                }
+                                else if (Convert.ToString(ds.Tables[1].Rows[i]["CustType"]) == "CO_Applicant")
+                                {
+                                    model.CO_FirstName = Convert.ToString(ds.Tables[1].Rows[i]["FirstName"]);
+                                    model.CO_MiddleName = Convert.ToString(ds.Tables[1].Rows[i]["MiddleName"]);
+                                    model.CO_LastName = Convert.ToString(ds.Tables[1].Rows[i]["LastName"]);
+                                    model.CO_Gender = Convert.ToString(ds.Tables[1].Rows[i]["Gender"]);
+                                    model.CO_DOB = Convert.ToString(ds.Tables[1].Rows[i]["DateofBirth"]);
+                                    model.CO_Marital_Status = Convert.ToString(ds.Tables[1].Rows[i]["MartialStatus"]);
+                                    model.CO_PresentAddress = Convert.ToString(ds.Tables[1].Rows[i]["PresentAddress"]);
+                                    model.CO_PresentPinCode = Convert.ToString(ds.Tables[1].Rows[i]["PresentPincode"]);
+                                    model.CO_PresentStateId = Convert.ToString(ds.Tables[1].Rows[i]["PresentStateId"]);
+                                    model.CO_PresentCityId = Convert.ToString(ds.Tables[1].Rows[i]["PresentCityId"]);
+                                    model.CO_PermanentAddress = Convert.ToString(ds.Tables[1].Rows[i]["PermanentAddress"]);
+                                    model.CO_PermanentPincode = Convert.ToString(ds.Tables[1].Rows[i]["PermanentPincode"]);
+                                    model.CO_PermanentStateId = Convert.ToString(ds.Tables[1].Rows[i]["PermanentStateId"]);
+                                    model.CO_PermanentCityId = Convert.ToString(ds.Tables[1].Rows[i]["PermanentCityId"]);
+                                    model.CO_Mobile_No = Convert.ToString(ds.Tables[1].Rows[i]["MobileNo1"]);
+                                    model.CO_Adhaar = Convert.ToString(ds.Tables[1].Rows[i]["AadharNo"]);
+                                    model.CO_PAN = Convert.ToString(ds.Tables[1].Rows[i]["PanNo"]);
+                                    model.CO_CIBIL = Convert.ToString(ds.Tables[1].Rows[i]["CibilScore"]);
+
+                                }
+
+
+
+                            }
+
+                        }
+                    }
+                }
 
             }
-            return View(clsleaddtl);
-            
+            catch (Exception e1)
+            {
+                using (clsError clsE = new clsError())
+                {
+                    clsE.ReqType = "Insert";
+                    clsE.Mode = "WEB";
+                    clsE.ErrorDescrption = e1.Message;
+                    clsE.FunctionName = "Status View";
+                    clsE.Link = "Status/ViewStatus";
+                    clsE.PageName = "Status Controller";
+                    clsE.UserId = "1";
+                    DataInterface.PostError(clsE);
+                }
+            }
+
+
+
+
+
+
+
+
+
+
+            return PartialView("_LeadDetailsView", model);
         }
-
-        public ActionResult ExportToExcel()
-        {
-            var gv = new GridView();
-            gv.DataSource = this.GetLead();
-            gv.DataBind();
-
-            Response.ClearContent();
-            Response.Buffer = true;
-            Response.AddHeader("content-disposition", "attachment; filename=LeadView.xls");
-            Response.ContentType = "application/ms-excel";
-
-            Response.Charset = "";
-            StringWriter objStringWriter = new StringWriter();
-            HtmlTextWriter objHtmlTextWriter = new HtmlTextWriter(objStringWriter);
-
-            gv.RenderControl(objHtmlTextWriter);
-
-            Response.Output.Write(objStringWriter.ToString());
-            Response.Flush();
-            Response.End();
-            DataTable dt = new DataTable();
-            List<clsLead> Lead = new List<clsLead>();
-            dt = GetLead();
-            Lead = DataInterface.ConvertDataTable<clsLead>(dt);
-            ViewBag.LeadDetails = Lead;
-            dt.Dispose();
-
-            return View("LeadView");
-
-        }
-       
     }
 }
