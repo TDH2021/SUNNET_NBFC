@@ -30,7 +30,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\</OutputPath>
+    <OutputPath>H:\Deployeed\bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -2160,6 +2160,7 @@
     <Content Include="Scripts\CustomJS\Employee.js" />
     <Content Include="Scripts\CustomJS\Customer.js" />
     <Content Include="Scripts\CustomJS\DSA.js" />
+    <Content Include="Scripts\CustomJS\Login.js" />
     <Content Include="Scripts\CustomJS\Question.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2594,6 +2595,9 @@
     <Content Include="Views\SubMenu\EditSubMenu.cshtml" />
     <Content Include="Views\SubMenu\SubMenuView.cshtml" />
     <Content Include="Views\Lead\_LeadDetailsView.cshtml" />
+    <Content Include="Views\DSA\EditDSA.cshtml" />
+    <Content Include="Views\Login\ChangePassword.cshtml" />
+    <Content Include="Views\Login\ForgetPass.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
