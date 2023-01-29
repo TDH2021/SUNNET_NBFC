@@ -9,30 +9,11 @@ namespace Sunnet_NBFC.App_Code
 {
     public static class ClsSession
     {
-        private static int _CompanyID = 1;
-        public static int CompanyID
-        {
-            get { 
-                return _CompanyID; 
-            }
-            set
-            {
-                _CompanyID=value;
-            }
-        }
+        public static int CompanyID { get; set; } = 0;
+        
+        public static int UserID { get; set; } = 0;
+        public static int EmpId { get; set; } = 0;
 
-        private static int _UserID = 1;
-        public static int UserID
-        {
-            get
-            {
-                return _UserID;
-            }
-            set
-            {
-                _UserID = value;
-            }
-        }
 
     }
 }

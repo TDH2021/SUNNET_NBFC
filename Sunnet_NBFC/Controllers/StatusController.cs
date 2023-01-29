@@ -8,7 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
-
+using Sunnet_NBFC.App_Code;
 namespace Sunnet_NBFC.Controllers
 {
     public class StatusController : Controller
@@ -19,7 +19,8 @@ namespace Sunnet_NBFC.Controllers
         {
             using (clsStatusMaster clsStatus = new clsStatusMaster())
             {
-                clsStatus.CompanyID = 1;
+                clsStatus.CompanyID = ClsSession.CompanyID;
+                clsStatus.CreatedBy = ClsSession.UserID;
             }
             return View();
         }
