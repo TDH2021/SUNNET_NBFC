@@ -24,9 +24,22 @@ $('#DSAState').change(function () {
 
                 }
             }
-          
+
 
         });
+    }
+});
+$("#txtDsaIFSCCode").change(function () {
+    var inputvalues = $(this).val();
+    var reg = /[A-Z|a-z]{4}[0][a-zA-Z0-9]{6}$/;
+    if (inputvalues.match(reg)) {
+        return true;
+    }
+    else {
+        $("#txtDsaIFSCCode").val("");
+        swal("TDH","You entered invalid IFSC code","error");
+        document.getElementById("txtDsaIFSCCode").focus();
+        return false;
     }
 });
 

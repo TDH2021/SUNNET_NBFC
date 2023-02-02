@@ -32,20 +32,20 @@
                             <div class="form-group">
                                 <div class="row">
 
-                                        <div class="col-md-4">
-                                            <label for="exampleInputEmail1">DSA Name</label>
-                                            @Html.TextBoxFor(model => model.DSAName, new
-                                       {
-                                           @class = "form-control",
-                                           @placeholder = "Name",
-                                           @name = "Customer Name",
-                                           @required = "true",
-                                           @maxlength = "50",
-                                           @autocomplete = "off",
-                                           @Id = "txtCustName"
-                                       })
-                                            @Html.ValidationMessageFor(model => model.DSAName, "", new { @class = "text-danger" })
-                                        </div>
+                                    <div class="col-md-4">
+                                        <label for="exampleInputEmail1">DSA Name</label>
+                                        @Html.TextBoxFor(model => model.DSAName, new
+                                   {
+                                       @class = "form-control",
+                                       @placeholder = "Name",
+                                       @name = "Customer Name",
+                                       @required = "true",
+                                       @maxlength = "50",
+                                       @autocomplete = "off",
+                                       @Id = "txtCustName"
+                                   })
+                                        @Html.ValidationMessageFor(model => model.DSAName, "", new { @class = "text-danger" })
+                                    </div>
                                     <div class="col-md-4">
                                         <label for="exampleInputEmail1">Address</label>
                                         @Html.TextAreaFor(model => model.DSAAddress, new { @class = "form-control", @placeholder = "Address", @name = "Address", @maxlength = "100", @id = "txtAddress", @requried = "true" })
@@ -60,6 +60,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="row">
+
 
 
                                     <div class="col-md-4">
@@ -135,7 +136,9 @@
                                        @required = "true",
                                        @id = "txtGstNo",
                                        @autocomplete = "off",
-                                       @maxlength = "15"
+                                       @maxlength = "15",
+                                       @pattern = "^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$",
+                                            @title = "Invalid GST Number."
                                    })
 
                                     </div>
@@ -151,7 +154,7 @@
                                        @placeholder = "Name",
                                        @name = "Account No",
                                        @required = "true",
-                                       @maxlength = "50",
+                                       @maxlength = "20",
                                        @autocomplete = "off",
                                        @Id = "txtDsaAccountNo"
                                    })
@@ -201,7 +204,7 @@
                                        @autocomplete = "off",
                                        @Id = "txtDsaIFSCCode"
                                    })
-                                        @Html.ValidationMessageFor(model => model.DSAIFSCCode, "", new { @class = "text-danger" })
+                                        @Html.ValidationMessageFor(model => model.DSAIFSCCode, "", new { @class = "text-danger", @id = "txtIFSCCode", @maxlength = "12" })
                                     </div>
                                     <div class="col-md-4">
                                         <label for="exampleInputEmail1">Commision</label>
@@ -209,13 +212,14 @@
                                    {
                                        @class = "form-control",
                                        @placeholder = "Commision",
-                                       @name = "Whatsup No",
+                                       @name = "DSACommision",
                                        @required = "true",
                                        @maxlength = "10",
                                        @type = "number",
                                    })
                                     </div>
-                                    <div class="col-md-">
+                                    <div class="col-md-4">
+
                                         <label for="exampleInputEmail1">Remarks</label>
                                         @Html.TextBoxFor(model => model.DSARemarks, new
                                    {
@@ -235,8 +239,8 @@
                                 <div class="row">
 
 
-                                    <div class="col-md-6">
-
+                                    <div class="col-md-12">
+                                        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
                             </div>
@@ -264,7 +268,7 @@
     <script type="text/javascript">
 
             window.onload = function () {
-                alert("@ViewBag.Message");
+                swal("TDH","@ViewBag.Message","success");
             };
     </script>
 }
