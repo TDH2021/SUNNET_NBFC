@@ -84,15 +84,15 @@
 
                                 <div class="col-md-4">
                                     <label for="exampleInputEmail1">Martial Status</label>
-                                    @Html.TextBoxFor(model => model.CO_Marital_Status, new
-                               {
-                                   @class = "form-control",
-                                   @placeholder = "Martial Status",
-                                   @name = "MartialStatus",
-                                   @required = "true",
-                                   @id = "CO_MartialStatus"
+                               
 
-                               })
+                                    @Html.DropDownListFor(model => model.Gender,
+           new List<SelectListItem> {
+           new SelectListItem { Value = "0" , Text = "- Select Marital -" },
+           new SelectListItem { Value = "Single" , Text = "Single" },
+           new SelectListItem { Value = "Married" , Text = "Married" }
+           },
+           new { @class = "form-control", @id = "CO_MartialStatus" })
                                 </div>
                             </div>
 
@@ -120,6 +120,7 @@
                                    @placeholder = "Present Pincode",
                                    @name = "PresentPincode",
                                    @required = "true",
+                                   @type = "number",
                                    @id = "CO_PresentPincode"
 
                                })

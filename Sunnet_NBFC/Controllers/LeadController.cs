@@ -151,6 +151,9 @@ namespace Sunnet_NBFC.Controllers
                                 }
                                 else if (Convert.ToString(ds.Tables[1].Rows[i]["CustType"]) == "CO_Applicant")
                                 {
+
+
+
                                     model.CO_FirstName = Convert.ToString(ds.Tables[1].Rows[i]["FirstName"]);
                                     model.CO_MiddleName = Convert.ToString(ds.Tables[1].Rows[i]["MiddleName"]);
                                     model.CO_LastName = Convert.ToString(ds.Tables[1].Rows[i]["LastName"]);

@@ -87,15 +87,15 @@
 
             <div class="col-md-4">
                 <label for="exampleInputEmail1">Martial Status</label>
-                @Html.TextBoxFor(model => model.G_Marital_Status, new
-           {
-               @class = "form-control",
-               @placeholder = "Martial Status",
-               @name = "MartialStatus",
-               @required = "true",
-               @id = "G_MartialStatus"
+           
 
-           })
+                @Html.DropDownListFor(model => model.Gender,
+      new List<SelectListItem> {
+      new SelectListItem { Value = "0" , Text = "- Select Marital -" },
+      new SelectListItem { Value = "Single" , Text = "Single" },
+      new SelectListItem { Value = "Married" , Text = "Married" }
+      },
+      new { @class = "form-control", @id = "G_MartialStatus" })
             </div>
         </div>
 
@@ -123,6 +123,7 @@
                @placeholder = "Present Pincode",
                @name = "PresentPincode",
                @required = "true",
+               @type = "number",
                @id = "G_PresentPincode"
 
            })
@@ -338,110 +339,232 @@
 
 <script type="text/javascript">
     function AddGdetails() {
-        var txtFName = $("#G_FName").val();
-        var txtMName = $("#G_MName").val();
-        var txtLName = $("#G_LName").val();
-        var txtG_Gender = $("#G_Gender option:selected").val();
-        var txtDob = $("#G_Dob").val();
-        var txtG_MartialStatus = $("#G_MartialStatus").val();
+    debugger
 
-        var G_PresentAddress = $("#G_PresentAddress").val();
-        var G_PresentPincode = $("#G_PresentPincode").val();
-        var G_C_State = $("#G_C_State option:selected").val();
-        var G_C_City = $("#G_C_City option:selected").val();
+        var customers = new Array();
+        var customers1 = new Array();
+        $("#example1 TBODY TR").each(function () {
+            var row = $(this);
+            var customer = {};
+
+            customer.G_FirstName = row.find("TD").eq(0).html();
+            customer.G_MiddleName = row.find("TD").eq(1).html();
+            customer.G_LastName = row.find("TD").eq(2).html();
+            customer.G_Gender = row.find("TD").eq(3).html();
+            customer.G_DOB = row.find("TD").eq(4).html();
+            customer.G_Marital_Status = row.find("TD").eq(5).html();
 
 
-        var G_PermanentAddress = $("#G_PermanentAddress").val();
-        var G_PermanentPincode = $("#G_PermanentPincode").val();
-        var G_P_State = $("#G_P_State option:selected").val();
-        var G_P_City = $("#G_P_City option:selected").val();
+            customer.G_PresentAddress = row.find("TD").eq(6).html();
+            customer.G_PresentPinCode = row.find("TD").eq(7).html();
+            customer.G_PresentStateId = row.find("TD").eq(8).html();
+            customer.G_PresentCityId = row.find("TD").eq(9).html();
+
+
+
+
+            customer.G_PermanentAddress = row.find("TD").eq(10).html();
+            customer.G_PermanentPincode = row.find("TD").eq(11).html();
+            customer.G_P_State = row.find("TD").eq(11).html(12);
+            customer.G_P_City = row.find("TD").eq(12).html(13);
+
+            customer.G_Mobile_No = row.find("TD").eq(14).html();
+            customer.G_EmailId = row.find("TD").eq(15).html();
+            customer.G_PanNo = row.find("TD").eq(16).html();
+            customer.G_AadharNo = row.find("TD").eq(17).html();
+            customer.G_CibilScore = row.find("TD").eq(18).html();
+            if (customer.G_FirstName != "No data available in table") {
+                customers.push(customer);
+            }
+            
+        });
+
         var G_Mobile_No = $("#G_Mobile_No").val();
-        var G_EmailId = $("#G_EmailId").val();
-        var G_PanNo = $("#G_PanNo").val();
         var G_AadharNo = $("#G_AadharNo").val();
-        var G_CibilScore = $("#G_CibilScore").val();
 
-        debugger
-        //Get the reference of the Table's TBODY element.
-        var tBody = $("#example1 > TBODY")[0];
+        var flag = 0;
+        if (customers.length != 0) {
+            debugger
 
-        //Add Row.
-        var row = tBody.insertRow(-1);
+                      
+            for (let i = 0; i < customers.length; i++) {
 
-        //Add Name cell.
-        var cell = $(row.insertCell(-1));
-        cell.html(txtFName);
+                if (customers[i].G_Mobile_No == G_Mobile_No) {
 
-        cell = $(row.insertCell(-1));
-        cell.html(txtMName);
-
-        cell = $(row.insertCell(-1));
-        cell.html(txtLName);
-
-
-        cell = $(row.insertCell(-1));
-        cell.html(txtG_Gender);
-
-        cell = $(row.insertCell(-1));
-        cell.html(txtDob);
-
-        cell = $(row.insertCell(-1));
-        cell.html(txtG_MartialStatus);
+                    flag = 1;
+                }
+                
+            }
+        }
 
 
 
-        cell = $(row.insertCell(-1));
-        cell.html(G_PresentAddress);
+        if (flag == 0) {
 
-        cell = $(row.insertCell(-1));
-        cell.html(G_PresentPincode);
+            var txtFName = $("#G_FName").val();
+            var txtMName = $("#G_MName").val();
+            var txtLName = $("#G_LName").val();
+            var txtG_Gender = $("#G_Gender option:selected").val();
+            var txtDob = $("#G_Dob").val();
+            var txtG_MartialStatus = $("#G_MartialStatus option:selected").val();
 
-        cell = $(row.insertCell(-1));
-        cell.html(G_C_State);
-
-        cell = $(row.insertCell(-1));
-        cell.html(G_C_City);
-
-
-
-
-        cell = $(row.insertCell(-1));
-        cell.html(G_PermanentAddress);
-
-        cell = $(row.insertCell(-1));
-        cell.html(G_PermanentPincode);
-
-        cell = $(row.insertCell(-1));
-        cell.html(G_P_State);
-
-        cell = $(row.insertCell(-1));
-        cell.html(G_P_City);
+            var G_PresentAddress = $("#G_PresentAddress").val();
+            var G_PresentPincode = $("#G_PresentPincode").val();
+            var G_C_State = $("#G_C_State option:selected").val();
+            var G_C_City = $("#G_C_City option:selected").val();
 
 
+            var G_PermanentAddress = $("#G_PermanentAddress").val();
+            var G_PermanentPincode = $("#G_PermanentPincode").val();
+            var G_P_State = $("#G_P_State option:selected").val();
+            var G_P_City = $("#G_P_City option:selected").val();
+            var G_Mobile_No = $("#G_Mobile_No").val();
+            var G_EmailId = $("#G_EmailId").val();
+            var G_PanNo = $("#G_PanNo").val();
+            var PANregex = /[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
+            var G_AadharNo = $("#G_AadharNo").val();
+            var G_CibilScore = $("#G_CibilScore").val();
 
-        cell = $(row.insertCell(-1));
-        cell.html(G_Mobile_No);
-
-        cell = $(row.insertCell(-1));
-        cell.html(G_EmailId);
 
 
-        cell = $(row.insertCell(-1));
-        cell.html(G_PanNo);
 
-        cell = $(row.insertCell(-1));
-        cell.html(G_AadharNo);
+            if (txtFName.length == 0) {
+                alert("Please enter gurantor first name");
 
-        cell = $(row.insertCell(-1));
-        cell.html(G_CibilScore);
+            } else if (txtMName.length == 0) {
+                alert("Please enter gurantor middle name");
 
-        //Add Button cell.
-        cell = $(row.insertCell(-1));
-        var btnRemove = $("<input />");
-        btnRemove.attr("type", "button");
-        btnRemove.attr("onclick", "Remove(this);");
-        btnRemove.val("Remove");
-        cell.append(btnRemove);
+            } else if (txtLName.length == 0) {
+                alert("Please enter gurantor last name");
+
+            } else if (txtG_Gender.length == 0) {
+                alert("Please enter gurantor gender");
+
+            } else {
+                debugger
+                //Get the reference of the Table's TBODY element.
+                var tBody = $("#example1 > TBODY")[0];
+
+                //Add Row.
+                var row = tBody.insertRow(-1);
+
+                //Add Name cell.
+                var cell = $(row.insertCell(-1));
+                cell.html(txtFName);
+
+                cell = $(row.insertCell(-1));
+                cell.html(txtMName);
+
+                cell = $(row.insertCell(-1));
+                cell.html(txtLName);
+
+
+                cell = $(row.insertCell(-1));
+                cell.html(txtG_Gender);
+
+                cell = $(row.insertCell(-1));
+                cell.html(txtDob);
+
+                cell = $(row.insertCell(-1));
+                cell.html(txtG_MartialStatus);
+
+
+
+                cell = $(row.insertCell(-1));
+                cell.html(G_PresentAddress);
+
+                cell = $(row.insertCell(-1));
+                cell.html(G_PresentPincode);
+
+                cell = $(row.insertCell(-1));
+                cell.html(G_C_State);
+
+                cell = $(row.insertCell(-1));
+                cell.html(G_C_City);
+
+
+
+
+                cell = $(row.insertCell(-1));
+                cell.html(G_PermanentAddress);
+
+                cell = $(row.insertCell(-1));
+                cell.html(G_PermanentPincode);
+
+                cell = $(row.insertCell(-1));
+                cell.html(G_P_State);
+
+                cell = $(row.insertCell(-1));
+                cell.html(G_P_City);
+
+
+
+                cell = $(row.insertCell(-1));
+                cell.html(G_Mobile_No);
+
+                cell = $(row.insertCell(-1));
+                cell.html(G_EmailId);
+
+
+                cell = $(row.insertCell(-1));
+                cell.html(G_PanNo);
+
+                cell = $(row.insertCell(-1));
+                cell.html(G_AadharNo);
+
+                cell = $(row.insertCell(-1));
+                cell.html(G_CibilScore);
+
+                //Add Button cell.
+                cell = $(row.insertCell(-1));
+                var btnRemove = $("<input />");
+                btnRemove.attr("type", "button");
+                btnRemove.attr("onclick", "Remove(this);");
+                btnRemove.val("Remove");
+                cell.append(btnRemove);
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+        } else {
+
+            alert("Gurantor already added")
+        }
+
+
+    
+    
+
+
+
+
+        
     }
     </script>
 
