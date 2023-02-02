@@ -84,6 +84,7 @@
 
                                 <div class="col-md-4">
                                     <label for="exampleInputEmail1">Martial Status</label>
+<<<<<<< Updated upstream
                                
 
                                     @Html.DropDownListFor(model => model.Gender,
@@ -93,6 +94,17 @@
            new SelectListItem { Value = "Married" , Text = "Married" }
            },
            new { @class = "form-control", @id = "CO_MartialStatus" })
+=======
+                                    @Html.TextBoxFor(model => model.CO_Marital_Status, new
+                               {
+                                   @class = "form-control",
+                                   @placeholder = "Martial Status",
+                                   @name = "MartialStatus",
+                                   @required = "true",
+                                   @id = "CO_MartialStatus"
+
+                               })
+>>>>>>> Stashed changes
                                 </div>
                             </div>
 
@@ -120,7 +132,10 @@
                                    @placeholder = "Present Pincode",
                                    @name = "PresentPincode",
                                    @required = "true",
+<<<<<<< Updated upstream
                                    @type = "number",
+=======
+>>>>>>> Stashed changes
                                    @id = "CO_PresentPincode"
 
                                })

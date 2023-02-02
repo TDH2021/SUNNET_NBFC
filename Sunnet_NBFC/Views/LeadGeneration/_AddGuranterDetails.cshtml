@@ -87,6 +87,7 @@
 
             <div class="col-md-4">
                 <label for="exampleInputEmail1">Martial Status</label>
+<<<<<<< Updated upstream
            
 
                 @Html.DropDownListFor(model => model.Gender,
@@ -96,6 +97,17 @@
       new SelectListItem { Value = "Married" , Text = "Married" }
       },
       new { @class = "form-control", @id = "G_MartialStatus" })
+=======
+                @Html.TextBoxFor(model => model.G_Marital_Status, new
+           {
+               @class = "form-control",
+               @placeholder = "Martial Status",
+               @name = "MartialStatus",
+               @required = "true",
+               @id = "G_MartialStatus"
+
+           })
+>>>>>>> Stashed changes
             </div>
         </div>
 
@@ -123,7 +135,10 @@
                @placeholder = "Present Pincode",
                @name = "PresentPincode",
                @required = "true",
+<<<<<<< Updated upstream
                @type = "number",
+=======
+>>>>>>> Stashed changes
                @id = "G_PresentPincode"
 
            })
@@ -339,6 +354,7 @@
 
 <script type="text/javascript">
     function AddGdetails() {
+<<<<<<< Updated upstream
     debugger
 
         var customers = new Array();
@@ -481,10 +497,76 @@
 
                 cell = $(row.insertCell(-1));
                 cell.html(G_C_City);
+=======
+        var txtFName = $("#G_FName").val();
+        var txtMName = $("#G_MName").val();
+        var txtLName = $("#G_LName").val();
+        var txtG_Gender = $("#G_Gender option:selected").val();
+        var txtDob = $("#G_Dob").val();
+        var txtG_MartialStatus = $("#G_MartialStatus").val();
+
+        var G_PresentAddress = $("#G_PresentAddress").val();
+        var G_PresentPincode = $("#G_PresentPincode").val();
+        var G_C_State = $("#G_C_State option:selected").val();
+        var G_C_City = $("#G_C_City option:selected").val();
+
+
+        var G_PermanentAddress = $("#G_PermanentAddress").val();
+        var G_PermanentPincode = $("#G_PermanentPincode").val();
+        var G_P_State = $("#G_P_State option:selected").val();
+        var G_P_City = $("#G_P_City option:selected").val();
+        var G_Mobile_No = $("#G_Mobile_No").val();
+        var G_EmailId = $("#G_EmailId").val();
+        var G_PanNo = $("#G_PanNo").val();
+        var G_AadharNo = $("#G_AadharNo").val();
+        var G_CibilScore = $("#G_CibilScore").val();
+
+        debugger
+        //Get the reference of the Table's TBODY element.
+        var tBody = $("#example1 > TBODY")[0];
+
+        //Add Row.
+        var row = tBody.insertRow(-1);
+
+        //Add Name cell.
+        var cell = $(row.insertCell(-1));
+        cell.html(txtFName);
+
+        cell = $(row.insertCell(-1));
+        cell.html(txtMName);
+
+        cell = $(row.insertCell(-1));
+        cell.html(txtLName);
+
+
+        cell = $(row.insertCell(-1));
+        cell.html(txtG_Gender);
+
+        cell = $(row.insertCell(-1));
+        cell.html(txtDob);
+
+        cell = $(row.insertCell(-1));
+        cell.html(txtG_MartialStatus);
+
+
+
+        cell = $(row.insertCell(-1));
+        cell.html(G_PresentAddress);
+
+        cell = $(row.insertCell(-1));
+        cell.html(G_PresentPincode);
+
+        cell = $(row.insertCell(-1));
+        cell.html(G_C_State);
+
+        cell = $(row.insertCell(-1));
+        cell.html(G_C_City);
+>>>>>>> Stashed changes
 
 
 
 
+<<<<<<< Updated upstream
                 cell = $(row.insertCell(-1));
                 cell.html(G_PermanentAddress);
 
@@ -565,6 +647,45 @@
 
 
         
+=======
+        cell = $(row.insertCell(-1));
+        cell.html(G_PermanentAddress);
+
+        cell = $(row.insertCell(-1));
+        cell.html(G_PermanentPincode);
+
+        cell = $(row.insertCell(-1));
+        cell.html(G_P_State);
+
+        cell = $(row.insertCell(-1));
+        cell.html(G_P_City);
+
+
+
+        cell = $(row.insertCell(-1));
+        cell.html(G_Mobile_No);
+
+        cell = $(row.insertCell(-1));
+        cell.html(G_EmailId);
+
+
+        cell = $(row.insertCell(-1));
+        cell.html(G_PanNo);
+
+        cell = $(row.insertCell(-1));
+        cell.html(G_AadharNo);
+
+        cell = $(row.insertCell(-1));
+        cell.html(G_CibilScore);
+
+        //Add Button cell.
+        cell = $(row.insertCell(-1));
+        var btnRemove = $("<input />");
+        btnRemove.attr("type", "button");
+        btnRemove.attr("onclick", "Remove(this);");
+        btnRemove.val("Remove");
+        cell.append(btnRemove);
+>>>>>>> Stashed changes
     }
     </script>
 

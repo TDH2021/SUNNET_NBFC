@@ -139,7 +139,10 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LeadController.cs" />
     <Compile Include="Controllers\LeadGenerationController.cs" />
+<<<<<<< Updated upstream
     <Compile Include="Controllers\LoginController.cs" />
+=======
+>>>>>>> Stashed changes
     <Compile Include="Controllers\MasterController.cs" />
     <Compile Include="Controllers\DocumentController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
@@ -2585,6 +2588,7 @@
     <Content Include="Views\LeadGeneration\_AddGuranterDetails.cshtml" />
     <Content Include="Views\LeadGeneration\_AddCustomerDetails.cshtml" />
     <Content Include="Views\LeadGeneration\_AddAdditionalDetails.cshtml" />
+<<<<<<< Updated upstream
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Menu\AddMenu.cshtml" />
     <Content Include="Views\Menu\EditMenu.cshtml" />
@@ -2593,6 +2597,8 @@
     <Content Include="Views\SubMenu\EditSubMenu.cshtml" />
     <Content Include="Views\SubMenu\SubMenuView.cshtml" />
     <Content Include="Views\Lead\_LeadDetailsView.cshtml" />
+=======
+>>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -128,6 +128,7 @@
 
         <div class="col-md-4">
             <label for="exampleInputEmail1">Martial Status</label>
+<<<<<<< Updated upstream
       
             @Html.DropDownListFor(model => model.Gender,
             new List<SelectListItem> {
@@ -137,6 +138,17 @@
             },
             new { @class = "form-control", @id = "MartialStatus" })
 
+=======
+            @Html.TextBoxFor(model => model.MartialStatus, new
+       {
+           @class = "form-control",
+           @placeholder = "Martial Status",
+           @name = "MartialStatus",
+           @required = "true",
+           @id = "MartialStatus"
+
+       })
+>>>>>>> Stashed changes
         </div>
     </div>
 
@@ -164,7 +176,10 @@
            @placeholder = "Present Pincode",
            @name = "PresentPincode",
            @required = "true",
+<<<<<<< Updated upstream
            @type = "number",
+=======
+>>>>>>> Stashed changes
            @id = "PresentPincode"
 
        })
@@ -340,7 +355,32 @@
     </div>
 
 
+<<<<<<< Updated upstream
     
+=======
+    <div class="row">
+
+
+        <div class="col-md-4">
+            <label for="exampleInputEmail1">
+                Cibil Score
+            </label>
+            @Html.TextBoxFor(model => model.CibilScore, new
+            {
+            @class = "form-control",
+            @placeholder = "Cibil Score",
+            @name = "CibilScore",
+            @required = "true",
+            @id = "CibilScore",
+            @type = "Number"
+
+            })
+        </div>
+
+
+    </div>
+
+>>>>>>> Stashed changes
 
 
 </div>

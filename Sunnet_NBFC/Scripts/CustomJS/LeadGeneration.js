@@ -268,7 +268,10 @@ $('#G_P_State').change(function () {
                     var opt = new Option(data[i].CityName, data[i].Cityid);
                     $('#G_P_City').append(opt);
 
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
                 }
             }
 
@@ -280,6 +283,7 @@ $('#G_P_State').change(function () {
 
 function ValidationChk() {
     debugger
+<<<<<<< Updated upstream
 
     var customers = new Array();
     $("#example1 TBODY TR").each(function () {
@@ -318,6 +322,8 @@ function ValidationChk() {
     });
 
 
+=======
+>>>>>>> Stashed changes
     var regex = /^[a-zA-Z]*$/;
     var ReqType = "Insert";
     var MainProductId = $("#MainProductId option:selected").val();
@@ -330,7 +336,11 @@ function ValidationChk() {
     var SpouseName = $("#SpouseName").val();
     var Dob = $("#Dob").val();
     var Gender = $("#Gender option:selected").val();
+<<<<<<< Updated upstream
     var MartialStatus = $("#MartialStatus option:selected").val();
+=======
+    var MartialStatus = $("#MartialStatus").val();
+>>>>>>> Stashed changes
     var PresentAddress = $("#PresentAddress").val();
     var PresentPincode = $("#PresentPincode").val();
     var PresentStateId = $("#customerpresentState option:selected").val();
@@ -357,7 +367,11 @@ function ValidationChk() {
     var CO_LName = $("#CO_LName").val();
     var CO_Gender = $("#CO_Gender option:selected").val();
     var CO_Dob = $("#CO_Dob").val();
+<<<<<<< Updated upstream
     var CO_MartialStatus = $("#CO_MartialStatus option:selected").val();
+=======
+    var CO_MartialStatus = $("#CO_MartialStatus").val();
+>>>>>>> Stashed changes
     var CO_PresentAddress = $("#CO_PresentAddress").val();
     var CO_PresentPincode = $("#CO_PresentPincode").val();
     var CO_PresentStateId = $("#CO_PresentStateId option:selected").val();
@@ -399,6 +413,7 @@ function ValidationChk() {
 
 
 
+<<<<<<< Updated upstream
     if (FName.length == 0) {
         alert("Please enter first name");
     } else if (MName.length == 0) {
@@ -446,6 +461,89 @@ function ValidationChk() {
     debugger
     var FName = $("#FName").val();
   
+=======
+    //if (FName.length == 0) {
+    //    alert("Please enter first name");
+    //} else if (MName.length == 0) {
+    //    alert("Please enter middle name");
+    //} else if (LName.length == 0) {
+    //    alert("Please enter last name");
+    //} else if (FatherName.length == 0) {
+    //    alert("Please enter father name");
+    //} else if (MotherName.length == 0) {
+    //    alert("Please enter mother name");
+    //} else if (SpouseName.length == 0) {
+    //    alert("Please enter spouse name");
+    //} else if (Dob.length == 0) {
+    //    alert("Please enter Dob");
+    //} else if (MartialStatus.length == 0) {
+    //    alert("Please enter material status");
+    //} else if (PresentAddress.length == 0) {
+    //    alert("Please enter present address");
+    //} else if (PresentPincode.length == 0) {
+    //    alert("Please enter present pincode");
+    //} else if (PermanentAddress.length == 0) {
+    //    alert("Please enter permanent address");
+    //} else if (PermanentPincode.length == 0) {
+    //    alert("Please enter permanent pincode");
+    //} else if (CibilScore.length == 0) {
+    //    alert("Please enter cibil score");
+    //} else if (MobileNumber1.length == 0) {
+    //    alert("Please enter mobile number1");
+
+    //} 
+    ////    else if (MobileNumber2.length == 0) {
+    //////    alert("Please enter mobile number2");
+    ////}
+    //else if (FatherMobileNumber.length == 0) {
+    //    alert("Please enter father mobile number");
+    //} else if (MotherMobileNumber.length == 0) {
+    //    alert("Please enter mother mobile number");
+    //} else if (SpouseMobileNumber.length == 0) {
+    //    alert("Please enter spouse mobile number");
+    //} else if (AadharNo.length == 0) {
+    //    alert("Please enter Aadhar no");
+    //} else if (PanNo.length == 0) {
+    //    alert("Please enter Pan no");
+    //} else {
+    var filedata = new FormData();
+    debugger
+    var FName = $("#FName").val();
+    var customers = new Array();
+    $("#example1 TBODY TR").each(function () {
+        var row = $(this);
+        var customer = {};
+
+        customer.G_FirstName = row.find("TD").eq(0).html();
+        customer.G_MiddleName = row.find("TD").eq(1).html();
+        customer.G_LastName = row.find("TD").eq(2).html();
+        customer.G_Gender = row.find("TD").eq(3).html();
+        customer.G_DOB = row.find("TD").eq(4).html();
+        customer.G_Marital_Status = row.find("TD").eq(5).html();
+
+
+        customer.G_PresentAddress = row.find("TD").eq(6).html();
+        customer.G_PresentPinCode = row.find("TD").eq(7).html();
+        customer.G_PresentStateId = row.find("TD").eq(8).html();
+        customer.G_PresentCityId = row.find("TD").eq(9).html();
+
+
+
+
+        customer.G_PermanentAddress = row.find("TD").eq(10).html();
+        customer.G_PermanentPincode = row.find("TD").eq(11).html();
+        customer.G_P_State = row.find("TD").eq(11).html(12);
+        customer.G_P_City = row.find("TD").eq(12).html(13);
+
+        customer.G_Mobile_No = row.find("TD").eq(14).html();
+        customer.G_EmailId = row.find("TD").eq(15).html();
+        customer.G_PanNo = row.find("TD").eq(16).html();
+        customer.G_AadharNo = row.find("TD").eq(17).html();
+        customer.G_CibilScore = row.find("TD").eq(18).html();
+        customers.push(customer);
+    });
+
+>>>>>>> Stashed changes
 
     var AllDataArray = {
         "ReqType": ReqType,
@@ -541,6 +639,7 @@ function ValidationChk() {
             debugger
 
             var message = JSON.parse(result)[0].ReturnMessage;
+<<<<<<< Updated upstream
            
 
             if (message == "Lead saved succussfully") {
@@ -576,6 +675,11 @@ function ValidationChk() {
                     });
 
             }
+=======
+            alert(message);
+
+
+>>>>>>> Stashed changes
 
 
 
@@ -587,5 +691,9 @@ function ValidationChk() {
 
 
 
+<<<<<<< Updated upstream
     }
+=======
+    //}
+>>>>>>> Stashed changes
 }
