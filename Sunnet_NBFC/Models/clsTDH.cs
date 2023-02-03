@@ -461,7 +461,6 @@ namespace Sunnet_NBFC.Models
         }
     }
 
-<<<<<<< Updated upstream
     public class clsLogin : IDisposable
     {
         public string ReqType { get; set; }
@@ -510,17 +509,13 @@ namespace Sunnet_NBFC.Models
         }
 
     }
+   
     public class clsLeadGenerationMaster : IDisposable
     {
+        public int Empid { get; set; }
         public string CustomerName { get; set; }
         public string Status { get; set; }
         public int LeadId { get; set; }
-=======
-
-    public class clsLeadGenerationMaster : IDisposable
-    {
-
->>>>>>> Stashed changes
         public string LeadNo { get; set; }
         public string MainProductId { get; set; }
         public string ProductId { get; set; }
@@ -557,7 +552,7 @@ namespace Sunnet_NBFC.Models
         public string OccupationID { get; set; }
         public string QualificationId { get; set; }
         public string CustRelation { get; set; }
-        
+
         public string CreateDate { get; set; }
         public int CompanyId { get; set; }
         public string ReqType { get; set; }
@@ -649,13 +644,9 @@ namespace Sunnet_NBFC.Models
         public string GeoTagging { get; set; }
         public string FORemarks { get; set; }
         public int BranchID { get; set; }
-        public int Empid { get; set; }
 
-<<<<<<< Updated upstream
+
         bool disposed = false;
-=======
-    bool disposed = false;
->>>>>>> Stashed changes
 
         // Public implementation of Dispose pattern callable by consumers.
         public void Dispose()
@@ -680,16 +671,8 @@ namespace Sunnet_NBFC.Models
             //
             disposed = true;
         }
-<<<<<<< Updated upstream
-       
-=======
 
-        ~clsLeadGenerationMaster()
-        {
-            Dispose(false);
-        }
 
->>>>>>> Stashed changes
     }
 
 
@@ -728,8 +711,4 @@ namespace Sunnet_NBFC.Models
         public int G_BranchID { get; set; }
         public string G_LeadNo { get; set; }
     }
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 }

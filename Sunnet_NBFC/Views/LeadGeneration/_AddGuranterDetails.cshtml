@@ -135,10 +135,8 @@
                @placeholder = "Present Pincode",
                @name = "PresentPincode",
                @required = "true",
-<<<<<<< Updated upstream
-               @type = "number",
-=======
->>>>>>> Stashed changes
+
+              @type = "number",
                @id = "G_PresentPincode"
 
            })
@@ -354,7 +352,7 @@
 
 <script type="text/javascript">
     function AddGdetails() {
-<<<<<<< Updated upstream
+
     debugger
 
         var customers = new Array();
@@ -456,6 +454,62 @@
             } else if (txtG_Gender.length == 0) {
                 alert("Please enter gurantor gender");
 
+            } else if (txtDob.length == 0) {
+                alert("Please enter gurantor DOB");
+
+            } else if (txtG_MartialStatus.length == 0) {
+                alert("Please enter gurantor matrial status");
+
+            } else if (G_PresentAddress.length == 0) {
+                alert("Please enter gurantor PresentAddress");
+
+            } else if (G_PresentPincode.length == 0) {
+                alert("Please enter gurantor matrial PresentPincode");
+
+            } else if (G_C_State.length == 0) {
+                alert("Please enter gurantor state");
+
+
+            } else if (G_C_City.length == 0) {
+                alert("Please enter gurantor city");
+
+            } else if (G_PermanentAddress.length == 0) {
+                alert("Please enter gurantor PermanentAddress");
+
+            } else if (G_PermanentPincode.length == 0) {
+                alert("Please enter gurantor matrial PermanentPincode");
+
+            } else if (G_P_State.length == 0) {
+                alert("Please enter gurantor state");
+
+
+            } else if (G_P_City.length == 0) {
+                alert("Please enter gurantor city");
+
+
+            } else if (G_Mobile_No.length == 0) {
+                alert("Please enter gurantor mobile no");
+
+
+            } else if (G_EmailId.length != 10) {
+                alert("Please enter gurantor valid email id");
+
+
+            } else if (G_PanNo.length != 10) {
+                alert("Please enter gurantor pan no");
+
+
+            } else if (!PANregex.test(G_PanNo)) {
+                alert("Invalid PAN pan no");
+
+            } else if (G_AadharNo.length != 12) {
+                alert("Please enter gurantor Aadhar No");
+
+
+            } else if (G_CibilScore.length == 0) {
+                alert("Please enter gurantor CibilScore");
+
+
             } else {
                 debugger
                 //Get the reference of the Table's TBODY element.
@@ -497,7 +551,7 @@
 
                 cell = $(row.insertCell(-1));
                 cell.html(G_C_City);
-=======
+
         var txtFName = $("#G_FName").val();
         var txtMName = $("#G_MName").val();
         var txtLName = $("#G_LName").val();
