@@ -2672,6 +2672,8 @@
     <Content Include="Views\DSA\EditDSA.cshtml" />
     <Content Include="Views\Login\ChangePassword.cshtml" />
     <Content Include="Views\Login\ForgetPass.cshtml" />
+    <Content Include="Views\Lead\LeadDisplay.cshtml" />
+    <Content Include="Views\Lead\LeadPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

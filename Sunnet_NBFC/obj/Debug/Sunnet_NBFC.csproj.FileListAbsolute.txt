@@ -267,7 +267,6 @@ I:\Client Project\Sunnet_NBFC\Sunnet_NBFC\bin\roslyn\System.IO.Compression.dll
 I:\Client Project\Sunnet_NBFC\Sunnet_NBFC\bin\roslyn\System.IO.Compression.ZipFile.dll
 I:\Client Project\Sunnet_NBFC\Sunnet_NBFC\bin\roslyn\System.IO.FileSystem.dll
 I:\Client Project\Sunnet_NBFC\Sunnet_NBFC\bin\roslyn\System.IO.FileSystem.Primitives.dll
-I:\Client Project\Sunnet_NBFC\Sunnet_NBFC\bin\roslyn\System.Net.Http.dll
 I:\Client Project\Sunnet_NBFC\Sunnet_NBFC\bin\roslyn\System.Net.Sockets.dll
 I:\Client Project\Sunnet_NBFC\Sunnet_NBFC\bin\roslyn\System.Reflection.Metadata.dll
 I:\Client Project\Sunnet_NBFC\Sunnet_NBFC\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
@@ -287,18 +286,6 @@ I:\Client Project\Sunnet_NBFC\Sunnet_NBFC\bin\roslyn\vbc.exe.config
 I:\Client Project\Sunnet_NBFC\Sunnet_NBFC\bin\roslyn\vbc.rsp
 I:\Client Project\Sunnet_NBFC\Sunnet_NBFC\bin\roslyn\VBCSCompiler.exe
 I:\Client Project\Sunnet_NBFC\Sunnet_NBFC\bin\roslyn\VBCSCompiler.exe.config
-I:\Client Project\Sunnet_NBFC\Sunnet_NBFC\bin\Antlr3.Runtime.dll
-I:\Client Project\Sunnet_NBFC\Sunnet_NBFC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-I:\Client Project\Sunnet_NBFC\Sunnet_NBFC\bin\Microsoft.Web.Infrastructure.dll
-I:\Client Project\Sunnet_NBFC\Sunnet_NBFC\bin\Newtonsoft.Json.dll
-I:\Client Project\Sunnet_NBFC\Sunnet_NBFC\bin\System.Web.Helpers.dll
-I:\Client Project\Sunnet_NBFC\Sunnet_NBFC\bin\System.Web.Mvc.dll
-I:\Client Project\Sunnet_NBFC\Sunnet_NBFC\bin\System.Web.Optimization.dll
-I:\Client Project\Sunnet_NBFC\Sunnet_NBFC\bin\System.Web.Razor.dll
-I:\Client Project\Sunnet_NBFC\Sunnet_NBFC\bin\System.Web.WebPages.Deployment.dll
-I:\Client Project\Sunnet_NBFC\Sunnet_NBFC\bin\System.Web.WebPages.dll
-I:\Client Project\Sunnet_NBFC\Sunnet_NBFC\bin\System.Web.WebPages.Razor.dll
-I:\Client Project\Sunnet_NBFC\Sunnet_NBFC\bin\WebGrease.dll
 I:\Client Project\Sunnet_NBFC\Sunnet_NBFC\bin\System.Web.Helpers.xml
 I:\Client Project\Sunnet_NBFC\Sunnet_NBFC\bin\System.Web.Mvc.xml
 I:\Client Project\Sunnet_NBFC\Sunnet_NBFC\bin\System.Web.Optimization.xml
@@ -539,3 +526,4 @@ F:\Sunnet_NBFC - Copy\Sunnet_NBFC\Sunnet_NBFC\Sunnet_NBFC\obj\Debug\Sunnet_NBFC.
 F:\Sunnet_NBFC - Copy\Sunnet_NBFC\Sunnet_NBFC\Sunnet_NBFC\obj\Debug\Sunnet_NBFC.dll
 F:\Sunnet_NBFC - Copy\Sunnet_NBFC\Sunnet_NBFC\Sunnet_NBFC\obj\Debug\Sunnet_NBFC.pdb
 F:\Sunnet_NBFC\Sunnet_NBFC\Sunnet_NBFC\bin\System.Net.Http.dll
+I:\Client Project\Sunnet_NBFC\Sunnet_NBFC\bin\System.Net.Http.dll

@@ -31,27 +31,27 @@
             <div class="col-md-4">
                 <label for="exampleInputEmail1">Middle Name</label>
                 @Html.TextBoxFor(model => model.G_MiddleName, new
-           {
-               @class = "form-control",
-               @placeholder = "Middle Name",
-               @name = "MName",
-               @required = "true",
-               @id = "G_MName"
+                {
+                    @class = "form-control",
+                    @placeholder = "Middle Name",
+                    @name = "MName",
+                    @required = "true",
+                    @id = "G_MName"
 
-           })
+                })
             </div>
 
             <div class="col-md-4">
                 <label for="exampleInputEmail1">Last Name</label>
                 @Html.TextBoxFor(model => model.G_LastName, new
-           {
-               @class = "form-control",
-               @placeholder = "Last Name",
-               @name = "LName",
-               @required = "true",
-               @id = "G_LName"
+                {
+                    @class = "form-control",
+                    @placeholder = "Last Name",
+                    @name = "LName",
+                    @required = "true",
+                    @id = "G_LName"
 
-           })
+                })
             </div>
         </div>
 
@@ -61,12 +61,12 @@
             <div class="col-md-4">
                 <label for="exampleInputEmail1">Gender</label>
                 @Html.DropDownListFor(model => model.G_Gender,
-                new List<SelectListItem> {
+                     new List<SelectListItem> {
                 new SelectListItem { Value = "0" , Text = "- Select Gender -" },
                 new SelectListItem { Value = "Male" , Text = "Male" },
                 new SelectListItem { Value = "Female" , Text = "Female" }
-                },
-                new { @class = "form-control", @id = "G_Gender" })
+                 },
+                     new { @class = "form-control", @id = "G_Gender" })
 
 
             </div>
@@ -87,27 +87,25 @@
 
             <div class="col-md-4">
                 <label for="exampleInputEmail1">Martial Status</label>
-<<<<<<< Updated upstream
-           
 
                 @Html.DropDownListFor(model => model.Gender,
-      new List<SelectListItem> {
+           new List<SelectListItem> {
       new SelectListItem { Value = "0" , Text = "- Select Marital -" },
       new SelectListItem { Value = "Single" , Text = "Single" },
       new SelectListItem { Value = "Married" , Text = "Married" }
-      },
-      new { @class = "form-control", @id = "G_MartialStatus" })
-=======
+       },
+           new { @class = "form-control", @id = "G_MartialStatus" })
+                =======
                 @Html.TextBoxFor(model => model.G_Marital_Status, new
-           {
-               @class = "form-control",
-               @placeholder = "Martial Status",
-               @name = "MartialStatus",
-               @required = "true",
-               @id = "G_MartialStatus"
+                {
+                    @class = "form-control",
+                    @placeholder = "Martial Status",
+                    @name = "MartialStatus",
+                    @required = "true",
+                    @id = "G_MartialStatus"
 
-           })
->>>>>>> Stashed changes
+                })
+                >>>>>>> Stashed changes
             </div>
         </div>
 
@@ -117,35 +115,35 @@
             <div class="col-md-4">
                 <label for="exampleInputEmail1">Corrospondance Address</label>
                 @Html.TextBoxFor(model => model.G_PresentAddress, new
-           {
-               @class = "form-control",
-               @placeholder = "Present Address",
-               @name = "PresentAddress",
-               @required = "true",
-               @id = "G_PresentAddress"
+                {
+                    @class = "form-control",
+                    @placeholder = "Present Address",
+                    @name = "PresentAddress",
+                    @required = "true",
+                    @id = "G_PresentAddress"
 
-           })
+                })
             </div>
 
             <div class="col-md-4">
                 <label for="exampleInputEmail1">Corrospondance Pincode</label>
                 @Html.TextBoxFor(model => model.G_PresentPinCode, new
-           {
-               @class = "form-control",
-               @placeholder = "Present Pincode",
-               @name = "PresentPincode",
-               @required = "true",
+                {
+                    @class = "form-control",
+                    @placeholder = "Present Pincode",
+                    @name = "PresentPincode",
+                    @required = "true",
 
-              @type = "number",
-               @id = "G_PresentPincode"
+                    @type = "number",
+                    @id = "G_PresentPincode"
 
-           })
+                })
             </div>
 
             <div class="col-md-4">
                 <label for="exampleInputEmail1">Corrospondance State</label>
                 @Html.DropDownListFor(model => model.G_PresentStateId, ViewBag.StateList as SelectList, "- Select State - ",
-                new { @class = "form-control", @id = "G_C_State" })
+                     new { @class = "form-control", @id = "G_C_State" })
                 @Html.ValidationMessageFor(model => model.G_PresentStateId, "", new { @class = "text-danger" })
 
 
@@ -155,8 +153,8 @@
             <div class="col-md-4">
                 <label for="exampleInputEmail1">Corrospondance City</label>
                 @Html.DropDownListFor(model => model.G_PresentCityId,
-                    new SelectList(Enumerable.Empty<SelectListItem>(), "CityId", "CityName"),
-                    "Select city", new { @class = "form-control", @id = "G_C_City" })
+                         new SelectList(Enumerable.Empty<SelectListItem>(), "CityId", "CityName"),
+                         "Select city", new { @class = "form-control", @id = "G_C_City" })
                 @*@Html.DropDownListFor(model => model.G_PresentCityId, ViewBag.CityList as SelectList, new { @class = "form-control" })*@
                 @Html.ValidationMessageFor(model => model.G_PresentCityId, "", new { @class = "text-danger" })
 
@@ -166,27 +164,27 @@
             <div class="col-md-4">
                 <label for="exampleInputEmail1">Permanent Address</label>
                 @Html.TextBoxFor(model => model.G_PermanentAddress, new
-           {
-               @class = "form-control",
-               @placeholder = "Permanent Address",
-               @name = "PermanentAddress",
-               @required = "true",
-               @id = "G_PermanentAddress"
+                {
+                    @class = "form-control",
+                    @placeholder = "Permanent Address",
+                    @name = "PermanentAddress",
+                    @required = "true",
+                    @id = "G_PermanentAddress"
 
-           })
+                })
             </div>
 
             <div class="col-md-4">
                 <label for="exampleInputEmail1">Permanent Pincode</label>
                 @Html.TextBoxFor(model => model.G_PermanentPincode, new
-           {
-               @class = "form-control",
-               @placeholder = "Permanent Pincode",
-               @name = "PermanentPincode",
-               @required = "true",
-               @id = "G_PermanentPincode"
+                {
+                    @class = "form-control",
+                    @placeholder = "Permanent Pincode",
+                    @name = "PermanentPincode",
+                    @required = "true",
+                    @id = "G_PermanentPincode"
 
-           })
+                })
             </div>
         </div>
         <div class="row">
@@ -196,7 +194,7 @@
                 @Html.DropDownListFor(model => model.G_PermanentStateId, ViewBag.StateList as SelectList, "- Select State -", new
                 {
                     @class = "form-control",
-               @id = "G_P_State"
+                    @id = "G_P_State"
                 })
                 @Html.ValidationMessageFor(model => model.G_PermanentStateId, "", new { @class = "text-danger" })
             </div>
@@ -205,8 +203,8 @@
                 <label for="exampleInputEmail1">Permanent City</label>
 
                 @Html.DropDownListFor(model => model.G_PermanentCityId,
-                    new SelectList(Enumerable.Empty<SelectListItem>(), "CityId", "CityName"),
-                    "Select city", new { @class = "form-control", @id = "G_P_City" })
+                         new SelectList(Enumerable.Empty<SelectListItem>(), "CityId", "CityName"),
+                         "Select city", new { @class = "form-control", @id = "G_P_City" })
                 @*@Html.DropDownListFor(model => model.PermanentCityId, ViewBag.CityList as SelectList, new { @class = "form-control" })*@
                 @Html.ValidationMessageFor(model => model.G_PermanentCityId, "", new { @class = "text-danger" })
 
@@ -215,14 +213,14 @@
             <div class="col-md-4">
                 <label for="exampleInputEmail1">Mobile No</label>
                 @Html.TextBoxFor(model => model.G_Mobile_No, new
-           {
-               @class = "form-control",
-               @placeholder = "Mobile No",
-               @name = "CibilScore",
-               @required = "true",
-               @id = "G_Mobile_No"
+                {
+                    @class = "form-control",
+                    @placeholder = "Mobile No",
+                    @name = "CibilScore",
+                    @required = "true",
+                    @id = "G_Mobile_No"
 
-           })
+                })
             </div>
 
         </div>
@@ -230,41 +228,41 @@
             <div class="col-md-4">
                 <label for="exampleInputEmail1">Email Id</label>
                 @Html.TextBoxFor(model => model.G_Email_Id, new
-           {
-               @class = "form-control",
-               @placeholder = "Email Id",
-               @name = "CO_EmailId",
-               @required = "true",
-               @id = "G_EmailId"
+                {
+                    @class = "form-control",
+                    @placeholder = "Email Id",
+                    @name = "CO_EmailId",
+                    @required = "true",
+                    @id = "G_EmailId"
 
-           })
+                })
             </div>
 
 
             <div class="col-md-4">
                 <label for="exampleInputEmail1"> Pan No </label>
                 @Html.TextBoxFor(model => model.G_PAN, new
-           {
-               @class = "form-control",
-               @placeholder = "PanNo",
-               @name = "CO_PanNo",
-               @required = "true",
-               @id = "G_PanNo"
+                {
+                    @class = "form-control",
+                    @placeholder = "PanNo",
+                    @name = "CO_PanNo",
+                    @required = "true",
+                    @id = "G_PanNo"
 
-           })
+                })
             </div>
 
             <div class="col-md-4">
                 <label for="exampleInputEmail1"> Aadhar No </label>
                 @Html.TextBoxFor(model => model.G_Adhaar, new
-           {
-               @class = "form-control",
-               @placeholder = "Aadhar No",
-               @name = "G_AadharNo",
-               @required = "true",
-               @id = "G_AadharNo"
+                {
+                    @class = "form-control",
+                    @placeholder = "Aadhar No",
+                    @name = "G_AadharNo",
+                    @required = "true",
+                    @id = "G_AadharNo"
 
-           })
+                })
             </div>
 
         </div>
@@ -279,12 +277,12 @@
                 </label>
                 @Html.TextBoxFor(model => model.G_CIBIL, new
                 {
-                @class = "form-control",
-                @placeholder = "Cibil Score",
-                @name = "CO_CibilScore",
-                @required = "true",
-                @id = "G_CibilScore",
-                @type = "Number"
+                    @class = "form-control",
+                    @placeholder = "Cibil Score",
+                    @name = "CO_CibilScore",
+                    @required = "true",
+                    @id = "G_CibilScore",
+                    @type = "Number"
 
                 })
             </div>
@@ -336,10 +334,8 @@
 
                 foreach (var DataModel in m)
                 {
-                    <tr>
-                    </tr>
-
-                }
+<tr>
+</tr>                }
 
             }
 
@@ -353,7 +349,7 @@
 <script type="text/javascript">
     function AddGdetails() {
 
-    debugger
+        debugger
 
         var customers = new Array();
         var customers1 = new Array();
@@ -390,7 +386,7 @@
             if (customer.G_FirstName != "No data available in table") {
                 customers.push(customer);
             }
-            
+
         });
 
         var G_Mobile_No = $("#G_Mobile_No").val();
@@ -400,14 +396,14 @@
         if (customers.length != 0) {
             debugger
 
-                      
+
             for (let i = 0; i < customers.length; i++) {
 
                 if (customers[i].G_Mobile_No == G_Mobile_No) {
 
                     flag = 1;
                 }
-                
+
             }
         }
 
@@ -552,75 +548,69 @@
                 cell = $(row.insertCell(-1));
                 cell.html(G_C_City);
 
-        var txtFName = $("#G_FName").val();
-        var txtMName = $("#G_MName").val();
-        var txtLName = $("#G_LName").val();
-        var txtG_Gender = $("#G_Gender option:selected").val();
-        var txtDob = $("#G_Dob").val();
-        var txtG_MartialStatus = $("#G_MartialStatus").val();
+                var txtFName = $("#G_FName").val();
+                var txtMName = $("#G_MName").val();
+                var txtLName = $("#G_LName").val();
+                var txtG_Gender = $("#G_Gender option:selected").val();
+                var txtDob = $("#G_Dob").val();
+                var txtG_MartialStatus = $("#G_MartialStatus").val();
 
-        var G_PresentAddress = $("#G_PresentAddress").val();
-        var G_PresentPincode = $("#G_PresentPincode").val();
-        var G_C_State = $("#G_C_State option:selected").val();
-        var G_C_City = $("#G_C_City option:selected").val();
-
-
-        var G_PermanentAddress = $("#G_PermanentAddress").val();
-        var G_PermanentPincode = $("#G_PermanentPincode").val();
-        var G_P_State = $("#G_P_State option:selected").val();
-        var G_P_City = $("#G_P_City option:selected").val();
-        var G_Mobile_No = $("#G_Mobile_No").val();
-        var G_EmailId = $("#G_EmailId").val();
-        var G_PanNo = $("#G_PanNo").val();
-        var G_AadharNo = $("#G_AadharNo").val();
-        var G_CibilScore = $("#G_CibilScore").val();
-
-        debugger
-        //Get the reference of the Table's TBODY element.
-        var tBody = $("#example1 > TBODY")[0];
-
-        //Add Row.
-        var row = tBody.insertRow(-1);
-
-        //Add Name cell.
-        var cell = $(row.insertCell(-1));
-        cell.html(txtFName);
-
-        cell = $(row.insertCell(-1));
-        cell.html(txtMName);
-
-        cell = $(row.insertCell(-1));
-        cell.html(txtLName);
+                var G_PresentAddress = $("#G_PresentAddress").val();
+                var G_PresentPincode = $("#G_PresentPincode").val();
+                var G_C_State = $("#G_C_State option:selected").val();
+                var G_C_City = $("#G_C_City option:selected").val();
 
 
-        cell = $(row.insertCell(-1));
-        cell.html(txtG_Gender);
+                var G_PermanentAddress = $("#G_PermanentAddress").val();
+                var G_PermanentPincode = $("#G_PermanentPincode").val();
+                var G_P_State = $("#G_P_State option:selected").val();
+                var G_P_City = $("#G_P_City option:selected").val();
+                var G_Mobile_No = $("#G_Mobile_No").val();
+                var G_EmailId = $("#G_EmailId").val();
+                var G_PanNo = $("#G_PanNo").val();
+                var G_AadharNo = $("#G_AadharNo").val();
+                var G_CibilScore = $("#G_CibilScore").val();
 
-        cell = $(row.insertCell(-1));
-        cell.html(txtDob);
+                debugger
+                //Get the reference of the Table's TBODY element.
+                var tBody = $("#example1 > TBODY")[0];
 
-        cell = $(row.insertCell(-1));
-        cell.html(txtG_MartialStatus);
+                //Add Row.
+                var row = tBody.insertRow(-1);
+
+                //Add Name cell.
+                var cell = $(row.insertCell(-1));
+                cell.html(txtFName);
+
+                cell = $(row.insertCell(-1));
+                cell.html(txtMName);
+
+                cell = $(row.insertCell(-1));
+                cell.html(txtLName);
 
 
+                cell = $(row.insertCell(-1));
+                cell.html(txtG_Gender);
 
-        cell = $(row.insertCell(-1));
-        cell.html(G_PresentAddress);
+                cell = $(row.insertCell(-1));
+                cell.html(txtDob);
 
-        cell = $(row.insertCell(-1));
-        cell.html(G_PresentPincode);
-
-        cell = $(row.insertCell(-1));
-        cell.html(G_C_State);
-
-        cell = $(row.insertCell(-1));
-        cell.html(G_C_City);
->>>>>>> Stashed changes
+                cell = $(row.insertCell(-1));
+                cell.html(txtG_MartialStatus);
 
 
 
+                cell = $(row.insertCell(-1));
+                cell.html(G_PresentAddress);
 
-<<<<<<< Updated upstream
+                cell = $(row.insertCell(-1));
+                cell.html(G_PresentPincode);
+
+                cell = $(row.insertCell(-1));
+                cell.html(G_C_State);
+
+                cell = $(row.insertCell(-1));
+                cell.html(G_C_City);
                 cell = $(row.insertCell(-1));
                 cell.html(G_PermanentAddress);
 
@@ -687,20 +677,20 @@
 
 
 
-            
+
         } else {
 
             alert("Gurantor already added")
         }
 
 
-    
-    
 
 
 
 
-        
+
+
+
 =======
         cell = $(row.insertCell(-1));
         cell.html(G_PermanentAddress);
@@ -741,11 +731,11 @@
         cell.append(btnRemove);
 >>>>>>> Stashed changes
     }
-    </script>
+</script>
 
 
 <script type="text/javascript">
-  
+
     function Remove(button) {
         //Determine the reference of the Row using the Button.
         var row = $(button).closest("TR");
