@@ -465,7 +465,9 @@ namespace Sunnet_NBFC.Models
     public class clsLogin : IDisposable
     {
         public string ReqType { get; set; }
+      
         public int UserID { get; set; }
+        [Remote("IsAlreadyExistsUser", "Login", HttpMethod = "POST", ErrorMessage = "User ID Not Exists.")]
         public string UserName { get; set; }
         public string UserPassword { get; set; }
         public string Type { get; set; }
@@ -478,6 +480,7 @@ namespace Sunnet_NBFC.Models
         public int Compid { get; set; }
         public string DeviceToken { get; set; }
         public int ChangePasswordYN { get; set; }
+        public string ConfirmPassword { get; set; }
         public string Message { get; set; }
         bool disposed = false;
 
@@ -646,7 +649,7 @@ namespace Sunnet_NBFC.Models
         public string GeoTagging { get; set; }
         public string FORemarks { get; set; }
         public int BranchID { get; set; }
-        
+        public int Empid { get; set; }
 
 <<<<<<< Updated upstream
         bool disposed = false;

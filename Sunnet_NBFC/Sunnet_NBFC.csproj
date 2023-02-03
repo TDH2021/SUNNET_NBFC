@@ -30,7 +30,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\</OutputPath>
+    <OutputPath>H:\Deployeed\bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -139,10 +139,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LeadController.cs" />
     <Compile Include="Controllers\LeadGenerationController.cs" />
-<<<<<<< Updated upstream
     <Compile Include="Controllers\LoginController.cs" />
-=======
->>>>>>> Stashed changes
     <Compile Include="Controllers\MasterController.cs" />
     <Compile Include="Controllers\DocumentController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
@@ -2163,6 +2160,7 @@
     <Content Include="Scripts\CustomJS\Employee.js" />
     <Content Include="Scripts\CustomJS\Customer.js" />
     <Content Include="Scripts\CustomJS\DSA.js" />
+    <Content Include="Scripts\CustomJS\Login.js" />
     <Content Include="Scripts\CustomJS\Question.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2499,6 +2497,7 @@
     <Content Include="Scripts\sweetalert.min.js" />
     <Content Include="dist\css\sweetalert.css" />
     <Content Include="Scripts\sweetalert2.js" />
+    <Content Include="UploadedFiles\sunitlogo.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -2588,7 +2587,6 @@
     <Content Include="Views\LeadGeneration\_AddGuranterDetails.cshtml" />
     <Content Include="Views\LeadGeneration\_AddCustomerDetails.cshtml" />
     <Content Include="Views\LeadGeneration\_AddAdditionalDetails.cshtml" />
-<<<<<<< Updated upstream
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Menu\AddMenu.cshtml" />
     <Content Include="Views\Menu\EditMenu.cshtml" />
@@ -2597,8 +2595,9 @@
     <Content Include="Views\SubMenu\EditSubMenu.cshtml" />
     <Content Include="Views\SubMenu\SubMenuView.cshtml" />
     <Content Include="Views\Lead\_LeadDetailsView.cshtml" />
-=======
->>>>>>> Stashed changes
+    <Content Include="Views\DSA\EditDSA.cshtml" />
+    <Content Include="Views\Login\ChangePassword.cshtml" />
+    <Content Include="Views\Login\ForgetPass.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

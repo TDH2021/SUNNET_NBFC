@@ -974,6 +974,7 @@ public class DataInterface : IDisposable
                 sqlCommand.Parameters.AddWithValue("@leadid", cls.LeadId);
                 sqlCommand.Parameters.AddWithValue("@LeadNo", cls.LeadNo);
                 sqlCommand.Parameters.AddWithValue("@CompanyID", cls.CompanyId);
+                sqlCommand.Parameters.AddWithValue("@EMPId", cls.Empid);
 
                 dt = db.FillTableProc(sqlCommand, "USP_Lead");
             }

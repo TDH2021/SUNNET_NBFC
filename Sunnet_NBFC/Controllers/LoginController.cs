@@ -1,4 +1,4 @@
-﻿﻿using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -32,6 +32,13 @@ namespace Sunnet_NBFC.Controllers
 
                 using (DataTable dt = DataInterface.DBLogin(cls))
                 {
+                    if (dt != null)
+                    {
+                        if (dt.Rows.Count > 0)
+                        {
+                            Session["UserID"] = dt.Rows[0]["UserID"].ToString();
+                        }
+                    }
                     JSONresult = JsonConvert.SerializeObject(dt);
                 }
                 return Json(JSONresult, JsonRequestBehavior.AllowGet);
@@ -77,7 +84,7 @@ namespace Sunnet_NBFC.Controllers
                                 {
                                     Session["UserID"] = cls.UserID;
                                     Session["UserType"] = cls.Type;
-                                   Session["SessionId"] = cls.SessionID;
+                                    Session["SessionId"] = cls.SessionID;
                                     if (cls.Type == "E")
                                     {
                                         clsEmployee cls1 = new clsEmployee();
@@ -89,10 +96,12 @@ namespace Sunnet_NBFC.Controllers
                                             {
                                                 if (dt1.Rows.Count > 0)
                                                 {
+                                                    Session["EmpId"] = dt1.Rows[0]["EmpId"].ToString();
                                                     Session["EmpCode"] = dt1.Rows[0]["EmpCode"].ToString();
-                                                    Session["EmpName"] = dt1.Rows[0]["EmpName"].ToString();
+                                                    Session["UserName"] = dt1.Rows[0]["EmpName"].ToString();
                                                     Session["CompanyId"] = dt1.Rows[0]["CompId"].ToString();
                                                     Session["BranchId"] = dt1.Rows[0]["Branchid"].ToString();
+                                                    Session["UserImg"] = dt1.Rows[0]["ImageName"].ToString();
                                                 }
                                             }
 
@@ -102,7 +111,7 @@ namespace Sunnet_NBFC.Controllers
                                     }
                                 }
                             }
-                          
+
                         }
                     }
 
@@ -137,12 +146,119 @@ namespace Sunnet_NBFC.Controllers
                     var jsonresult = Json(JSONresult, JsonRequestBehavior.AllowGet);
                     return Json(jsonresult);
                 }
-                
+
 
             }
 
 
         }
+        public ActionResult ChangePassword()
+        {
+            using (clsLogin cls = new clsLogin())
+            {
+                cls.UserID = int.Parse(Session["UserID"].ToString());
+                return View(cls);
+            }
 
+
+        }
+        [HttpPost]
+        public JsonResult UpdatePassword()
+        {
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            using (clsLogin cls = jss.Deserialize<clsLogin>(Request.Form["AllDataArray"]))
+            {
+
+                try
+                {
+
+                    using (DataTable dt = DataInterface.DBLogin(cls))
+                    {
+                        return Json(JsonConvert.SerializeObject(dt), JsonRequestBehavior.AllowGet);
+                    }
+
+                }
+                catch (Exception e1)
+                {
+
+                    using (clsError clsE = new clsError())
+                    {
+                        clsE.ReqType = "CheckLogin";
+                        clsE.Mode = "WEB";
+                        clsE.ErrorDescrption = e1.Message;
+                        clsE.FunctionName = "CheckLogin";
+                        clsE.Link = "Login/UpdatePasword";
+                        clsE.PageName = "Login Controller";
+                        clsE.UserId = "0";
+                        DataInterface.PostError(clsE);
+                    }
+
+                    var data = new
+                    {
+                        Msg = "Error"
+                    };
+                    JSONresult = JsonConvert.SerializeObject(data);
+                    var jsonresult = Json(JSONresult, JsonRequestBehavior.AllowGet);
+                    return Json(jsonresult);
+                }
+
+
+            }
+
+        }
+
+        public ActionResult ForgetPass()
+        {
+
+
+            return View();
+        }
+
+        [HttpPost]
+        public JsonResult IsAlreadyExistsUser(string UserName)
+        {
+            bool status = false;
+            using (clsLogin cls = new clsLogin())
+            {
+                cls.ReqType = "CheckUserId";
+                cls.UserName = UserName;
+                using (DataTable dt = DataInterface.DBLogin(cls))
+                {
+                    if (dt != null)
+                    {
+                        if (dt.Rows.Count > 0)
+                        {
+                            status = true;
+                        }
+                        else
+                        {
+                            status = false;
+                        }
+
+                    }
+                    else
+                    {
+                        status = false;
+                    }
+                }
+
+
+                return Json(status, JsonRequestBehavior.AllowGet);
+
+            }
+        }
+
+        public ActionResult Logout()
+        {
+            Session.RemoveAll();
+            Session.Clear();
+            
+            return View("Index");
+
+
+
+        }
     }
+
+
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sunnet_NBFC.App_Code;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -19,6 +20,9 @@ namespace Sunnet_NBFC.Controllers
                 }
                 else
                 {
+                    ClsSession.CompanyID =int.Parse(Session["CompanyId"].ToString());
+                    ClsSession.UserID = int.Parse(Session["EmpId"].ToString());
+                    ClsSession.EmpId = int.Parse(Session["EmpId"].ToString());
                     return View();
 
                 }
