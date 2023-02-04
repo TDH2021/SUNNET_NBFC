@@ -128,13 +128,16 @@
 
         <div class="col-md-4">
             <label for="exampleInputEmail1">Martial Status</label>
+            
             @Html.DropDownListFor(model => model.Gender,
             new List<SelectListItem> {
-            new SelectListItem { Value = "0" , Text = "- Select Marital -" },
+            new SelectListItem { Value = "" , Text = "- Select Marital -" },
             new SelectListItem { Value = "Single" , Text = "Single" },
             new SelectListItem { Value = "Married" , Text = "Married" }
-            })
-           
+            },
+            new { @class = "form-control", @id = "MartialStatus" })
+
+
         </div>
     </div>
 
@@ -357,8 +360,6 @@
 
 
     </div>
-
->>>>>>> Stashed changes
 
 
 </div>

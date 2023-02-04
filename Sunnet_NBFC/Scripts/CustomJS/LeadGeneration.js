@@ -193,21 +193,6 @@ $('#CO_permanentstate').change(function () {
 });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 $('#G_C_State').change(function () {
     debugger;
 
@@ -268,10 +253,6 @@ $('#G_P_State').change(function () {
                     var opt = new Option(data[i].CityName, data[i].Cityid);
                     $('#G_P_City').append(opt);
 
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
                 }
             }
 
@@ -283,7 +264,6 @@ $('#G_P_State').change(function () {
 
 function ValidationChk() {
     debugger
-<<<<<<< Updated upstream
 
     var customers = new Array();
     $("#example1 TBODY TR").each(function () {
@@ -322,8 +302,6 @@ function ValidationChk() {
     });
 
 
-=======
->>>>>>> Stashed changes
     var regex = /^[a-zA-Z]*$/;
     var ReqType = "Insert";
     var MainProductId = $("#MainProductId option:selected").val();
@@ -336,11 +314,7 @@ function ValidationChk() {
     var SpouseName = $("#SpouseName").val();
     var Dob = $("#Dob").val();
     var Gender = $("#Gender option:selected").val();
-<<<<<<< Updated upstream
     var MartialStatus = $("#MartialStatus option:selected").val();
-=======
-    var MartialStatus = $("#MartialStatus").val();
->>>>>>> Stashed changes
     var PresentAddress = $("#PresentAddress").val();
     var PresentPincode = $("#PresentPincode").val();
     var PresentStateId = $("#customerpresentState option:selected").val();
@@ -367,11 +341,7 @@ function ValidationChk() {
     var CO_LName = $("#CO_LName").val();
     var CO_Gender = $("#CO_Gender option:selected").val();
     var CO_Dob = $("#CO_Dob").val();
-<<<<<<< Updated upstream
     var CO_MartialStatus = $("#CO_MartialStatus option:selected").val();
-=======
-    var CO_MartialStatus = $("#CO_MartialStatus").val();
->>>>>>> Stashed changes
     var CO_PresentAddress = $("#CO_PresentAddress").val();
     var CO_PresentPincode = $("#CO_PresentPincode").val();
     var CO_PresentStateId = $("#CO_PresentStateId option:selected").val();
@@ -412,8 +382,6 @@ function ValidationChk() {
 
 
 
-
-<<<<<<< Updated upstream
     if (FName.length == 0) {
         alert("Please enter first name");
     } else if (MName.length == 0) {
@@ -461,7 +429,6 @@ function ValidationChk() {
     debugger
     var FName = $("#FName").val();
   
-=======
     //if (FName.length == 0) {
     //    alert("Please enter first name");
     //} else if (MName.length == 0) {
@@ -542,8 +509,6 @@ function ValidationChk() {
         customer.G_CibilScore = row.find("TD").eq(18).html();
         customers.push(customer);
     });
-
->>>>>>> Stashed changes
 
     var AllDataArray = {
         "ReqType": ReqType,
@@ -639,8 +604,6 @@ function ValidationChk() {
             debugger
 
             var message = JSON.parse(result)[0].ReturnMessage;
-<<<<<<< Updated upstream
-           
 
             if (message == "Lead saved succussfully") {
                 swal({
@@ -675,12 +638,6 @@ function ValidationChk() {
                     });
 
             }
-=======
-            alert(message);
-
-
->>>>>>> Stashed changes
-
 
 
         }
@@ -691,9 +648,6 @@ function ValidationChk() {
 
 
 
-<<<<<<< Updated upstream
     }
-=======
     //}
->>>>>>> Stashed changes
 }
