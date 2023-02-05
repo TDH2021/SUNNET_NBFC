@@ -61,7 +61,7 @@ namespace Sunnet_NBFC.Controllers
 
                 if (postedFile != null && postedFile.ToString() != "")
                 {
-                    if (ClsCommon.CheckFileType(postedFile.ToString()) == true)
+                    if (ClsCommon.CheckFileType(postedFile.FileName.ToString()) == true)
                     {
                         up = UploadEmpPhoto(postedFile);
                     }
