@@ -14,7 +14,7 @@ namespace Sunnet_NBFC.Controllers
     public class LeadController : Controller
     {
 
-        public ActionResult LeadView()
+        public ActionResult LeadView(string ShortStage_Name = "")
         {
 
 
@@ -38,6 +38,7 @@ namespace Sunnet_NBFC.Controllers
                             cls.LeadNo = "";
                             cls.LeadId = 0;
                             cls.Empid = int.Parse(Session["EmpId"].ToString());
+                            cls.ShortStage_Name = ShortStage_Name;
                             using (DataTable dt = DataInterface.GetLeadGenerationData(cls))
                             {
                                 if (dt != null)

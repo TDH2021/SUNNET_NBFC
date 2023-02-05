@@ -483,6 +483,50 @@ public class DataInterface2 : DataInterface, IDisposable
     }
     #endregion
 
+    #region GEt Misc DDL
+    public static List<clsMisc> GetMiscForDDL(string MiscType)
+    {
+        //DBHelper dBHlper = new DBHelper();
+        List<clsMisc> lst = new List<clsMisc>();
+        DataTable dt = new DataTable();
+        try
+        {
+            //DBOperation db = new DBOperation();
+            //SqlCommand cmd = new SqlCommand();
+
+            using (DBOperation db = new DBOperation())
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@ReqType", SqlDbType.VarChar).Value = "View";
+                    cmd.Parameters.Add("@MiscType", SqlDbType.VarChar).Value = MiscType;
+                    cmd.Parameters.Add("@CompanyId", SqlDbType.Int).Value = ClsSession.CompanyID;
+                    cmd.Parameters.Add("@IsDelete", SqlDbType.Int).Value = 0;
+                    dt = db.FillTableProc(cmd, "USP_MiscMaster");
+
+                }
+            }
+
+            lst = DataInterface.ConvertDataTable<clsMisc>(dt);
+
+
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+        finally
+        {
+            dt.Dispose();
+        }
+
+        return lst;
+    }
+    #endregion
+
+
     //--------------------------Misc Master-----------------------
 
 
@@ -795,7 +839,6 @@ public class DataInterface2 : DataInterface, IDisposable
     {
         clsEmployee lst = new clsEmployee();
 
-
         DataTable dt = new DataTable();
         try
         {
@@ -930,6 +973,263 @@ public class DataInterface2 : DataInterface, IDisposable
 
     //--------------------------Employee Master-----------------------
 
+    //--------------------------Lead Detail Data-----------------------
+
+    #region Lead Calling
+    public static DataTable GetLeadDetail(clsLeadDetail cls)
+    {
+        DataTable dt = new DataTable();
+        try
+        {
+            //DBOperation db = new DBOperation();
+            //SqlCommand cmd = new SqlCommand();
+
+            using (DBOperation db = new DBOperation())
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@ReqType", SqlDbType.VarChar).Value = cls.ReqType;
+                    cmd.Parameters.Add("@LeadId", SqlDbType.Int).Value = cls.LeadId;
+                    cmd.Parameters.Add("@StageId", SqlDbType.Int).Value = cls.StageId;
+                    cmd.Parameters.Add("@CompanyId", SqlDbType.Int).Value = ClsSession.CompanyID;
+                    dt = db.FillTableProc(cmd, "USP_LeadDetail");
+                }
+            }
+
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+        finally
+        {
+            dt.Dispose();
+        }
+
+        return dt;
+
+    }
+
+    #endregion
+    //--------------------------Lead Detail Data-----------------------
+
+
+    //--------------------------Lead Calling-----------------------
+
+    #region Lead Calling
+    public static DataTable GetLeadCalling(clsLeadMain cls)
+    {
+        DataTable dt = new DataTable();
+        try
+        {
+            //DBOperation db = new DBOperation();
+            //SqlCommand cmd = new SqlCommand();
+
+            using (DBOperation db = new DBOperation())
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@ReqType", SqlDbType.VarChar).Value = cls.ReqType;
+                    cmd.Parameters.Add("@LeadId", SqlDbType.Int).Value = cls.LeadId;
+                    cmd.Parameters.Add("@CompanyId", SqlDbType.Int).Value = ClsSession.CompanyID;
+                    cmd.Parameters.Add("@IsDelete", SqlDbType.Int).Value = 0;
+                    dt = db.FillTableProc(cmd, "USP_LeadCalling");
+                }
+            }
+
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+        finally
+        {
+            dt.Dispose();
+        }
+
+        return dt;
+
+    }
+
+    #endregion
+
+    #region Save LeadCalling
+    public static DataTable SaveLeadCalling(clsLeadCalling cls)
+    {
+        //ClsReturnData clsRtn = new ClsReturnData();
+        //clsRtn.MsgType = (int)MessageType.Fail;
+        DataTable dt = new DataTable();
+        try
+        {
+            //DBOperation db = new DBOperation();
+            //SqlCommand cmd = new SqlCommand();
+
+            using (DBOperation db = new DBOperation())
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@ReqType", SqlDbType.VarChar).Value = cls.ReqType;
+                    cmd.Parameters.Add("@LeadId", SqlDbType.Int).Value = cls.LeadId;
+
+                    cmd.Parameters.Add("@TcId", SqlDbType.Int).Value = cls.TcId;
+                    cmd.Parameters.Add("@QuestionId", SqlDbType.Int).Value = cls.QuestionId;
+                    cmd.Parameters.Add("@Answer", SqlDbType.VarChar).Value = cls.Answer;
+                    cmd.Parameters.Add("@Remarks", SqlDbType.VarChar).Value = cls.Remarks;
+                    cmd.Parameters.Add("@IsDelete", SqlDbType.Int).Value = cls.IsDelete;
+
+                    cmd.Parameters.Add("@CompanyId", SqlDbType.Int).Value = ClsSession.CompanyID;
+                    cmd.Parameters.Add("@CreatedBy", SqlDbType.Int).Value = ClsSession.UserID;
+                    cmd.Parameters.Add("@UpdatedBy", SqlDbType.Int).Value = ClsSession.UserID;
+                    dt = db.FillTableProc(cmd, "USP_LeadCalling");
+
+                    //if (dt != null && dt.Rows.Count > 0)
+                    //{
+                    //    clsRtn.ID = Convert.ToInt64("0" + Convert.ToString(dt.Rows[0]["ReturnID"]));
+                    //    clsRtn.Message = Convert.ToString(dt.Rows[0]["ReturnMessage"]);
+                    //    clsRtn.MessageDesc = clsRtn.Message;
+                    //    if (clsRtn.ID > 0)
+                    //        clsRtn.MsgType = (int)MessageType.Success;
+                    //    else
+                    //        clsRtn.MsgType = (int)MessageType.Fail;
+                    //}
+                }
+            }
+
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+            //clsRtn.MsgType = (int)MessageType.Error;
+            //clsRtn.ID = 0;
+            //clsRtn.Message = ex.Message;
+            //clsRtn.MessageDesc = ex.Message;
+        }
+        finally
+        {
+            dt.Dispose();
+        }
+
+        return dt;
+    }
+
+    #endregion
+
+
+    #region Update Lead Status
+    public static DataTable UpdateLeadStatus(clsLeadMain cls)
+    {
+        //ClsReturnData clsRtn = new ClsReturnData();
+        //clsRtn.MsgType = (int)MessageType.Fail;
+        DataTable dt = new DataTable();
+        try
+        {
+            DBOperation db = new DBOperation();
+            SqlCommand cmd = new SqlCommand();
+
+            //using (DBOperation db = new DBOperation())
+            //{
+            //    using (SqlCommand cmd = new SqlCommand())
+            //    {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@ReqType", SqlDbType.VarChar).Value = cls.ReqType;
+                    cmd.Parameters.Add("@LeadId", SqlDbType.Int).Value = cls.LeadId;
+                    cmd.Parameters.Add("@StageId", SqlDbType.Int).Value = cls.StageId;
+                    cmd.Parameters.Add("@StageName", SqlDbType.VarChar).Value = cls.StageName;
+                    cmd.Parameters.Add("@IsActive", SqlDbType.Int).Value = cls.IsActive;
+                    cmd.Parameters.Add("@IsCurrent", SqlDbType.Int).Value = cls.IsCurrent;
+                    cmd.Parameters.Add("@ShortStage_Name", SqlDbType.VarChar).Value = cls.ShortStage_Name;
+                    cmd.Parameters.Add("@Dependancy", SqlDbType.Int).Value = cls.Dependancy;
+                    cmd.Parameters.Add("@Sequence", SqlDbType.Int).Value = cls.Sequence;
+                    cmd.Parameters.Add("@Status", SqlDbType.VarChar).Value = cls.Status;
+                    cmd.Parameters.Add("@Remarks", SqlDbType.VarChar).Value = cls.Remarks;
+                    cmd.Parameters.Add("@CompanyId", SqlDbType.Int).Value = ClsSession.CompanyID;
+                    dt = db.FillTableProc(cmd, "USP_LeadDetail");
+
+                    //if (dt != null && dt.Rows.Count > 0)
+                    //{
+                    //    clsRtn.ID = Convert.ToInt64("0" + Convert.ToString(dt.Rows[0]["ReturnID"]));
+                    //    clsRtn.Message = Convert.ToString(dt.Rows[0]["ReturnMessage"]);
+                    //    clsRtn.MessageDesc = clsRtn.Message;
+                    //    if (clsRtn.ID > 0)
+                    //        clsRtn.MsgType = (int)MessageType.Success;
+                    //    else
+                    //        clsRtn.MsgType = (int)MessageType.Fail;
+                    //}
+            //    }
+            //}
+
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+            //clsRtn.MsgType = (int)MessageType.Error;
+            //clsRtn.ID = 0;
+            //clsRtn.Message = ex.Message;
+            //clsRtn.MessageDesc = ex.Message;
+        }
+        finally
+        {
+            dt.Dispose();
+        }
+
+        return dt;
+    }
+
+    #endregion
+
+
+    //--------------------------Lead Calling-----------------------
+
+    //--------------------------GET Status for DDL-----------------------
+
+    #region GET Status for DDL
+    public static DataTable GetStatusForDDL(string StatusType)
+    {
+        //DBHelper dBHlper = new DBHelper();
+        List<clsMisc> lst = new List<clsMisc>();
+        DataTable dt = new DataTable();
+        try
+        {
+            //DBOperation db = new DBOperation();
+            //SqlCommand cmd = new SqlCommand();
+
+            using (DBOperation db = new DBOperation())
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@ReqType", SqlDbType.VarChar).Value = "DDLByStatusType";
+                    cmd.Parameters.Add("@StatusType", SqlDbType.VarChar).Value = StatusType;
+                    cmd.Parameters.Add("@CompanyId", SqlDbType.Int).Value = ClsSession.CompanyID;
+                    cmd.Parameters.Add("@IsDelete", SqlDbType.Int).Value = 0;
+                    dt = db.FillTableProc(cmd, "USP_Status");
+
+                }
+            }
+
+            
+            //lst = DataInterface.ConvertDataTable<clsMisc>(dt);
+
+
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+        finally
+        {
+            dt.Dispose();
+        }
+
+        return dt;
+    }
+    #endregion
+
+    //--------------------------GET Status for DDL-----------------------
 
 
 

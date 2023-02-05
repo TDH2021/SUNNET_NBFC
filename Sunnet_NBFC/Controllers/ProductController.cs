@@ -62,13 +62,15 @@ namespace Sunnet_NBFC.Controllers
                     cls.IsDelete = 0;
                     using (DataTable dt = DataInterface1.GetProduct(cls))
                     {
-
-                        ViewBag.Message = dt.Rows[0]["ReturnMessage"].ToString();
                         if (dt.Rows[0]["ReturnMessage"].ToString().ToLower() == "product saved successfully")
-
                         {
+                            ViewBag.Success = dt.Rows[0]["ReturnMessage"].ToString();
                             ModelState.Clear();
-                            return RedirectToAction("ProductView", "Product");
+                            //return RedirectToAction("ProductView", "Product");
+                        }
+                        else
+                        {
+                            ViewBag.Error = dt.Rows[0]["ReturnMessage"].ToString();
                         }
 
                     }
@@ -140,12 +142,17 @@ namespace Sunnet_NBFC.Controllers
                     cls.IsDelete = 0;
                     using (DataTable dt = DataInterface1.GetProduct(cls))
                     {
-
-                        ViewBag.Message = dt.Rows[0]["ReturnMessage"].ToString();
+                        // ViewBag.Message = dt.Rows[0]["ReturnMessage"].ToString();
                         if (dt.Rows[0]["ReturnMessage"].ToString().ToLower() == "product updated successfully")
                         {
+                            ViewBag.Success = dt.Rows[0]["ReturnMessage"].ToString();
                             ModelState.Clear();
                             return RedirectToAction("ProductView", "Product");
+                        }
+                        else
+                        {
+                            ViewBag.Error = dt.Rows[0]["ReturnMessage"].ToString();
+
                         }
 
                     }
@@ -173,7 +180,6 @@ namespace Sunnet_NBFC.Controllers
             return View("AddProduct");
         }
 
-        
 
         public ActionResult DisplayProduct()
         {
@@ -346,5 +352,5 @@ namespace Sunnet_NBFC.Controllers
         }
     }
 
-   
+
 }

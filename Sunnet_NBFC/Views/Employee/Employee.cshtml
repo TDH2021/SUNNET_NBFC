@@ -56,7 +56,7 @@
 									{
 										<div class="col-md-6">
 											@Html.LabelFor(model => model.EmpCode, new { @class = "control-label" })
-											@Html.TextBoxFor(model => model.EmpCode, new { @class = "form-control", disabled = true })
+											@Html.TextBoxFor(model => model.EmpCode, new { @class = "form-control", @readonly = true })
 											@Html.ValidationMessageFor(model => model.EmpCode, "", new { @class = "text-danger" })
 										</div>
 									}
@@ -179,10 +179,10 @@
 
 									<div class="col-md-6">
 										@Html.LabelFor(model => model.MaritalStatus, new { @class = "control-label" })
-										@Html.DropDownListFor(model => model.MaritalStatus, clsMiscDDL.GetMiscDDL("Martial Status"),"Select", new { @class = "form-control",@id="msid" })
+										@Html.DropDownListFor(model => model.MaritalStatus, clsMiscDDL.GetMiscDDL("Martial Status"), "Select", new { @class = "form-control", @id = "msid" })
 										@Html.ValidationMessageFor(model => model.MaritalStatus, "", new { @class = "text-danger" })
 									</div>
-									
+
 
 
 								</div>
@@ -200,33 +200,33 @@
 										@Html.ValidationMessageFor(model => model.Langtiute, "", new { @class = "text-danger" })
 									</div>
 									@*<div class="col-md-6">
-										@Html.LabelFor(model => model.EmployeeAttnStatus, new { @class = "control-label" })
-										@Html.TextBoxFor(model => model.EmployeeAttnStatus, new { @class = "form-control", })
-										@Html.ValidationMessageFor(model => model.EmployeeAttnStatus, "", new { @class = "text-danger" })
-									</div>*@
+											@Html.LabelFor(model => model.EmployeeAttnStatus, new { @class = "control-label" })
+											@Html.TextBoxFor(model => model.EmployeeAttnStatus, new { @class = "form-control", })
+											@Html.ValidationMessageFor(model => model.EmployeeAttnStatus, "", new { @class = "text-danger" })
+										</div>*@
 
 								</div>
 
 								@*<div class="row">
-									<div class="col-md-6">
-										@Html.LabelFor(model => model.AttnDate, new { @class = "control-label" })
-										@Html.TextBoxFor(model => model.AttnDate, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "Date" })
-										@Html.ValidationMessageFor(model => model.AttnDate, "", new { @class = "text-danger" })
-									</div>
-									<div class="col-md-6">
-										@Html.LabelFor(model => model.ImageName, new { @class = "control-label" })
-										@Html.TextBoxFor(model => model.ImageName, new { @class = "form-control", })
-										@Html.ValidationMessageFor(model => model.ImageName, "", new { @class = "text-danger" })
-									</div>
+										<div class="col-md-6">
+											@Html.LabelFor(model => model.AttnDate, new { @class = "control-label" })
+											@Html.TextBoxFor(model => model.AttnDate, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "Date" })
+											@Html.ValidationMessageFor(model => model.AttnDate, "", new { @class = "text-danger" })
+										</div>
+										<div class="col-md-6">
+											@Html.LabelFor(model => model.ImageName, new { @class = "control-label" })
+											@Html.TextBoxFor(model => model.ImageName, new { @class = "form-control", })
+											@Html.ValidationMessageFor(model => model.ImageName, "", new { @class = "text-danger" })
+										</div>
 
-								</div>*@
+									</div>*@
 
 
 								<div class="row">
 
 									<div class="col-md-6" style="margin-top:40px;">
 										<span>Photo: </span>
-										<input type="file" name="postedFile" required accept="image/png, image/jpg, image/jpeg"/>
+										<input type="file" name="postedFile" required accept="image/png, image/jpg, image/jpeg" />
 										@Html.HiddenFor(model => model.ImageName)
 									</div>
 
@@ -266,23 +266,6 @@
 <script src="~/plugins/jquery/jquery.validate.min.js"></script>
 <script src="~/plugins/jquery/jquery.validate.unobtrusive.min.js"></script>
 <script src="~/Scripts/CustomJS/Employee.js"></script>
-@if (ViewBag.Error != null && ViewBag.Error != "")
-{
-	<script type="text/javascript">
-
-            window.onload = function () {
-                alert("@ViewBag.Error");
-            };
-	</script>
-}
-@if (ViewBag.Success != null && ViewBag.Success != "")
-{
-	<script type="text/javascript">
-            window.onload = function () {
-                alert("@ViewBag.Success");
-            };
-	</script>
-}
 
 
 
@@ -315,3 +298,23 @@
 		</script>
 	}*@
 
+@if (ViewBag.Error != null && ViewBag.Error != "")
+{
+	<script type="text/javascript">
+
+            window.onload = function () {
+               // alert("@ViewBag.Error");
+				swal("TDH", "@ViewBag.Error", "error");
+
+            };
+	</script>
+}
+@if (ViewBag.Success != null && ViewBag.Success != "")
+{
+	<script type="text/javascript">
+            window.onload = function () {
+                //alert("@ViewBag.Success");
+				swal("TDH", "@ViewBag.Success", "Success");
+            };
+	</script>
+}

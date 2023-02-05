@@ -1,7 +1,7 @@
-﻿@model IEnumerable<Sunnet_NBFC.Models.clsEmployee>
+﻿@model IEnumerable<Sunnet_NBFC.Models.clsStageRole>
 
 @{
-	ViewBag.Title = "Employee View";
+	ViewBag.Title = "StageRole View";
 	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -9,14 +9,14 @@
 	<div class="container-fluid">
 		<div class="row mb-2">
 			<div class="col-sm-6">
-				<h1>Employee View</h1>
+				<h1>StageRole View</h1>
 			</div>
 			<div class="col-sm-6">
 				<ol class="breadcrumb float-sm-right">
 					@*<li class="breadcrumb-item"><a href="#">Home</a></li>
 						<li class="breadcrumb-item active">Employee View</li>*@
 
-					@*<h4>@Html.ActionLink("Create New", "Employee")</h4>*@
+					@*<h4>@Html.ActionLink("Create New", "StageRole")</h4>*@
 				</ol>
 			</div>
 		</div>
@@ -33,58 +33,43 @@
 					<!-- /.card-header -->
 					<div class="card-body">
 						<table id="example1" class="table table-bordered table-striped">
-							
 							<thead>
 								<tr>
-									<th>Sr No</th>
 									<th>
-										@Html.DisplayNameFor(model => model.EmpCode)
+										@Html.DisplayNameFor(model => model.StageRoleEmpCode)
 									</th>
 									<th>
-										@Html.DisplayNameFor(model => model.EmpName)
+										@Html.DisplayNameFor(model => model.StageRoleEmpName)
 									</th>
 									<th>
-										@Html.DisplayNameFor(model => model.ContactNo1)
+										@Html.DisplayNameFor(model => model.StageRoleName)
 									</th>
 									<th></th>
-									<th></th>
+
 								</tr>
 							</thead>
 							<tbody>
-								@{int rowNo=1;}
 								@foreach (var item in Model)
 								{
 									<tr>
-										<td>@(rowNo++)</td>
 										<td>
-											
-											@Html.DisplayFor(modelItem => item.EmpCode)
+											@Html.DisplayFor(modelItem => item.StageRoleEmpCode)
 										</td>
 										<td>
-											@Html.DisplayFor(modelItem => item.EmpName)
+											@Html.DisplayFor(modelItem => item.StageRoleEmpName)
 										</td>
 										<td>
-											@Html.DisplayFor(modelItem => item.ContactNo1)
+											@Html.DisplayFor(modelItem => item.StageRoleName)
 										</td>
+
 										<td>
 											<div class="d-flex order-actions">
-												<a href="@Url.Action("EmployeeDetail","Employee",new{Id=item.EmpID})"
-												   data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Edit"><u>Add Details</u></a>
-											</div>
-										</td>
-										<td>
-											<div class="d-flex order-actions">
-												<a href="@Url.Action("Employee","Employee",new{Id=item.EmpID})"
+												<a href="@Url.Action("StageRole","StageRole",new{Id=item.StageRoleId})"
 												   data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Edit"><u>Edit</u></a>
 
-
-
-												<a href="@Url.Action("DeleteEmployee","Employee",new{Id=item.EmpID})"
+												<a href="@Url.Action("DeleteStageRole","StageRole",new{Id=item.StageRoleId})"
 												   data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Delete"
 												   style="margin-left:10px;"><u>Delete</u></a>
-
-												@*@Html.ActionLink("Employee", "Employee", new { Id = @item.DocId })
-				@Html.ActionLink("Delete", "Employee", new { Id = @item.DocID })*@
 
 											</div>
 
@@ -120,27 +105,9 @@
 	<script type="text/javascript">
 
             window.onload = function () {
-                alert("@ViewBag.Error");
-            };
-	</script>
-}
-@*@if (ViewBag.Success != null && ViewBag.Success != "")
-	{
-		<script type="text/javascript">
-
-				window.onload = function () {
-					alert("@ViewBag.Success");
-				};
-		</script>
-	}*@
-@if (ViewBag.Error != null && ViewBag.Error != "")
-{
-	<script type="text/javascript">
-
-            window.onload = function () {
                // alert("@ViewBag.Error");
 				swal("TDH", "@ViewBag.Error", "error");
-
+				
             };
 	</script>
 }
@@ -153,5 +120,7 @@
             };
 	</script>
 }
+
+
 
 

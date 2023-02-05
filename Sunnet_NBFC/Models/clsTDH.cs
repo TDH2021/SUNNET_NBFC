@@ -656,7 +656,8 @@ namespace Sunnet_NBFC.Models
         public string FORemarks { get; set; }
         public int BranchID { get; set; }
 
-
+      
+        public string ShortStage_Name { get; set; }
         bool disposed = false;
 
         // Public implementation of Dispose pattern callable by consumers.

@@ -13,8 +13,9 @@ namespace Sunnet_NBFC.App_Code
         public long ID { get; set; }
         public string Message { get; set; }
         public string MessageDesc { get; set; }
-    }
 
+    }
+    
     public enum MessageType
     {
         Unknown,
@@ -23,5 +24,7 @@ namespace Sunnet_NBFC.App_Code
         Error
         
     }
+
+    
 }
 

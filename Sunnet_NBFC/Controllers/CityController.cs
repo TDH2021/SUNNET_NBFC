@@ -38,7 +38,16 @@ namespace Sunnet_NBFC.Controllers
                 using (DataTable dt = DataInterface1.GetCity(cls))
                 {
 
-                    ViewBag.Message = dt.Rows[0]["ReturnMessage"].ToString();
+                    if (dt.Rows[0]["ReturnMessage"].ToString().ToLower() == "city saved successfully")
+                    {
+                        ViewBag.Success = dt.Rows[0]["ReturnMessage"].ToString();
+                        ModelState.Clear();
+                        //return RedirectToAction("ProductView", "Product");
+                    }
+                    else
+                    {
+                        ViewBag.Error = dt.Rows[0]["ReturnMessage"].ToString();
+                    }
                 }
 
             }
@@ -57,16 +66,17 @@ namespace Sunnet_NBFC.Controllers
                 cls.ReqType = "Update";
                 using (DataTable dt = DataInterface1.GetCity(cls))
                 {
-
-                    ViewBag.Message = dt.Rows[0]["ReturnMessage"].ToString();
+                    ViewBag.Success = dt.Rows[0]["ReturnMessage"].ToString();
                     if (dt.Rows[0]["ReturnMessage"].ToString().ToLower() == "record updated successfully")
                     {
                         ModelState.Clear();
                         return RedirectToAction("CityView", "City");
                     }
-
+                    else
+                    {
+                        ViewBag.Error = dt.Rows[0]["ReturnMessage"].ToString();
+                    }
                 }
-
             }
             cls = null;
             ////clsCity cls = new clsCity();

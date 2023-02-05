@@ -61,7 +61,16 @@ namespace Sunnet_NBFC.Controllers
 
                 if (postedFile != null && postedFile.ToString() != "")
                 {
-                    up = UploadEmpPhoto(postedFile);
+                    if (ClsCommon.CheckFileType(postedFile.ToString()) == true)
+                    {
+                        up = UploadEmpPhoto(postedFile);
+                    }
+                    else
+                    {
+                        ViewBag.Error = " Please Upload Photo in jpg,jpeg,png format.";
+                        return View(M);
+                    }
+                   
                 }
 
 
@@ -316,5 +325,46 @@ namespace Sunnet_NBFC.Controllers
                 return upfile;
             }
         }
+
+        public JsonResult GetEmpdtl(string EmpId)
+        {
+            JsonResult result = new JsonResult();
+
+            try
+            {
+
+                clsEmployee cls = new clsEmployee();
+                    cls.ReqType = "View";
+                cls.EmpID = int.Parse(EmpId);
+                using (DataTable dt = DataInterface1.dbEmployee(cls))
+                {
+                    result = this.Json(JsonConvert.SerializeObject(dt), JsonRequestBehavior.AllowGet);
+
+                }
+
+
+
+
+            }
+            catch (Exception e1)
+            {
+                using (clsError cls = new clsError())
+                {
+                    cls.ReqType = "Insert";
+                    cls.Mode = "WEB";
+                    cls.ErrorDescrption = e1.Message + "-" + e1.InnerException.Message;
+                    cls.FunctionName = "City View";
+                    cls.Link = "Company/CompanyView";
+                    cls.PageName = "Company Controller";
+                    cls.UserId = "1";
+                    DataInterface.PostError(cls);
+                }
+            }
+
+            return result;
+
+        }
+
+
     }
 }

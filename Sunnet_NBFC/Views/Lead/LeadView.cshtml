@@ -50,6 +50,7 @@
                                     <th>Reuested Loan Amount</th>
                                     <th>Reuested Loan Tenure</th>
                                     <th>Status</th>
+                                    <th>-</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -60,21 +61,28 @@
                                     var m = ViewBag.lst;
                                     foreach (var item in m)
                                     {
-                                        <tr>
-                                            <td>
+                                <tr>
+                                    <td>
 
-                                                <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="return CallPickData('@item.LeadNo','@item.LeadId');"> <b> @item.LeadNo  </b> </button>
+                                        <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="return CallPickData('@item.LeadNo','@item.LeadId');"> <b> @item.LeadNo  </b> </button>
 
-                                            </td>
-                                            <td>@item.CustomerName</td>
-                                            <td>@item.MobileNo1</td>
-                                            <td>@item.PanNo</td>
-                                            <td>@item.AadharNo</td>
-                                            <td>@item.ReuestedLoanAmount</td>
-                                            <td>@item.ReuestedLoanTenure</td>
-                                            <td>@item.Status</td>
+                                    </td>
+                                    <td>@item.CustomerName</td>
+                                    <td>@item.MobileNo1</td>
+                                    <td>@item.PanNo</td>
+                                    <td>@item.AadharNo</td>
+                                    <td>@item.ReuestedLoanAmount</td>
+                                    <td>@item.ReuestedLoanTenure</td>
+                                    <td>@item.Status</td>
+                                    <td>
+                                        <div class="d-flex order-actions">
+                                            <a href="@Url.Action("LeadCalling","LeadCalling",new{LeadId=item.LeadId})"
+                                               data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Calling"><u>Calling</u></a>
+                                        </div>
 
-                                        </tr>
+                                    </td>
+
+                                </tr>
                                     }
                                 }
 

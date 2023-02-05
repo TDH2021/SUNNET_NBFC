@@ -45,7 +45,7 @@
 									</div>
 								</div>
 							</div>
-						
+
 							<div class="card-footer">
 								<button type="submit" class="btn btn-primary">Update</button>
 
@@ -65,12 +65,32 @@
 <script src="~/plugins/jquery/jquery.validate.min.js"></script>
 <script src="~/plugins/jquery/jquery.validate.unobtrusive.min.js"></script>
 
-@if (ViewBag.Message != null)
+@*@if (ViewBag.Message != null)
+	{
+		<script type="text/javascript">
+
+				window.onload = function () {
+					alert("@ViewBag.Message");
+				};
+		</script>
+	}*@
+@if (ViewBag.Error != null && ViewBag.Error != "")
 {
 	<script type="text/javascript">
 
             window.onload = function () {
-                alert("@ViewBag.Message");
+               // alert("@ViewBag.Error");
+				swal("TDH", "@ViewBag.Error", "error");
+				
+            };
+	</script>
+}
+@if (ViewBag.Success != null && ViewBag.Success != "")
+{
+	<script type="text/javascript">
+            window.onload = function () {
+                //alert("@ViewBag.Success");
+				swal("TDH", "@ViewBag.Success", "Success");
             };
 	</script>
 }

@@ -302,6 +302,221 @@ namespace Sunnet_NBFC.Models
         }
     }
 
+    public class clsLeadDetail
+    {
+        public string ReqType { get; set; }
+        public int LeadDtlId { get; set; }
+        public int LeadId { get; set; }
+
+        [Required(ErrorMessage = "Stage is required.")]
+        [DisplayName("StageId")]
+        public int StageId { get; set; }
+
+        [DisplayName("StageName")]
+        public string StageName { get; set; }
+
+        public int IsActive { get; set; }
+        public int IsCurrent { get; set; }
+
+        [DisplayName("ShortStage_Name")]
+        public string ShortStage_Name { get; set; }
+
+
+        public int Dependancy { get; set; }
+        public int Sequence { get; set; }
+        public int CompanyId { get; set; }
+
+        [DisplayName("Status")]
+        public string Status { get; set; }
+        [DisplayName("Remarks")]
+        public string Remarks { get; set; }
+
+        bool disposed = false;
+
+        // Public implementation of Dispose pattern callable by consumers.
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        // Protected implementation of Dispose pattern.
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposed)
+                return;
+
+            if (disposing)
+            {
+                // Free any other managed objects here.
+                //
+            }
+
+            // Free any unmanaged objects here.
+            //
+            disposed = true;
+        }
+
+        ~clsLeadDetail()
+        {
+            Dispose(false);
+        }
+
+    }
+
+
+    public class clsLeadMain : clsLeadDetail
+    {
+        //public string ReqType { get; set; }
+        //public int LeadId { get; set; }
+        public string LeadNo { get; set; }
+        public List<clsLeadCalling> clsLeadCalling { get; set; }
+
+
+        bool disposed = false;
+
+        // Public implementation of Dispose pattern callable by consumers.
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        // Protected implementation of Dispose pattern.
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposed)
+                return;
+
+            if (disposing)
+            {
+                // Free any other managed objects here.
+                //
+            }
+
+            // Free any unmanaged objects here.
+            //
+            disposed = true;
+        }
+
+        ~clsLeadMain()
+        {
+            Dispose(false);
+        }
+
+    }
+
+    public class clsLeadCalling
+    {
+        public string ReqType { get; set; }
+        public int TcId { get; set; }
+        public int LeadId { get; set; }
+
+        [DisplayName("QuestionId")]
+        public int QuestionId { get; set; }
+
+        [DisplayName("Question")]
+        public string Question { get; set; }
+        public string QuestionAnsType { get; set; }
+        [Required(ErrorMessage = "Answer is required.")]
+
+        [DisplayName("Answer")]
+        public string Answer { get; set; }
+
+        [DisplayName("Remarks")]
+        public string Remarks { get; set; }
+        public int IsDelete { get; set; }
+
+        bool disposed = false;
+
+        // Public implementation of Dispose pattern callable by consumers.
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        // Protected implementation of Dispose pattern.
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposed)
+                return;
+
+            if (disposing)
+            {
+                // Free any other managed objects here.
+                //
+            }
+
+            // Free any unmanaged objects here.
+            //
+            disposed = true;
+        }
+
+        ~clsLeadCalling()
+        {
+            Dispose(false);
+        }
+
+    }
+
+    public class clsLeadDocument
+    {
+        public string ReqType { get; set; }
+        public int DcId { get; set; }
+        public int LeadId { get; set; }
+
+        [Required(ErrorMessage = "Document is required.")]
+        [DisplayName("Document")]
+        public int DocID { get; set; }
+
+        [DisplayName("CustomerType")]
+        public string CustomerType { get; set; }
+
+        [DisplayName("Is Received")]
+        public bool? IsReceived { get; set; }
+
+        [DisplayName("Remarks")]
+        public string Remarks { get; set; }
+        public int IsDelete { get; set; }
+
+        bool disposed = false;
+
+        // Public implementation of Dispose pattern callable by consumers.
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        // Protected implementation of Dispose pattern.
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposed)
+                return;
+
+            if (disposing)
+            {
+                // Free any other managed objects here.
+                //
+            }
+
+            // Free any unmanaged objects here.
+            //
+            disposed = true;
+        }
+
+        ~clsLeadDocument()
+        {
+            Dispose(false);
+        }
+
+    }
+
+   
+
+
+
 
 
 }

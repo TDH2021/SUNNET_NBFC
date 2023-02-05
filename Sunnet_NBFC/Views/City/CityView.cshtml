@@ -13,9 +13,9 @@
 			</div>
 			<div class="col-sm-6">
 				<ol class="breadcrumb float-sm-right">
-					<h4>
-						@Html.ActionLink("Create New", "AddCity")
-					</h4>
+					@*<h4>
+							@Html.ActionLink("Create New", "AddCity")
+						</h4>*@
 
 					@*<li class="breadcrumb-item"><a href="#">Home</a></li>
 						<li class="breadcrumb-item active">City View</li>*@
@@ -38,9 +38,8 @@
 						<table id="example1" class="table table-bordered table-striped">
 							<thead>
 								<tr>
-									<th>Product Name</th>
-									<th>HSN Code</th>
-
+									<th>State</th>
+									<th>City</th>
 									<th></th>
 								</tr>
 							</thead>
@@ -58,14 +57,14 @@
 									</tr>
 								}
 							</tbody>
-							<tfoot>
-								<tr>
-									<th>Product Name</th>
-									<th>HSN Code</th>
+							@*<tfoot>
+									<tr>
+										<th>Product Name</th>
+										<th>HSN Code</th>
 
-									<th></th>
-								</tr>
-							</tfoot>
+										<th></th>
+									</tr>
+								</tfoot>*@
 						</table>
 						<div class="card-footer">
 							@Html.ActionLink("Export to Excel", "ExportToExcel", new { @class = "btn btn-primary" })
@@ -82,12 +81,34 @@
 	<!-- /.container-fluid -->
 </section>
 
-@if (ViewBag.Message != null)
+@*@if (ViewBag.Message != null)
+	{
+		<script type="text/javascript">
+
+				window.onload = function () {
+					alert("@ViewBag.Message");
+				};
+		</script>
+	}*@
+
+
+@if (ViewBag.Error != null && ViewBag.Error != "")
 {
 	<script type="text/javascript">
 
             window.onload = function () {
-                alert("@ViewBag.Message");
+               // alert("@ViewBag.Error");
+				swal("TDH", "@ViewBag.Error", "error");
             };
 	</script>
 }
+@if (ViewBag.Success != null && ViewBag.Success != "")
+{
+	<script type="text/javascript">
+            window.onload = function () {
+                //alert("@ViewBag.Success");
+				swal("TDH", "@ViewBag.Success", "Success");
+            };
+	</script>
+}
+

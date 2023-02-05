@@ -247,7 +247,7 @@
 	<script type="text/javascript">
 
             window.onload = function () {
-                alert("@ViewBag.Error");
+                swal("TDH", "@ViewBag.Error", "error");
             };
 	</script>
 }
@@ -256,7 +256,8 @@
 	<script type="text/javascript">
 
             window.onload = function () {
-                alert("@ViewBag.Success");
+
+				swal("TDH", "@ViewBag.Success", "Success");
             };
 	</script>
 }

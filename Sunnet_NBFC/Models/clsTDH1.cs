@@ -312,6 +312,62 @@ namespace Sunnet_NBFC.Models
         }
     }
 
+    public class clsStageRole
+    {
+        public string ReqType { get; set; }
+        public int StageRoleId { get; set; }
+
+        [Required(ErrorMessage = "Employee is required.")]
+        [DisplayName("Employee")]
+        public int StageRoleEmpId { get; set; }
+
+        [DisplayName("Employee Code")]
+        public string StageRoleEmpCode { get; set; }
+
+        [DisplayName("Employee Name")]
+        public string StageRoleEmpName { get; set; }
+
+        [DisplayName("Role Name")]
+        [Required(ErrorMessage = "Role Name is required.")]
+        public string StageRoleName { get; set; }
+
+        [DisplayName("CreatedBy")]
+        public int CreatedBy { get; set; }
+
+        public int CompanyID { get; set; }
+        public int IsDelete { get; set; }
+
+        bool disposed = false;
+
+        // Public implementation of Dispose pattern callable by consumers.
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        // Protected implementation of Dispose pattern.
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposed)
+                return;
+
+            if (disposing)
+            {
+                // Free any other managed objects here.
+                //
+            }
+
+            // Free any unmanaged objects here.
+            //
+            disposed = true;
+        }
+
+        ~clsStageRole()
+        {
+            Dispose(false);
+        }
+    }
 
     public class clsMiscDDL
     {
@@ -328,7 +384,28 @@ namespace Sunnet_NBFC.Models
         }
     }
 
-    
+    public class clsEmoloyeeDDL
+    {
+        public static SelectList GetEmoloyeeDDL()
+        {
+            clsEmployee cls = new clsEmployee();
+            cls.ReqType = "view";
+            cls.CompId = ClsSession.CompanyID;
+            cls.IsDelete = 0;
+            return ClsCommon.ToSelectList(DataInterface1.dbEmployee(cls), "EmpID", "ddlname");
+
+        }
+    }
+
+    public class clsRoleDDL
+    {
+        public static SelectList GetRoleDDL()
+        {
+            return ClsCommon.ToSelectList(DataInterface1.dbStageMasterddl(), "ShortStage_Name", "Stage_Name");
+
+        }
+    }
+
 
     //========================
 }

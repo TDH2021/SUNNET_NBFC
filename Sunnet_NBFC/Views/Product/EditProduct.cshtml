@@ -9,7 +9,7 @@
 		<div class="row mb-2">
 			<div class="col-sm-6">
 				<h1>Edit Product</h1>
-				
+
 			</div>
 			<div class="col-sm-6">
 				<ol class="breadcrumb float-sm-right">
@@ -88,43 +88,34 @@
 <script src="~/plugins/jquery/jquery.validate.min.js"></script>
 <script src="~/plugins/jquery/jquery.validate.unobtrusive.min.js"></script>
 
-@if (ViewBag.Message != null)
+@*@if (ViewBag.Message != null)
+	{
+		<script type="text/javascript">
+
+				window.onload = function () {
+					alert("@ViewBag.Message");
+				};
+		</script>
+	}*@
+
+
+@if (ViewBag.Error != null && ViewBag.Error != "")
 {
 	<script type="text/javascript">
 
             window.onload = function () {
-                alert("@ViewBag.Message");
+               // alert("@ViewBag.Error");
+				swal("TDH", "@ViewBag.Error", "error");
+
             };
 	</script>
 }
-
-@*<script type="text/javascript">
-
-		$(function () {
-
-			$("#txtCgst,#txtSgst").keyup(function (e) {
-
-				var val1 =$("#txtCgst").val(),
-					val2 =$("#txtSgst").val(),
-					result = "";
-
-				if (val1.length > 0 && val2.length>0) {
-					result = parseInt(val1)+parseInt(val2);
-				}
-				else if(val1.length>0 && val2.length==0){
-					result=val1;
-				}
-				else if (val1.length == 0 && val2.length>0) {
-					result = val2;
-				}
-
-				$("#txtIgst").val(result);
-				$("#txtIgst").attr('readonly', true);
-			});
-
-		});
-
-
-	</script>*@
-
-
+@if (ViewBag.Success != null && ViewBag.Success != "")
+{
+	<script type="text/javascript">
+            window.onload = function () {
+                //alert("@ViewBag.Success");
+				swal("TDH", "@ViewBag.Success", "Success");
+            };
+	</script>
+}
