@@ -53,18 +53,18 @@
                             </div>
 
                             <div>
-            @{
-                Html.RenderPartial("_AddCustomerDetails");
-            }
-        </div>
+                                @{
+                                    Html.RenderPartial("_AddCustomerDetails");
+                                }
+                            </div>
 
 
-        <div style="display:none" id="co_applicant_div">
-                @{
-                    Html.RenderPartial("_AddCo_Applicant_Details");
-                }
-        </div>
-                            <div style="display:none" id="co_guranter_div">
+                            <div style="display:none" id="co_applicant_div">
+                                @{
+                                    Html.RenderPartial("_AddCo_Applicant_Details");
+                                }
+                            </div>
+                            <div class="container-fluid"  id="co_guranter_div">
                                 @{
                                     Html.RenderPartial("_AddGuranterDetails");
                                 }
@@ -86,6 +86,10 @@
             </div>
         </div>
     </div>
+
+
+    
+
 </section>
 
 
@@ -93,4 +97,12 @@
 <script src="~/plugins/jquery/jquery.validate.min.js"></script>
 <script src="~/plugins/jquery/jquery.validate.unobtrusive.min.js"></script>
 <script src="~/Scripts/CustomJS/LeadGeneration.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#example').DataTable({
+            scrollX: true,
+        });
+    });
+    </script>
 

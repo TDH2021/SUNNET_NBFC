@@ -72,21 +72,28 @@ namespace Sunnet_NBFC.Controllers
                         {
                                 
                                 message = row["ReturnMessage"].ToString();
-                                master.LeadNo = row["ReturnID"].ToString();
-
+                                master.LeadId = int.Parse(row["ReturnID"].ToString());
+                                master.LeadNo = row["LeadNo"].ToString();
 
                     }
                     if (message == "Lead saved succussfully") {
 
                         
                         DataTable dt1 = DataInterface.GetLeadGenerationCustomer(master);
-                        dt1 = DataInterface.GetLeadGenerationCO_ApplicantCustomer(master);
+                        if (master.Hdn_type == "b" || master.Hdn_type == "c")
+                        {
+                            dt1 = DataInterface.GetLeadGenerationCO_ApplicantCustomer(master);
+                        }
+                         
 
                         for (int i = 0; i < Gurantor_Details.Count; i++) {
                             Gurantor_Details[i].G_CompanyId = 1;
                             Gurantor_Details[i].G_BranchID = 1;
                             Gurantor_Details[i].G_LeadNo = master.LeadNo;
-                            dt1 = DataInterface.GetLeadGenerationGurantorCustomer(Gurantor_Details[i]);
+                            if (master.Hdn_type == "b" || master.Hdn_type == "g") {
+                                dt1 = DataInterface.GetLeadGenerationGurantorCustomer(Gurantor_Details[i]);
+                            }
+                            
                         }
                     }
 

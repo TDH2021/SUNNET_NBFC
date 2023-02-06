@@ -238,14 +238,15 @@ new { @class = "form-control", @id = "CO_MartialStatus" })
         <div class="col-md-4">
             <label for="exampleInputEmail1"> Aadhar No </label>
             @Html.TextBoxFor(model => model.AadharNo, new
-            {
-                @class = "form-control",
-                @placeholder = "Aadhar No",
-                @name = "CO_AadharNo",
-                @required = "true",
-                @id = "CO_AadharNo"
+       {
+           @class = "form-control",
+           @placeholder = "Aadhar No",
+           @name = "CO_AadharNo",
+           @required = "true",
+           @type = "number",
+           @id = "CO_AadharNo"
 
-            })
+       })
         </div>
 
     </div>
