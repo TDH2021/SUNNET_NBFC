@@ -529,7 +529,7 @@ public class DataInterface : IDisposable
 
                 sqlCommand.Parameters.AddWithValue("@FatherName", cls.FatherName);
                 sqlCommand.Parameters.AddWithValue("@MotherName", cls.MotherName);
-                sqlCommand.Parameters.AddWithValue("@SpouseName", cls.EstValueViechle);
+                sqlCommand.Parameters.AddWithValue("@SpouseName", cls.SpouseName);
                 sqlCommand.Parameters.AddWithValue("@Gender", cls.Gender);
 
 
@@ -562,8 +562,8 @@ public class DataInterface : IDisposable
                 sqlCommand.Parameters.AddWithValue("@CustRelation", cls.CustRelation);
                 sqlCommand.Parameters.AddWithValue("@BranchID", cls.BranchID);
 
-                sqlCommand.Parameters.AddWithValue("@LeadID", cls.LeadNo);
-                sqlCommand.Parameters.AddWithValue("@CompanyId", cls.BranchID);
+                sqlCommand.Parameters.AddWithValue("@LeadID", cls.LeadId);
+                sqlCommand.Parameters.AddWithValue("@CompanyId", cls.CompanyId);
 
 
 
@@ -628,7 +628,7 @@ public class DataInterface : IDisposable
                 sqlCommand.Parameters.AddWithValue("@CustRelation", "");
                 sqlCommand.Parameters.AddWithValue("@BranchID", cls.BranchID);
 
-                sqlCommand.Parameters.AddWithValue("@LeadID", cls.LeadNo);
+                sqlCommand.Parameters.AddWithValue("@LeadID", cls.LeadId);
                 sqlCommand.Parameters.AddWithValue("@CompanyId", cls.BranchID);
 
 

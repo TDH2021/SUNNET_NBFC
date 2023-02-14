@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Transactions;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
@@ -22,7 +23,7 @@ namespace Sunnet_NBFC.Controllers
 
                 using (clsLeadGenerationMaster clsStatus = new clsLeadGenerationMaster())
                 {
-                    clsStatus.CompanyId = 1;
+                    clsStatus.CompanyId = ClsSession.CompanyID ;
                 }
 
 
@@ -35,6 +36,7 @@ namespace Sunnet_NBFC.Controllers
 
 
                 ViewBag.MainProductList = ClsCommon.ToSelectList(DataInterface1.GetMainProductddl("View"), "MainProdId", "ProductName");
+                ViewBag.MaterialStatusList = ClsCommon.ToSelectList(DataInterface1.GetMiseddl("Martial Status"), "MiscName", "MiscName");
                 ViewBag.ProductId = "";
 
                 List<clsLeadGenerationMaster> LeadGenerationdataModels = new List<clsLeadGenerationMaster>();
@@ -62,45 +64,72 @@ namespace Sunnet_NBFC.Controllers
 
             try
             {
-                master.CompanyId = 1;
-                master.BranchID = 1;
-                string message = "";
-                using (DataTable dt = DataInterface.GetLeadGeneration(master))
+                using (TransactionScope scope = new TransactionScope(TransactionScopeOption.RequiresNew))
                 {
-                   
-                        foreach (DataRow row in dt.Rows)
+                    try
+                    {
+                        master.CompanyId = ClsSession.CompanyID;
+                        master.BranchID = ClsSession.BranchId;
+                        string message = "";
+                        using (DataTable dt = DataInterface.GetLeadGeneration(master))
                         {
-                                
+
+                            foreach (DataRow row in dt.Rows)
+                            {
+
                                 message = row["ReturnMessage"].ToString();
                                 master.LeadId = int.Parse(row["ReturnID"].ToString());
                                 master.LeadNo = row["LeadNo"].ToString();
 
-                    }
-                    if (message == "Lead saved succussfully") {
-
-                        
-                        DataTable dt1 = DataInterface.GetLeadGenerationCustomer(master);
-                        if (master.Hdn_type == "b" || master.Hdn_type == "c")
-                        {
-                            dt1 = DataInterface.GetLeadGenerationCO_ApplicantCustomer(master);
-                        }
-                         
-
-                        for (int i = 0; i < Gurantor_Details.Count; i++) {
-                            Gurantor_Details[i].G_CompanyId = 1;
-                            Gurantor_Details[i].G_BranchID = 1;
-                            Gurantor_Details[i].G_LeadNo = master.LeadNo;
-                            if (master.Hdn_type == "b" || master.Hdn_type == "g") {
-                                dt1 = DataInterface.GetLeadGenerationGurantorCustomer(Gurantor_Details[i]);
                             }
-                            
+                            if (message == "Lead saved succussfully")
+                            {
+
+
+                                DataTable dt1 = DataInterface.GetLeadGenerationCustomer(master);
+                                if (master.Hdn_type.ToUpper() == "B" || master.Hdn_type.ToUpper() == "C")
+                                {
+                                    dt1 = DataInterface.GetLeadGenerationCO_ApplicantCustomer(master);
+                                }
+
+
+                                for (int i = 0; i < Gurantor_Details.Count; i++)
+                                {
+                                    Gurantor_Details[i].G_CompanyId = ClsSession.CompanyID;
+                                    Gurantor_Details[i].G_BranchID = ClsSession.BranchId;
+                                    Gurantor_Details[i].G_LeadId = master.LeadId;
+                                    if (master.Hdn_type.ToString().ToUpper() == "B" || master.Hdn_type.ToUpper() == "G")
+                                    {
+                                        dt1 = DataInterface.GetLeadGenerationGurantorCustomer(Gurantor_Details[i]);
+                                    }
+
+                                }
+                            }
+
+                            JSONresult = JsonConvert.SerializeObject(dt);
                         }
+                        scope.Complete();
+                        return Json(JSONresult, JsonRequestBehavior.AllowGet);
+
                     }
+                    catch (Exception e1)
+                    {
+                        scope.Dispose();
+                        using (clsError clsE = new clsError())
+                        {
+                            clsE.ReqType = "Insert";
+                            clsE.Mode = "WEB";
+                            clsE.ErrorDescrption = e1.Message;
+                            clsE.FunctionName = "AddRequestLead";
+                            clsE.Link = "Status/AddRequestLead";
+                            clsE.PageName = "Status Controller";
+                            clsE.UserId = ClsSession.EmpId.ToString();
+                            DataInterface.PostError(clsE);
+                        }
 
-                    JSONresult = JsonConvert.SerializeObject(dt);
-                }
-                return Json(JSONresult, JsonRequestBehavior.AllowGet);
-
+                        return Json(JSONresult, JsonRequestBehavior.AllowGet);
+                    }
+                } 
             }
             catch (Exception e1)
             {
@@ -113,7 +142,7 @@ namespace Sunnet_NBFC.Controllers
                     clsE.FunctionName = "AddRequestStatus";
                     clsE.Link = "Status/AddStatus";
                     clsE.PageName = "Status Controller";
-                    clsE.UserId = "1";
+                    clsE.UserId = ClsSession.EmpId.ToString();
                     DataInterface.PostError(clsE);
                 }
 

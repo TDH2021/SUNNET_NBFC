@@ -50,27 +50,29 @@
                                 @foreach (var item in ViewBag.lst)
                                 {
 
-                    <tr>
-                        <td>@(++i)</td>
-                        <td>@item.CompanyName</td>
-                        <td>@item.Address</td>
-                        <td>@item.City</td>
-                        <td>@item.State</td>
-                        <td>@item.Country</td>
-                        <td>@item.Pincode</td>
-                        <td>@item.PANNo</td>
-                        <td>@item.GSTNo</td>
-                        <td>@item.CompanyType</td>
-                        <td>
-                            <div class="d-flex order-actions">
-                                <a href="@Url.Action("Companydelete", "Company", new { Id = @item.CompanyID })"
-                                   data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Edit"><u>Edit</u></a>
+                                    <tr>
+                                        <td>@(++i)</td>
+                                        <td>@item.CompanyName</td>
+                                        <td>@item.Address</td>
+                                        <td>@item.CityName</td>
+                                        <td>@item.StateName</td>
+                                        <td>@item.Country</td>
+                                        <td>@item.PinCode</td>
+                                        <td>@item.PANNo</td>
+                                        <td>@item.GSTNo</td>
+                                        <td>@item.CompanyType</td>
+                                        <td>
+                                            <div class="d-flex order-actions">
+                                                <a href="@Url.Action("Companydelete", "Company", new { Id = @item.CompanyId })"
+                                                   data-bs-toggle="tooltip" data-bs-placement="top" onclick="return Submit();" title="" data-bs-original-title="Delete"><u>Delete</u></a>
 
-                            </div>
+                                            </div>
 
-                        </td>
+                                        </td>
 
-                    </tr>}
+
+                                    </tr>
+                                }
 
 
                             </tbody>
@@ -112,10 +114,19 @@
             return false;
         }
     }
-   
-     window.onload = function () {
-                swal("Good job!","Test", "success");
+   @if (ViewBag.Message != null && ViewBag.Message != "")
+{
+    <script type="text/javascript">
+
+            window.onload = function () {
+                alert("@ViewBag.Message");
             };
+</script>
+}
+
+     @*window.onload = function () {
+                swal("Good job!","Test", "success");
+            };*@
     //swal({
     //    title: "Error!",
     //    text: "Here's my error message!",

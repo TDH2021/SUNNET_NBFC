@@ -239,7 +239,7 @@
                                     <label for="exampleInputEmail1">Permanent State</label>
 
                                     @Html.DropDownListFor(model => model.PermanentStateId, ViewBag.StateList as SelectList, new { @class = "form-control", @id = "permanentstate" })
-                                    @Html.ValidationMessageFor(model => model.PresentCityId, "", new { @class = "text-danger" })
+                                    @Html.ValidationMessageFor(model => model.PermanentStateId, "", new { @class = "text-danger" })
                                 </div>
 
                                 <div class="col-md-4">

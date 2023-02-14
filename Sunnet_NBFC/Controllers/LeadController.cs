@@ -8,7 +8,7 @@ using System.Reflection;
 using System.Web.Mvc;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using Sunnet_NBFC.App_Code;
 namespace Sunnet_NBFC.Controllers
 {
     public class LeadController : Controller
@@ -34,10 +34,10 @@ namespace Sunnet_NBFC.Controllers
                         using (clsLeadGenerationMaster cls = new clsLeadGenerationMaster())
                         {
                             cls.ReqType = "GetLeadAllData";
-                            cls.CompanyId = 1;
+                            cls.CompanyId =ClsSession.CompanyID ;
                             cls.LeadNo = "";
                             cls.LeadId = 0;
-                            cls.Empid = int.Parse(Session["EmpId"].ToString());
+                            cls.Empid = ClsSession.EmpId;
                             cls.ShortStage_Name = ShortStage_Name;
                             using (DataTable dt = DataInterface.GetLeadGenerationData(cls))
                             {
@@ -86,7 +86,7 @@ namespace Sunnet_NBFC.Controllers
                 using (clsLeadGenerationMaster cls = new clsLeadGenerationMaster())
                 {
                     cls.ReqType = "ViewLead";
-                    cls.CompanyId = 1;
+                    cls.CompanyId = ClsSession.CompanyID;
                     cls.LeadNo = LeadNo;
                     cls.LeadId = Convert.ToInt32(LeadId);
                     using (DataSet ds = DataInterface.GetLeadGenerationDataSingle(cls))
@@ -106,12 +106,6 @@ namespace Sunnet_NBFC.Controllers
                                     model.MainProductId = Convert.ToString(ds.Tables[0].Rows[i]["MainProdId"]);
                                     model.ProductId = Convert.ToString(ds.Tables[0].Rows[i]["ProdId"]);
                                 }
-
-                               
-
-
-
-
                             }
 
 
@@ -121,6 +115,8 @@ namespace Sunnet_NBFC.Controllers
 
                                 if (Convert.ToString(ds.Tables[1].Rows[i]["CustType"]) == "C")
                                 {
+                                    model.MainProduct = ds.Tables[1].Rows[i]["MainProduct"].ToString();
+                                    model.ProductName = ds.Tables[1].Rows[i]["ProductName"].ToString();
                                     model.FirstName = Convert.ToString(ds.Tables[1].Rows[i]["FirstName"]);
                                     model.MiddleName = Convert.ToString(ds.Tables[1].Rows[i]["MiddleName"]);
                                     model.LastName = Convert.ToString(ds.Tables[1].Rows[i]["LastName"]);
@@ -133,11 +129,15 @@ namespace Sunnet_NBFC.Controllers
                                     model.PresentAddress = Convert.ToString(ds.Tables[1].Rows[i]["PresentAddress"]);
                                     model.PresentPincode = Convert.ToString(ds.Tables[1].Rows[i]["PresentPincode"]);
                                     model.PresentStateId = Convert.ToString(ds.Tables[1].Rows[i]["PresentStateId"]);
+                                    model.PresentStateName = ds.Tables[1].Rows[i]["PresentStateName"].ToString();
+                                    model.PresentCityName = Convert.ToString(ds.Tables[1].Rows[i]["PresentCityName"]);
                                     model.PresentCityId = Convert.ToString(ds.Tables[1].Rows[i]["PresentCityId"]);
                                     model.PermanentAddress = Convert.ToString(ds.Tables[1].Rows[i]["PermanentAddress"]);
                                     model.PermanentPincode = Convert.ToString(ds.Tables[1].Rows[i]["PermanentPincode"]);
                                     model.PermanentStateId = Convert.ToString(ds.Tables[1].Rows[i]["PermanentStateId"]);
+                                    model.PermenetStateName = ds.Tables[1].Rows[i]["PermenetStateName"].ToString();
                                     model.PermanentCityId = Convert.ToString(ds.Tables[1].Rows[i]["PermanentCityId"]);
+                                    model.PermenetCityName = Convert.ToString(ds.Tables[1].Rows[i]["PermenetCityName"]);
                                     model.CibilScore = Convert.ToString(ds.Tables[1].Rows[i]["CibilScore"]);
                                     model.MobileNo1 = Convert.ToString(ds.Tables[1].Rows[i]["MobileNo1"]);
                                     model.FatherMobileNo = Convert.ToString(ds.Tables[1].Rows[i]["FatherMobileNo"]);
@@ -153,8 +153,6 @@ namespace Sunnet_NBFC.Controllers
                                 }
                                 else if (Convert.ToString(ds.Tables[1].Rows[i]["CustType"]) == "CO_Applicant")
                                 {
-
-
 
                                     model.CO_FirstName = Convert.ToString(ds.Tables[1].Rows[i]["FirstName"]);
                                     model.CO_MiddleName = Convert.ToString(ds.Tables[1].Rows[i]["MiddleName"]);
@@ -200,15 +198,6 @@ namespace Sunnet_NBFC.Controllers
                     DataInterface.PostError(clsE);
                 }
             }
-
-
-
-
-
-
-
-
-
 
             return PartialView("_LeadDetailsView", model);
         }

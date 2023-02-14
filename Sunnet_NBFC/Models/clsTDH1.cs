@@ -130,7 +130,7 @@ namespace Sunnet_NBFC.Models
         [Required(ErrorMessage = "Employee is required.")]
         [DisplayName("Employee")]
         public int EmpID { get; set; }
-
+        [Required(ErrorMessage = "Desgination is required.")]
         [DisplayName("Designation")]
         public int DesignationID { get; set; }
 
@@ -138,7 +138,7 @@ namespace Sunnet_NBFC.Models
         public int DepartmentId { get; set; }
 
         [DisplayName("Date Of Joining")]
-        public DateTime DOJ { get; set; }
+        public string DOJ { get; set; }
 
         [DisplayName("Last ESIC No.")]
         public string LastESICNo { get; set; }
@@ -147,6 +147,7 @@ namespace Sunnet_NBFC.Models
         public string LastPFNo { get; set; }
 
         [DisplayName("Last Acadmic Degree")]
+        [Required(ErrorMessage = "Last Acadmic Degree is required.")]
         public string LastAcadmicDegree { get; set; }
 
         [DisplayName("Last Professional Degree")]
@@ -157,11 +158,13 @@ namespace Sunnet_NBFC.Models
 
         [DisplayName("Last Experience Detail")]
         public string LastExperienceDtls { get; set; }
+
+        [Required(ErrorMessage = "Salary is required.")]
         public double Salary { get; set; }
         public bool IsLeave { get; set; }
 
         [DisplayName("Date Of Leave")]
-        public DateTime DOL { get; set; }
+        public string DOL { get; set; }
         public DateTime InsertDate { get; set; }
         public DateTime UpdateDate { get; set; }
 

@@ -27,11 +27,11 @@ namespace Sunnet_NBFC.Controllers
 
                 if (Id != null && Id > 0)
                     M = DataInterface2.GetBranch(Convert.ToInt32("0" + Id.ToString()));
-
-                return View(M);
                 
+                return View(M);
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
@@ -53,11 +53,13 @@ namespace Sunnet_NBFC.Controllers
             if (M.BranchId <= 0)
             {
                 M.ReqType = "Insert";
+                M.CreatedBy = ClsSession.EmpId;
             }
             else
             {
                 M.ReqType = "Update";
             }
+
             clsRetData = DataInterface2.SaveBranch(M);
 
 
@@ -100,12 +102,12 @@ namespace Sunnet_NBFC.Controllers
             }
         }
 
-       
+
         public ActionResult DeleteBranch(int Id)
         {
             try
             {
-                
+
                 if (Id <= 0)
                 {
                     TempData["Error"] = "Branch not exists";
@@ -114,18 +116,20 @@ namespace Sunnet_NBFC.Controllers
 
                 TempData.Clear();
 
-                ClsReturnData clsRetData = new ClsReturnData();
-
-                clsRetData = DataInterface2.DeleteBranch(Convert.ToInt32(Id));
-
-                if (clsRetData.ID > 0)
+                using (ClsReturnData clsRetData = DataInterface2.DeleteBranch(Convert.ToInt32(Id)))
                 {
-                    TempData["Success"] = !string.IsNullOrEmpty(clsRetData.Message) ? clsRetData.Message : "Deleted";
+
+                    if (clsRetData.ID > 0)
+                    {
+                        TempData["Success"] = !string.IsNullOrEmpty(clsRetData.Message) ? clsRetData.Message : "Deleted";
+                    }
+                    else
+                    {
+                        TempData["Error"] = !string.IsNullOrEmpty(clsRetData.Message) ? clsRetData.Message : "Error: Data Not Deleted";
+                    }
+
                 }
-                else
-                {
-                    TempData["Error"]  = !string.IsNullOrEmpty(clsRetData.Message) ? clsRetData.Message : "Error: Data Not Deleted";
-                }
+
 
                 return RedirectToAction("BranchView", "Branch");
 
@@ -137,8 +141,8 @@ namespace Sunnet_NBFC.Controllers
             }
 
         }
-        
-      
-     
+
+
+
     }
 }

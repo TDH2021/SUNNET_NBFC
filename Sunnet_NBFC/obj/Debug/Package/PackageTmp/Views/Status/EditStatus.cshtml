@@ -97,7 +97,7 @@
         var status = $("#Status").val();
         var StatusDesc = $("#StatusDesc").val();
         var statusid = $("#statusid").val();
-        
+
         if (status.length == 0) {
             alert("Please enter status");
 
@@ -135,10 +135,35 @@
                 alert(message);
                 if (message == "Record updated succussfully") {
 
-                  window.location.href='@Url.Action("StatusView", "Status")'
+                      swal({
+                        title: "Success",
+                        text: message,
+                        icon: "success",
+                        button: true,
+
+                    })
+                        .then((willConfirm) => {
+                            if (willConfirm) {
+                            window.location.href='@Url.Action("StatusView", "Status")'
+
+                            }
+                        });
+
+
 
                 } else {
+                    swal({
+                        title: "Error",
+                        text: message,
+                        icon: "error",
+                        button: true,
 
+                    })
+                        .then((willConfirm) => {
+                            if (willConfirm) {
+
+                            }
+                        });
 
                 }
 

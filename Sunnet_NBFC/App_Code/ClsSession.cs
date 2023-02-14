@@ -13,6 +13,7 @@ namespace Sunnet_NBFC.App_Code
         
         public static int UserID { get; set; } = 0;
         public static int EmpId { get; set; } = 0;
+        public static int BranchId { get; set; } = 0;
 
 
     }

@@ -21,7 +21,7 @@
     </div><!-- /.container-fluid -->
 </section>
 
-s
+
 <section class="content">
     <div class="container-fluid">
         <div class="row">
@@ -37,36 +37,38 @@ s
                                     <th>Status Id</th>
                                     <th>Status</th>
                                     <th>Action</th>
-                                    
+
                                 </tr>
                             </thead>
                             <tbody>
 
                                 @if (ViewBag.lst != null)
                                 {
-                                    var m = ViewBag.lst as IEnumerable<Sunnet_NBFC.Models.clsStatusMaster>;
+
+                                    var m = ViewBag.lst;
                                     foreach (var item in m)
                                     {
-                                <tr>
-                                <td>@item.Id</td>
-                                <td>@item.status</td>
-                                <td>
-                                    <div class="d-flex order-actions">
-                                        <a href="@Url.Action("EditStatus","Status",new{Id=item.Id, Status= item.status, Desc= item.statusdescription})"
-                                           data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Edit" ><u>Edit</u></a>
+                                        <tr>
+                                            <td>@item.StatusID</td>
+                                            <td>@item.Status</td>
+                                            <td>
+                                                <div class="d-flex order-actions">
+                                                    <a href="@Url.Action("EditStatus","Status",new{Id=item.StatusID, Status= item.Status, Desc= item.StatusDesc})"
+                                                       data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Edit"><u>Edit</u></a>
 
 
 
-                                        <a href="@Url.Action("Statusdelete","Status",new{Id=item})"
-                                           data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Delete" 
-                                           onclick="return Submit();" style="margin-left:10px;"><u>Delete</u></a>
+                                                    <a href="@Url.Action("Statusdelete","Status",new{Id=item})"
+                                                       data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Delete"
+                                                       onclick="return Submit();" style="margin-left:10px;"><u>Delete</u></a>
 
 
-                                    </div>
+                                                </div>
 
-                                </td>
-                            </tr>}
-                                        }
+                                            </td>
+                                        </tr>
+}
+                                }
 
 
                             </tbody>
@@ -100,4 +102,4 @@ s
             return false;
         }
     }
-    </script>
+</script>

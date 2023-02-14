@@ -96,7 +96,7 @@ function Validation() {
     var PermanentCityId = $("#permanentcity option:selected").val();
     var CibilScore = $("#CibilScore").val();
     var MobileNumber1 = $("#MobileNumber1").val();
-    var MobileNumber2 = $("#MobileNumber2").val();
+    /*var MobileNumber2 = $("#MobileNumber2").val();*/
     var FatherMobileNumber = $("#FatherMobileNumber").val();
     var MotherMobileNumber = $("#MotherMobileNumber").val();
     var SpouseMobileNumber = $("#SpouseMobileNumber").val();
@@ -131,9 +131,12 @@ function Validation() {
         alert("Please enter cibil score");
     } else if (MobileNumber1.length == 0) {
         alert("Please enter mobile number1");
-    } else if (MobileNumber2.length == 0) {
-        alert("Please enter mobile number2");
-    } else if (FatherMobileNumber.length == 0) {
+
+    } 
+    //    else if (MobileNumber2.length == 0) {
+    ////    alert("Please enter mobile number2");
+    //}
+    else if (FatherMobileNumber.length == 0) {
         alert("Please enter father mobile number");
     } else if (MotherMobileNumber.length == 0) {
         alert("Please enter mother mobile number");
@@ -156,12 +159,16 @@ function Validation() {
         var Dob = $("#Dob").val();
         var MartialStatus = $("#MartialStatus").val();
         var PresentAddress = $("#PresentAddress").val();
+        var PresentStateId = $("#CorState").val();
+        var PresentCityId = $("#Corcity").val();
         var PresentPincode = $("#PresentPincode").val();
         var PermanentAddress = $("#PermanentAddress").val();
         var PermanentPincode = $("#PermanentPincode").val();
+        var PermanentStateId = $("#permanentstate").val();
+        var PermanentCityId = $("#permanentcity").val();
         var CibilScore = $("#CibilScore").val();
         var MobileNumber1 = $("#MobileNumber1").val();
-        var MobileNumber2 = $("#MobileNumber2").val();
+ /*       var MobileNumber2 = $("#MobileNumber2").val();*/
         var FatherMobileNumber = $("#FatherMobileNumber").val();
         var MotherMobileNumber = $("#MotherMobileNumber").val();
         var SpouseMobileNumber = $("#SpouseMobileNumber").val();
@@ -190,7 +197,7 @@ function Validation() {
             "PermanentCityId": PermanentCityId,
             "CibilScore": CibilScore,
             "MobileNo1": MobileNumber1,
-            "MobileNo2": MobileNumber2,
+            /*"MobileNo2": MobileNumber2,*/
             "FatherMobileNo": FatherMobileNumber,
             "MotherMobileNo": MotherMobileNumber,
             "SpouseMobileNo": SpouseMobileNumber,

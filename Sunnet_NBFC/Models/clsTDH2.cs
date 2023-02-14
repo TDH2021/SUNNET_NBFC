@@ -19,6 +19,11 @@ namespace Sunnet_NBFC.Models
 
         public int BranchId { get; set; }
 
+        [Required(ErrorMessage = "Branch Code is required.")]
+        [DisplayName("Branch Code")]
+
+        public string BranchCode { get; set; }
+
         [Required(ErrorMessage = "Branch Name is required.")]
         [DisplayName("Branch Name")]
         public string BranchName { get; set; }
@@ -32,8 +37,8 @@ namespace Sunnet_NBFC.Models
         [Required(ErrorMessage = "Contact No is required.")]
         [RegularExpression(@"^([0-9]{10})$", ErrorMessage = "Invalid Contact Number.")]
         public string BranchContactNo { get; set; }
-
-        public bool IsDelete { get; set; }
+        public int CreatedBy { get; set; }
+        public int IsDelete { get; set; }
         public void Dispose()
         {
             throw new NotImplementedException();
@@ -230,7 +235,7 @@ namespace Sunnet_NBFC.Models
         public string AadhaarNo { get; set; }
         [DisplayName("Marital Status")]
         public string MaritalStatus { get; set; }
-        
+
         [DisplayName("Photo")]
         public HttpPostedFile Imagefile { get; set; }
         public string ImageName { get; set; }
@@ -513,7 +518,7 @@ namespace Sunnet_NBFC.Models
 
     }
 
-   
+
 
 
 

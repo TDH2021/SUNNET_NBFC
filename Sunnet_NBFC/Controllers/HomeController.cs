@@ -23,6 +23,7 @@ namespace Sunnet_NBFC.Controllers
                     ClsSession.CompanyID =int.Parse(Session["CompanyId"].ToString());
                     ClsSession.UserID = int.Parse(Session["EmpId"].ToString());
                     ClsSession.EmpId = int.Parse(Session["EmpId"].ToString());
+                    ClsSession.BranchId = int.Parse(Session["EmpId"].ToString());
                     return View();
 
                 }

@@ -546,7 +546,15 @@ namespace Sunnet_NBFC.Models
         public string PermanentAddress { get; set; }
         public string PermanentPincode { get; set; }
         public string CibilScore { get; set; }
+        public string MainProduct { get; set; }
+        public string ProductName { get; set; }
+        public string PresentStateName { get; set; }
+        public string PermenetStateName { get; set; }
+        public string PresentCityName { get; set; }
+        public string PermenetCityName { get; set; }
+
         public string PresentStateId { get; set; }
+
         public string PresentCityId { get; set; }
         public string PermanentStateId { get; set; }
         public string PermanentCityId { get; set; }
@@ -722,5 +730,6 @@ namespace Sunnet_NBFC.Models
         public int G_CompanyId { get; set; }
         public int G_BranchID { get; set; }
         public string G_LeadNo { get; set; }
+        public int G_LeadId { get; set; }
     }
 }

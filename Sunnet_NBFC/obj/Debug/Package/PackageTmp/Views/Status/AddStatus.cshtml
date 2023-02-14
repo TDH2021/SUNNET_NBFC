@@ -93,7 +93,8 @@
         var regex = /^[a-zA-Z]*$/;
         var status = $("#Status").val();
         var StatusDesc = $("#StatusDesc").val();
-
+        var ReqType = "Insert";
+        var CompanyId = 1;
         if (status.length == 0) {
             alert("Please enter status");
 
@@ -109,7 +110,9 @@
 
             var AllDataArray = {
                "Status": status,
-                "StatusDescription": StatusDesc,
+                "StatusDesc": StatusDesc,
+                "ReqType": ReqType,
+                "CompanyID": CompanyId,
             }
 
             filedata.append('AllDataArray', JSON.stringify(AllDataArray));
@@ -125,14 +128,39 @@
                 debugger
 
                 var message = JSON.parse(result)[0].ReturnMessage;
-                alert(message);
-                if (message == "Record saved succussfully") {
 
-                  window.location.href='@Url.Action("StatusView", "Status")'
+
+
+                if (message == "Record saved succussfully") {
+                    debugger
+                     swal({
+                        title: "Success",
+                        text: message,
+                        icon: "success",
+                        button: true,
+
+                    })
+                        .then((willConfirm) => {
+                            if (willConfirm) {
+                            window.location.href='@Url.Action("StatusView", "Status")'
+
+                            }
+                        });
 
                 } else {
+                    debugger
+                    swal({
+                        title: "Error",
+                        text: message,
+                        icon: "error",
+                        button: true,
 
-
+                    })
+                        .then((willConfirm) => {
+                            if (willConfirm) {
+                           
+                            }
+                        });
                 }
 
 

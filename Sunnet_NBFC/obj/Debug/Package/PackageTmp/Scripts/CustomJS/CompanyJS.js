@@ -23,7 +23,7 @@
 
                 }
             }
-          
+
 
         });
     }
@@ -37,68 +37,75 @@ function Validation() {
     var City = $("#City").val();
     var State = $("#State").val();
     var Country = $("#Country").val();
-    var Pincode = $("#Pincode").val();
+    var PinCode = $("#Pincode").val();
     var PANNo = $("#PANNo").val();
     var GSTNo = $("#GSTNo").val();
     var CompanyType = $("#CompanyType").val();
     var CompanyDesc = $("#CompanyDesc").val();
     var CompanyOthDesc = $("#CompanyOthDesc").val();
     var PANregex = /[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
-    var GSTreggst = /^([0-9]){2}([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}([0-9]){1}([a-zA-Z]){1}([0-9]){1}?$/;
-    var CompanyID = 1;
+    var GSTreggst = new RegExp('^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]1}[1-9A-Z]{1}Z[0-9A-Z]{1}$');
+    var CompanyId = 1;
     var name = "";
-  
+
     var fileUpload = $("#fileuploadapprovalmail").get(0);
     var files = fileUpload.files;
     for (var i = 0; i < files.length; i++) {
-        
+
         var name = files[i].name;
 
     }
     if (Name.length == 0) {
-        alert("Please enter company name");
+        swal("TDH","Please enter company name","error");
 
     } else if (CompanyType.length == 0) {
-        alert("Please enter company type");
+        swal("TDH","Please enter company type","error");
 
-    }  else if (Address.length == 0) {
-        alert("Please enter address");
+    } else if (Address.length == 0) {
+        swal("TDH","Please enter address","error");
 
-    } else if (PANNo.length == 0) {
-        alert("Please enter PAN No.");
+    }
+    else if (GSTNo.length == 0) {
+        swal("TDH", "Please enter gstno", "error");
+    } else if (!GSTreggst.test(GSTNo) && GSTNo.length!=15) {
+        swal("TDH", "GST Identification Number is not valid. It should be in this 11AAAAA1111Z1A1", "error");
+    }
+    else if (PANNo.length == 0) {
+        swal("TDH","Please enter PAN No.");
 
     } else if (!PANregex.test(PANNo)) {
-        alert("Invalid PAN No.");
-
-    } else if (GSTNo.length == 0) {
-        alert("Please enter gstno");
+        swal("TDH","Invalid PAN No.","errror");
 
     } else if (Country.length == 0) {
-        alert("Please enter country");
+        swal("TDH","Please enter country","error");
 
     } else if (State.length == 0) {
-        alert("Please enter state");
+        swal("TDH","Please enter state","error");
 
     } else if (City.length == 0) {
-        alert("Please enter city");
+        swal("TDH","Please enter city","error");
 
     } else if (Pincode.length == 0) {
-        alert("Please enter pincode");
+        alert("TDH","Please enter pincode","error");
 
-    }  else if (CompanyDesc.length == 0) {
-        alert("Please enter CompanyDesc");
+    } else if (CompanyDesc.length == 0) {
+        swal("TDH","Please enter CompanyDesc","error");
 
     } else if (CompanyOthDesc.length == 0) {
-        alert("Please enter CompanyOthDesc");
+        swal("TDH","Please enter CompanyOthDesc","eror");
 
     } else {
 
         var filedata = new FormData();
-        debugger
+        debugger;
+        if (files.length <= 0) {
+            filedata.append('LOGO', "");
+        }
         for (var i = 0; i < files.length; i++) {
 
             filedata.append('LOGO', files[i]);
         }
+       
 
 
         var AllDataArray = {
@@ -108,16 +115,16 @@ function Validation() {
             "City": City,
             "State": State,
             "Country": Country,
-            "Pincode": Pincode,
+            "PinCode": PinCode,
             "PANNo": PANNo,
             "GSTNo": GSTNo,
             "CompanyType": CompanyType,
             "CompanyDesc": CompanyDesc,
             "CompanyOthDesc": CompanyOthDesc,
-            "CompanyId": CompanyID,
+            "CompanyId": CompanyId,
             "LOGO": name
         }
-      
+
         filedata.append('AllDataArray', JSON.stringify(AllDataArray));
 
         $.ajax({
@@ -131,18 +138,15 @@ function Validation() {
                 debugger
 
                 var message = JSON.parse(result)[0].ReturnMessage;
-                alert(message);
+                swal("TDH",message,"Success");
                 if (message == "Record saved succussfully") {
 
-                    window.location.href = '@Url.Action("StatusView", "Status")'
+                    window.location.href = '@Url.Action("CompanyView", "Company")'
 
                 } else {
 
 
                 }
-
-
-
 
             }
 

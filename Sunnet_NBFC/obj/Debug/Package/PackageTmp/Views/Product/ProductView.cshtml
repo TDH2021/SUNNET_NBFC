@@ -14,8 +14,7 @@
 				<ol class="breadcrumb float-sm-right">
 					@*<li class="breadcrumb-item"><a href="#">Home</a></li>
 						<li class="breadcrumb-item active">Branch View</li>*@
-
-					<h4> @Html.ActionLink("Create New", "AddProduct")</h4>
+					@*<h4> @Html.ActionLink("Create New", "AddProduct")</h4>*@
 				</ol>
 			</div>
 		</div>
@@ -114,16 +113,18 @@
 	<script type="text/javascript">
 
             window.onload = function () {
-                alert("@ViewBag.Error");
+               // alert("@ViewBag.Error");
+				swal("TDH", "@ViewBag.Error", "error");
+
             };
 	</script>
 }
 @if (ViewBag.Success != null && ViewBag.Success != "")
 {
 	<script type="text/javascript">
-
             window.onload = function () {
-                alert("@ViewBag.Success");
+                //alert("@ViewBag.Success");
+				swal("TDH", "@ViewBag.Success", "Success");
             };
 	</script>
 }

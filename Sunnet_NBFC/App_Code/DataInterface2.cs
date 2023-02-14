@@ -1,79 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Data;
 using System.Data.SqlClient;
-using System.Configuration;
-using System.Collections;
-using System.Globalization;
-using Newtonsoft.Json;
-using System.Threading;
 using Sunnet_NBFC.Models;
-using System.Reflection;
-using System.Web.Mvc;
-using Sunnet_NBFC;
 using Sunnet_NBFC.App_Code;
 
 public class DataInterface2 : DataInterface, IDisposable
 {
     public SqlConnection _cnSQL = null;
     public ConnectionStatus _StateValue = ConnectionStatus.Unknown;
-    public string _StateDescription = string.Empty;
+    
     //private static errormessage="Error Occurred";
 
     /// <summary>
     /// Enumeration representing the state of the SQL connection.
     /// </summary>
-    public enum ConnectionStatus
-    {
-        Open = 0,
-        Closed = 1,
-        Failed = 2,
-        Unknown = 99
-
-    }
+  
     /// <summary>
     /// State of the SQL connection.
     /// </summary>
-    public ConnectionStatus StateValue
-    {
-        get
-        {
-            return _StateValue;
-        }
-    }
+  
     /// <summary>
     /// A description of the state of the connection or command.
     /// </summary>
-    public string StateDescription
-    {
-        get
-        {
-            return _StateDescription;
-        }
-    }
-    public void Dispose()
-    {
-        try
-        {
-            if (_cnSQL != null)
-            {
-                try { _cnSQL.Close(); }
-                catch { }
-                try { _cnSQL.Dispose(); }
-                catch { }
-                _cnSQL = null;
-            }
-        }
-        catch { }
-        _StateValue = ConnectionStatus.Closed;
-        _StateDescription = "Disconnected OK";
-    }
-
-
-
-
+ 
     private void Dispose(bool disposing)
     {
         if (disposing)
@@ -108,10 +58,13 @@ public class DataInterface2 : DataInterface, IDisposable
             //    {
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add("@ReqType", SqlDbType.VarChar).Value = cls.ReqType;
+            
             cmd.Parameters.Add("@BranchId", SqlDbType.Int).Value = cls.BranchId;
+            cmd.Parameters.Add("@BranchCode", SqlDbType.VarChar).Value = cls.BranchCode;
             cmd.Parameters.Add("@BranchName", SqlDbType.VarChar).Value = cls.BranchName;
             cmd.Parameters.Add("@CompanyId", SqlDbType.Int).Value = ClsSession.CompanyID;
             cmd.Parameters.Add("@BranchAddres", SqlDbType.VarChar).Value = cls.BranchAddres;
+            cmd.Parameters.Add("@CreatedBy", SqlDbType.Int).Value = cls.CreatedBy;
             cmd.Parameters.Add("@BranchContactNo", SqlDbType.VarChar).Value = cls.BranchContactNo;
             cmd.Parameters.Add("@IsDelete", SqlDbType.VarChar).Value = cls.IsDelete;
             dt = db.FillTableProc(cmd, "USP_Branch");

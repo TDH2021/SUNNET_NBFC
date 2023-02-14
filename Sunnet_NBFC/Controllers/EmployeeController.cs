@@ -222,6 +222,7 @@ namespace Sunnet_NBFC.Controllers
                     clsEmployeeDetails cls = new clsEmployeeDetails();
                     cls.ReqType = "View";
                     cls.EmpID = Convert.ToInt32("0" + Id.ToString());
+                    cls.Companyid = ClsSession.CompanyID;
                     dt = DataInterface1.dbEmployeeDetails(cls);
                 }
                 if (dt != null && dt.Rows.Count > 0)

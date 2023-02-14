@@ -58,7 +58,8 @@ namespace Sunnet_NBFC.Controllers
                 {
 
                     cls.ReqType = "Insert";
-                    cls.CompanyId = 1;
+                    cls.CompanyId = ClsSession.CompanyID;
+                    
                     cls.IsDelete = 0;
                     using (DataTable dt = DataInterface1.GetProduct(cls))
                     {

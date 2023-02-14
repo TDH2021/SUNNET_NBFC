@@ -19,7 +19,7 @@ namespace Sunnet_NBFC.Controllers
         {
             using (clsCompanyMaster clsStatus = new clsCompanyMaster())
             {
-                clsStatus.CompanyId = 1;
+                clsStatus.CompanyId = ClsSession.CompanyID;
             }
 
             ViewBag.StateList = ClsCommon.ToSelectList(DataInterface1.GetState(), "ID", "StateName");
@@ -72,7 +72,7 @@ namespace Sunnet_NBFC.Controllers
                     clse.FunctionName = "AddRequestCompany";
                     clse.Link = "Status/AddRequestCompany";
                     clse.PageName = "Company Controller";
-                    clse.UserId = "1";
+                    clse.UserId =ClsSession.EmpId.ToString();
                     DataInterface.PostError(clse);
                 }
                 return Json(JSONresult, JsonRequestBehavior.AllowGet);
