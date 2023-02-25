@@ -43,6 +43,12 @@ function Validation() {
     var CompanyType = $("#CompanyType").val();
     var CompanyDesc = $("#CompanyDesc").val();
     var CompanyOthDesc = $("#CompanyOthDesc").val();
+    var CINNo = $("#CINNo").val();
+    var RBIRegd = $("#RBIRegd").val();
+    var EmailId = $("#EmailId").val();
+    var Website = $("#Website").val();
+    var MobileNo = $("#MobileNo").val();
+    var DateofIncorporation = $("#DateofIncorporation").val();
     var PANregex = /[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
     var GSTreggst = new RegExp('^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]1}[1-9A-Z]{1}Z[0-9A-Z]{1}$');
     var CompanyId = 1;
@@ -122,6 +128,12 @@ function Validation() {
             "CompanyDesc": CompanyDesc,
             "CompanyOthDesc": CompanyOthDesc,
             "CompanyId": CompanyId,
+            "RBIRegd": RBIRegd,
+            "EmailId": EmailId,
+            "Website": Website,
+            "MobileNo": MobileNo,
+            "DateofIncorporation": DateofIncorporation,
+            "CINNo": CINNo,
             "LOGO": name
         }
 
