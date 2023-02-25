@@ -12,6 +12,7 @@ using System.Threading;
 using Sunnet_NBFC.Models;
 using System.Reflection;
 using Sunnet_NBFC.App_Code;
+using System.ComponentModel.Design;
 
 public class DataInterface1 : IDisposable
 {
@@ -403,6 +404,47 @@ public class DataInterface1 : IDisposable
         }
         return dt;
     }
+
+
+    public static DataTable dbLeadDocument(clsLeadDocument cls)
+    {
+        DataTable dt = new DataTable();
+        try
+        {
+            using (DBOperation db = new DBOperation())
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@ReqType", SqlDbType.VarChar).Value = cls.ReqType;
+                    cmd.Parameters.Add("@LeadId", SqlDbType.Int).Value = cls.LeadId;
+                    cmd.Parameters.Add("@CompanyId", SqlDbType.Int).Value = ClsSession.CompanyID;
+                    
+                    cmd.Parameters.Add("@DcId", SqlDbType.Int).Value = cls.DcId;
+                    cmd.Parameters.Add("@DocID", SqlDbType.Int).Value = cls.DocID;
+                    cmd.Parameters.Add("@CustomerType", SqlDbType.VarChar).Value = cls.CustomerType;
+                    cmd.Parameters.Add("@IsReceived", SqlDbType.Bit).Value = cls.IsReceived;
+                    cmd.Parameters.Add("@Remarks", SqlDbType.VarChar).Value = cls.Remarks;
+                    cmd.Parameters.Add("@IsDelete", SqlDbType.Bit).Value = cls.IsDelete;
+                    cmd.Parameters.Add("@LeadCustId", SqlDbType.Int).Value = cls.LeadCustId;
+                    dt = db.FillTableProc(cmd, "USP_LeadDocument");
+                }
+            }
+
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+        finally
+        {
+            dt.Dispose();
+        }
+        return dt;
+    }
+
+    
+
 
     //=======commom fun
     public static T GetItem<T>(DataRow dr)

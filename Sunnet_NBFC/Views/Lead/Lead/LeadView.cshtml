@@ -11,7 +11,7 @@
         width: 1120px !important;
         margin: 20px auto;
     }
-</style>
+    </style>
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -50,8 +50,6 @@
                                     <th>Reuested Loan Amount</th>
                                     <th>Reuested Loan Tenure</th>
                                     <th>Status</th>
-                                    <th>-</th>
-                                    <th>-</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -75,21 +73,7 @@
                                             <td>@item.ReuestedLoanAmount</td>
                                             <td>@item.ReuestedLoanTenure</td>
                                             <td>@item.Status</td>
-                                            <td>
-                                                <div class="d-flex order-actions">
-                                                    <a href="@Url.Action("LeadCalling","LeadCalling",new{LeadId=item.LeadId})"
-                                                       data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Calling"><u>Calling</u></a>
-                                                </div>
 
-                                            </td>
-
-                                            <td>
-                                                <div class="d-flex order-actions">
-                                                    <a href="@Url.Action("LeadDocument","LeadDocument",new{LeadId=item.LeadId})"
-                                                       data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Document"><u>Document</u></a>
-                                                </div>
-
-                                            </td>
                                         </tr>
                                     }
                                 }
@@ -107,8 +91,6 @@
                                     <th>Reuested Loan Amount</th>
                                     <th>Reuested Loan Tenure</th>
                                     <th>Status</th>
-                                    <th>-</th>
-                                    <th>-</th>
                                 </tr>
                             </tfoot>
                         </table>
@@ -127,9 +109,9 @@
         <!-- /.row -->
     </div>
 
-    <div class="modal fade in" id="myModal" tabindex="1" role="dialog" aria-hidden="false" data-keyboard="false" data-backdrop="static"></div>
+    <div class="modal fade in" id="myModal" tabindex="1"  role="dialog" aria-hidden="false" data-keyboard="false" data-backdrop="static"></div>
 
-
+    
 
 </section>
 <script type="text/javascript">
@@ -146,7 +128,7 @@
             success: function (data) {
                 //alert(data);
                 $('#myModal').html(data);
-
+              
             },
             error: function (ex) {
                 alert(ex.error);

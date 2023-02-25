@@ -271,7 +271,14 @@ namespace Sunnet_NBFC.Models
         public string StateName { get; set; }
         public string CityName { get; set; }
         public string LOGO { get; set; }
+        public string CINNo { get; set; }
+        public string DateofIncorporation { get; set; }
 
+        public string tmpDateofIncorporation { get; set; }
+        public string RBIRegd { get; set; }
+        public string EmailId { get; set; }
+        public string Website { get; set; }
+        public string MobileNo { get; set; }
         bool disposed = false;
 
         // Public implementation of Dispose pattern callable by consumers.
@@ -475,7 +482,7 @@ namespace Sunnet_NBFC.Models
     public class clsLogin : IDisposable
     {
         public string ReqType { get; set; }
-      
+
         public int UserID { get; set; }
         [Remote("IsAlreadyExistsUser", "Login", HttpMethod = "POST", ErrorMessage = "User ID Not Exists.")]
         public string UserName { get; set; }
@@ -520,16 +527,26 @@ namespace Sunnet_NBFC.Models
         }
 
     }
-   
+
     public class clsLeadGenerationMaster : IDisposable
     {
+
         public int Empid { get; set; }
         public string CustomerName { get; set; }
+        public string CIFID { get; set; }
+        public string EmailId { get; set; }
         public string Status { get; set; }
         public int LeadId { get; set; }
         public string LeadNo { get; set; }
+        public string LeadNo1 { get; set; }
         public string MainProductId { get; set; }
+        public string MainProductName { get; set; }
         public string ProductId { get; set; }
+        public string ProductName { get; set; }
+        public string PresentStateName { get; set; }
+        public string PresentCityName { get; set; }
+        public string PremenentStateName { get; set; }
+        public string PremenentCityName { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }
@@ -546,15 +563,7 @@ namespace Sunnet_NBFC.Models
         public string PermanentAddress { get; set; }
         public string PermanentPincode { get; set; }
         public string CibilScore { get; set; }
-        public string MainProduct { get; set; }
-        public string ProductName { get; set; }
-        public string PresentStateName { get; set; }
-        public string PermenetStateName { get; set; }
-        public string PresentCityName { get; set; }
-        public string PermenetCityName { get; set; }
-
         public string PresentStateId { get; set; }
-
         public string PresentCityId { get; set; }
         public string PermanentStateId { get; set; }
         public string PermanentCityId { get; set; }
@@ -589,13 +598,16 @@ namespace Sunnet_NBFC.Models
         public string CO_PresentAddress { get; set; }
         public string CO_PresentPinCode { get; set; }
         public string CO_PresentStateId { get; set; }
+        public string CO_PresentStateName { get; set; }
         public string CO_PresentCityId { get; set; }
-
+        public string CO_PresentCityName { get; set; }
 
         public string CO_PermanentAddress { get; set; }
         public string CO_PermanentPincode { get; set; }
         public string CO_PermanentStateId { get; set; }
+        public string CO_PermanentStateName { get; set; }
         public string CO_PermanentCityId { get; set; }
+        public string CO_PermanentCityName { get; set; }
 
 
 
@@ -663,9 +675,8 @@ namespace Sunnet_NBFC.Models
         public string GeoTagging { get; set; }
         public string FORemarks { get; set; }
         public int BranchID { get; set; }
-
-      
         public string ShortStage_Name { get; set; }
+
         bool disposed = false;
 
         // Public implementation of Dispose pattern callable by consumers.
@@ -696,7 +707,8 @@ namespace Sunnet_NBFC.Models
     }
 
 
-    public class Gurantor {
+    public class Gurantor
+    {
 
         public string G_FirstName { get; set; }
         public string G_MiddleName { get; set; }
@@ -712,15 +724,19 @@ namespace Sunnet_NBFC.Models
         public int G_PresentStateId { get; set; }
         public int G_PresentCityId { get; set; }
 
+        public int G_PermanentStateId { get; set; }
+        public int G_PermanentCityId { get; set; }
+
+        public string G_PresentStateName { get; set; }
+        public string G_PresentCityName { get; set; }
+
+        public string G_PermanentStateName { get; set; }
+        public string G_PermanentCityName { get; set; }
 
         public string G_PermanentAddress { get; set; }
         public string G_PermanentPincode { get; set; }
         public int G_P_State { get; set; }
         public int G_P_City { get; set; }
-
-
-
-
         public string G_Mobile_No { get; set; }
         public string G_EmailId { get; set; }
         public string G_PanNo { get; set; }
@@ -732,4 +748,66 @@ namespace Sunnet_NBFC.Models
         public string G_LeadNo { get; set; }
         public int G_LeadId { get; set; }
     }
+    public class clsRoleMaster : clsRoleSubMenu
+    {
+        public int RoleId { get; set; }
+        public string RoleName { get; set; }
+        public int EmpId { get; set; }
+        public string EmpCode { get; set; }
+        public string EmpName { get; set; }
+        public int CreatedBy { get; set; }
+        public int CompanyId { get; set; }
+        public int IsDelete { get; set; }
+        public List<clsRoleMaster> clsSubMenulst { get; set; }
+
+        // Public implementation of Dispose pattern callable by consumers.
+
+    }
+
+    public class clsRoleSubMenu : IDisposable
+    {
+        public string ReqType { get; set; }
+        public int SubMenuId { get; set; }
+        public int MenuId { get; set; }
+        public string Title { get; set; }
+        public string Controller { get; set; }
+        public string Action { get; set; }
+        public int IsActive { get; set; }
+        public string MenuName { get; set; }
+        public string ActiveStr { get; set; }
+        public bool IsSelected { get; set; }
+
+        bool disposed = false;
+
+        // Public implementation of Dispose pattern callable by consumers.
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        // Protected implementation of Dispose pattern.
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposed)
+                return;
+
+            if (disposing)
+            {
+                // Free any other managed objects here.
+                //
+            }
+
+            // Free any unmanaged objects here.
+            //
+            disposed = true;
+        }
+
+        ~clsRoleSubMenu()
+        {
+            Dispose(false);
+        }
+    }
+
 }
+

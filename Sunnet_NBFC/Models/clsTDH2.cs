@@ -465,11 +465,11 @@ namespace Sunnet_NBFC.Models
 
     }
 
-    public class clsLeadDocument
+    public class clsLeadDocument : clsLeadDetail
     {
-        public string ReqType { get; set; }
+        //public string ReqType { get; set; }
         public int DcId { get; set; }
-        public int LeadId { get; set; }
+        //public int LeadId { get; set; }
 
         [Required(ErrorMessage = "Document is required.")]
         [DisplayName("Document")]
@@ -479,12 +479,17 @@ namespace Sunnet_NBFC.Models
         public string CustomerType { get; set; }
 
         [DisplayName("Is Received")]
-        public bool? IsReceived { get; set; }
+        public bool IsReceived { get; set; }
 
         [DisplayName("Remarks")]
-        public string Remarks { get; set; }
-        public int IsDelete { get; set; }
+        //public string Remarks { get; set; }
+        public bool IsDelete { get; set; }
+        public bool? IsRequried { get; set; }
 
+        //[DisplayName("Document Name")]
+        public string DocumentName { get; set; }
+        public int LeadCustId { get; set; }
+        public string CustName { get; set; }
         bool disposed = false;
 
         // Public implementation of Dispose pattern callable by consumers.

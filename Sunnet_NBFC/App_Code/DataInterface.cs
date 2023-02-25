@@ -810,6 +810,12 @@ public class DataInterface : IDisposable
                 sqlCommand.Parameters.AddWithValue("@CompanyDesc", cls.CompanyDesc);
                 sqlCommand.Parameters.AddWithValue("@CompanyOthDesc", cls.CompanyOthDesc);
                 sqlCommand.Parameters.AddWithValue("@Logo", cls.LOGO);
+                sqlCommand.Parameters.AddWithValue("@CINNo", cls.CINNo);
+                sqlCommand.Parameters.AddWithValue("@DateofIncorporation", cls.DateofIncorporation);
+                sqlCommand.Parameters.AddWithValue("@RBIRegd", cls.RBIRegd);
+                sqlCommand.Parameters.AddWithValue("@Emailid", cls.EmailId);
+                sqlCommand.Parameters.AddWithValue("@Website", cls.Website);
+                sqlCommand.Parameters.AddWithValue("@MobileNo", cls.MobileNo);
 
 
                 dt = db.FillTableProc(sqlCommand, "USP_Company");

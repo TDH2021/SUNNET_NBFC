@@ -283,6 +283,8 @@ namespace Sunnet_NBFC.Models
         public int IsActive { get; set; }
         public string MenuName { get; set; }
         public string ActiveStr { get; set; }
+        public bool IsSelected { get; set; }
+       
         bool disposed = false;
 
         // Public implementation of Dispose pattern callable by consumers.
@@ -408,7 +410,22 @@ namespace Sunnet_NBFC.Models
 
         }
     }
+    public class clsLeadmaind : clsLeadDocument
+    {
+        //public string ReqType { get; set; }
+        //public int LeadId { get; set; }
+        public string LeadNo { get; set; }
+        public List<clsLeadDocument> clsLeadDocument { get; set; }
 
+
+        bool disposed = false;
+
+        ~clsLeadmaind()
+        {
+            Dispose(false);
+        }
+
+    }
 
     //========================
 }
