@@ -91,7 +91,30 @@ namespace Sunnet_NBFC.Controllers
                 {
                     if (dt != null)
                     {
-                        ViewBag.lst = DataInterface.ConvertDataTable<clsCompanyMaster>(dt);
+
+                        List<clsCompanyMaster> list = new List<clsCompanyMaster>();
+                        list = (from DataRow row in dt.Rows
+
+                                select new clsCompanyMaster()
+                                {
+                                    CompanyId = int.Parse(row["CompanyId"].ToString()),
+                                    CompanyName = row["CompanyName"].ToString(),
+                                    City = row["City"].ToString(),
+                                    State = row["State"].ToString(),
+                                    Country = row["Country"].ToString(),
+                                    PinCode = row["PinCode"].ToString(),
+                                    PANNo = row["PANNo"].ToString(),
+                                    GSTNo = row["GSTNo"].ToString(),
+                                    CompanyType = row["CompanyType"].ToString(),
+                                    LOGO = row["Logo"].ToString(),
+                                    CINNo = row["CINNo"].ToString(),
+                                    DateofIncorporation = row["DateofIncorporation"].ToString(),
+                                    CompanyDesc = row["CompanyDesc"].ToString(),
+
+
+                                }).ToList();
+                        ViewBag.lst = list;
+                        //ViewBag.lst = DataInterface.ConvertDataTable<clsCompanyMaster>(dt);
 
 
                     }
@@ -103,8 +126,8 @@ namespace Sunnet_NBFC.Controllers
                 {
                     clsError.ReqType = "I";
                     clsError.Mode = "WEB";
-                    clsError.ErrorDescrption = e1.Message + "-" + e1.InnerException.Message;
-                    clsError.FunctionName = "Status View";
+                    clsError.ErrorDescrption = e1.Message;
+                    clsError.FunctionName = "Comoany View";
                     clsError.Link = "Company/CompanyView";
                     clsError.PageName = "Company Controller";
                     clsError.UserId = "1";
