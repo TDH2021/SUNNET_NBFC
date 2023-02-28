@@ -6,52 +6,92 @@ using System.Web.Mvc;
 using Sunnet_NBFC.Models;
 using System.Data;
 using Sunnet_NBFC.App_Code;
+using System.Web.Script.Serialization;
+using Newtonsoft.Json;
+
 namespace Sunnet_NBFC.Controllers
 {
     public class UserRoleController : Controller
     {
         // GET: UserRole
-        public ActionResult RoleMaster(clsRoleMaster M)
+        public ActionResult RoleMaster()
         {
-            try
+            using (clsRoleMaster M = new clsRoleMaster())
             {
-               
-                using (clsSubMenu cls = new clsSubMenu())
+                try
                 {
-                    cls.ReqType = "View";
-                    cls.IsActive = 1;
-                    using (DataTable dtddl = DataInterface1.GetSubMenu(cls))
-                    {
-                        M.clsSubMenulst = DataInterface.ConvertDataTable<clsRoleMaster>(dtddl);   
-                    }
-                    M.ReqType = "Insert";
-                    M.CompanyId = ClsSession.CompanyID;
-                    M.IsDelete = 0;
-                }
-              
-            }
-            catch(Exception ex)
-            {
 
+                    TempData["CompanyId"] = ClsSession.CompanyID;
+                    using (clsSubMenu cls = new clsSubMenu())
+                    {
+                        cls.ReqType = "View";
+                        cls.IsActive = 1;
+
+                        using (DataTable dtddl = DataInterface1.GetSubMenu(cls))
+                        {
+                            M.clsSubMenulst = DataInterface.ConvertDataTable<clsRoleMaster>(dtddl);
+                        }
+                        M.ReqType = "Insert";
+                        M.CompanyId = ClsSession.CompanyID;
+                        M.IsDelete = 0;
+                    }
+
+
+
+                }
+                catch (Exception ex)
+                {
+
+                }
+                return View(M);
             }
-            return View(M);
 
 
         }
         [HttpPost]
-        
-        public ActionResult RoleMaster(clsRoleMaster cls,FormCollection frm, string htmlTableValue)
+
+        public JsonResult Role()
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    ViewBag.Error = "Invalid Model";
-            //    return View(cls);
-            //}
-            //int Total = Convert.ToInt32(frm["hdnCount1"]);
-            //for (int i = 1; i <= Total; i++)
-            //{ 
-            //}
-                return View();
+            string JSONresult = "";
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+
+           
+
+
+            try
+            {
+                List<clsRoleMaster> clsRoles = jss.Deserialize<List<clsRoleMaster>>(Request.Form["Role"]);
+                for (int i = 0; i < clsRoles.Count; i++)
+                {
+                    using (DataTable dt = DataInterface.DBRole(clsRoles[i]))
+                    {
+                        JSONresult= JsonConvert.SerializeObject(dt);
+                        
+                    }
+
+                }
+                return Json(JSONresult, JsonRequestBehavior.AllowGet);
+            }
+
+
+
+            catch (Exception e1)
+            {
+
+                using (clsError clse = new clsError())
+                {
+                    clse.ReqType = "Insert";
+                    clse.Mode = "WEB";
+                    clse.ErrorDescrption = e1.Message;
+                    clse.FunctionName = "RoleMaster";
+                    clse.Link = "RoleMaster/RoleMaster";
+                    clse.PageName = "Role Controller";
+                    clse.UserId = ClsSession.EmpId.ToString();
+                    DataInterface.PostError(clse);
+                }
+                return Json(JSONresult, JsonRequestBehavior.AllowGet);
+            }
+            
         }
     }
 }

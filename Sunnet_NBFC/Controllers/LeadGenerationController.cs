@@ -146,7 +146,7 @@ namespace Sunnet_NBFC.Controllers
                     DataInterface.PostError(clsE);
                 }
 
-                return Json(JSONresult, JsonRequestBehavior.AllowGet);
+               
             }
 
             return Json("", JsonRequestBehavior.AllowGet);

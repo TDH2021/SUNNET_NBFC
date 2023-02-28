@@ -67,6 +67,9 @@ public class DataInterface2 : DataInterface, IDisposable
             cmd.Parameters.Add("@CreatedBy", SqlDbType.Int).Value = cls.CreatedBy;
             cmd.Parameters.Add("@BranchContactNo", SqlDbType.VarChar).Value = cls.BranchContactNo;
             cmd.Parameters.Add("@IsDelete", SqlDbType.VarChar).Value = cls.IsDelete;
+            cmd.Parameters.Add("@CityId", SqlDbType.Int).Value = cls.CityId;
+            cmd.Parameters.Add("@StateId", SqlDbType.Int).Value = cls.StateId;
+            cmd.Parameters.Add("@BranchManger", SqlDbType.VarChar).Value = cls.BranchManger;
             dt = db.FillTableProc(cmd, "USP_Branch");
 
             if (dt != null && dt.Rows.Count > 0)

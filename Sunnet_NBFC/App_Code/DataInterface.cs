@@ -151,7 +151,7 @@ public class DataInterface : IDisposable
         }
         return a;
     }
-  
+
 
     public static int User(clsUser cls)
     {
@@ -397,7 +397,7 @@ public class DataInterface : IDisposable
         return dt;
     }
 
-  
+
 
     public DataTable GetUser(clsUser cls)
     {
@@ -509,8 +509,8 @@ public class DataInterface : IDisposable
         return dt;
     }
 
-   
-			
+
+
 
     public static DataTable GetLeadGenerationCustomer(clsLeadGenerationMaster cls)
     {
@@ -537,7 +537,7 @@ public class DataInterface : IDisposable
                 sqlCommand.Parameters.AddWithValue("@MartialStatus", cls.MartialStatus);
                 sqlCommand.Parameters.AddWithValue("@PresentAddress", cls.PresentAddress);
                 sqlCommand.Parameters.AddWithValue("@PresentPincode", cls.PresentPincode);
-               
+
                 sqlCommand.Parameters.AddWithValue("@PermanentAddress", cls.PermanentAddress);
                 sqlCommand.Parameters.AddWithValue("@PermanentPincode", cls.PermanentPincode);
 
@@ -766,7 +766,7 @@ public class DataInterface : IDisposable
 
     public static void PostError(clsError cls)
     {
-       
+
         using (DBOperation db = new DBOperation())
         {
             using (SqlCommand sqlCommand = new SqlCommand())
@@ -794,7 +794,7 @@ public class DataInterface : IDisposable
         {
             using (SqlCommand sqlCommand = new SqlCommand())
             {
-               
+
                 sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
                 sqlCommand.Parameters.AddWithValue("@ReqType", cls.ReqType);
                 sqlCommand.Parameters.AddWithValue("@CompanyID", cls.CompanyId);
@@ -819,7 +819,7 @@ public class DataInterface : IDisposable
 
 
                 dt = db.FillTableProc(sqlCommand, "USP_Company");
-               
+
             }
 
 
@@ -902,6 +902,8 @@ public class DataInterface : IDisposable
                 sqlCommand.Parameters.AddWithValue("@DSAccountNo", cls.DSAccountNo);
                 sqlCommand.Parameters.AddWithValue("@DSABankName", cls.DSABankName);
                 sqlCommand.Parameters.AddWithValue("@DSAIFSCCode", cls.DSAIFSCCode);
+                sqlCommand.Parameters.AddWithValue("@PAN", cls.PAN);
+                sqlCommand.Parameters.AddWithValue("@AadharNo", cls.AAdharNo);
                 dt = db.FillTableProc(sqlCommand, "USP_DSAMaster");
 
             }
@@ -925,7 +927,7 @@ public class DataInterface : IDisposable
                 sqlCommand.Parameters.AddWithValue("@MainProdId", cls.MainProdId);
                 sqlCommand.Parameters.AddWithValue("@ProdId", cls.ProdId);
                 sqlCommand.Parameters.AddWithValue("@QuestionAnsType", cls.QuestionAnsType);
-                sqlCommand.Parameters.AddWithValue("@Question", cls.Question);               
+                sqlCommand.Parameters.AddWithValue("@Question", cls.Question);
                 sqlCommand.Parameters.AddWithValue("@CreatedBy", cls.CreatedBy);
                 sqlCommand.Parameters.AddWithValue("@ISDELETE", cls.IsDelete);
                 sqlCommand.Parameters.AddWithValue("@CompanyId", cls.CompanyId);
@@ -1007,6 +1009,33 @@ public class DataInterface : IDisposable
                 sqlCommand.Parameters.AddWithValue("@CompanyID", cls.CompanyId);
 
                 dt = db.FillDsProc(sqlCommand, "USP_Lead");
+            }
+
+
+        }
+        return dt;
+    }
+    public static DataTable DBRole(clsRoleMaster cls)
+    {
+
+
+        DataTable dt = new DataTable();
+        using (DBOperation db = new DBOperation())
+        {
+            using (SqlCommand sqlCommand = new SqlCommand())
+            {
+                sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                sqlCommand.Parameters.AddWithValue("@ReqType", cls.ReqType);
+                sqlCommand.Parameters.AddWithValue("@RoleId", cls.RoleId);
+                sqlCommand.Parameters.AddWithValue("@RoleName", cls.RoleName);
+                sqlCommand.Parameters.AddWithValue("@EmpId", cls.EmpId);
+                sqlCommand.Parameters.AddWithValue("@EmpCode", cls.EmpCode);
+                sqlCommand.Parameters.AddWithValue("@MenuId", cls.MenuId);
+                sqlCommand.Parameters.AddWithValue("@SubMenuId", cls.SubMenuId);
+                sqlCommand.Parameters.AddWithValue("@CreatedBy", cls.CreatedBy);
+                sqlCommand.Parameters.AddWithValue("@CompanyId", cls.CompanyId);
+                sqlCommand.Parameters.AddWithValue("@IsDelete", cls.IsDelete);
+                dt = db.FillTableProc(sqlCommand, "USP_Role");
             }
 
 

@@ -379,13 +379,14 @@ namespace Sunnet_NBFC.Models
         [EmailAddress(ErrorMessage = "Please enter correct email")]
         public string DSAEmail { get; set; }
         [MaxLength(15)]
-        [RegularExpression("([0-9]+)", ErrorMessage = "Invalid Pin Code.")]
+      
+        [RegularExpression("^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$", ErrorMessage = "Invalid GST Number")]
         public string DSAGSTNo { get; set; }
         public decimal DSACommision { get; set; }
         public string DSARemarks { get; set; }
         public int CreatedBy { get; set; }
         public int UpdatedBy { get; set; }
-        [RegularExpression("^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$", ErrorMessage = "Invalid GST Number")]
+       
         public string DSAccountNo { get; set; }
         public string DSABankName { get; set; }
         public string DSABranch { get; set; }
@@ -394,6 +395,10 @@ namespace Sunnet_NBFC.Models
         public int COMPANYID { get; set; }
         public string CityName { get; set; }
         public string StateName { get; set; }
+        [RegularExpression("^[A-Z]{5}[0-9]{4}[A-Z]{1}$", ErrorMessage = "Invalid PAN Number")]
+        public string PAN { get; set; } = "";
+        [RegularExpression("^[2-9]{1}[0-9]{3}[0-9]{4}[0-9]{4}$", ErrorMessage = "Invalid Aadhar Number")]
+        public string AAdharNo { get; set; } = "";
         bool disposed = false;
 
         // Public implementation of Dispose pattern callable by consumers.

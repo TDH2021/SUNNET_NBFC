@@ -37,7 +37,7 @@ namespace Sunnet_NBFC
                       "~/plugins/summernote/summernote-bs4.js",
                       "~/plugins/codemirror/codemirror.css",
                       "~/plugins/codemirror/theme/monokai.css",
-                      "~/dist/css/adminlte.min.css",
+                      "~/dist/css/adminlte.css",
                       "~/Scripts/sweetalert2.js"));
 
             //bundles.Add(new StyleBundle("~/bundles/SweetAlertCS").Include(

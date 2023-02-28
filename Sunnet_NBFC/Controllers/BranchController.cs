@@ -27,7 +27,7 @@ namespace Sunnet_NBFC.Controllers
 
                 if (Id != null && Id > 0)
                     M = DataInterface2.GetBranch(Convert.ToInt32("0" + Id.ToString()));
-                
+                ViewBag.StateList = ClsCommon.ToSelectList(DataInterface1.GetState(), "ID", "StateName");
                 return View(M);
 
             }

@@ -47,7 +47,16 @@ namespace Sunnet_NBFC.Controllers
 
             }
             ViewBag.StateList = ClsCommon.ToSelectList(DataInterface1.GetState(), "ID", "StateName");
-            return View("AddDSA");
+            ModelState.Clear();
+            if (cls.DSAId == 0)
+            {
+                return View("AddDSA");
+
+            }
+            else
+            {
+                return View("ViewDSA");
+            }   
         }
 
         public ActionResult ViewDSA()

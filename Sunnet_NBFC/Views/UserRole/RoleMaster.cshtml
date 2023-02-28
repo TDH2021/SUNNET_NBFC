@@ -22,111 +22,108 @@
     </div><!-- /.container-fluid -->
 </section>
 
-@using (Html.BeginForm("RoleMaster", "UserRole", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+@Html.AntiForgeryToken()
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    @Html.HiddenFor(model => model.ReqType)
+                                    @Html.HiddenFor(model => model.CompanyId)
+                                    @Html.HiddenFor(model => model.IsDelete)
+
+                                    @*@Html.HiddenFor(model => model.CreateBy)
+                                        @Html.HiddenFor(model => model.UpdateBy)*@
 
 
-    <section class="content">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-body">
-
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        @Html.HiddenFor(model => model.ReqType)
-                                        @Html.HiddenFor(model => model.CompanyId)
-                                        @Html.HiddenFor(model => model.IsDelete)
-
-                                        @*@Html.HiddenFor(model => model.CreateBy)
-                                            @Html.HiddenFor(model => model.UpdateBy)*@
-
-
-                                    </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="form-group">
-                                <div class="row">
-
-                                    
-                                    <div class="col-md-6">
-                                        @Html.LabelFor(model => model.RoleName, htmlAttributes: new { @class = "control-label" })
-
-                                        <label for="exampleInputEmail1"></label>
-                                        @Html.DropDownListFor(model => model.RoleId, clsMiscDDL.GetMiscDDL("Role"), "Select", new { @class = "form-control", @id = "RoleId" })
-
-                                        @Html.ValidationMessageFor(model => model.RoleName, "", new { @class = "text-danger" })
-                                    </div>
-                                    <div class="col-md-6">
-
-                                        <label class="contol-label">Employee</label>
-                                        @Html.DropDownListFor(model => model.EmpId, clsEmoloyeeDDL.GetEmoloyeeDDL(), "Select", new { @class = "form-control", @id = "EmpID" })
-                                        @Html.ValidationMessageFor(model => model.EmpId, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                            </div>
-
+                        <div class="form-group">
                             <div class="row">
 
-                                <div class="col-md-6">
 
-                                    @Html.LabelFor(model => model.EmpCode, new { @class = "control-label" })
-                                    @Html.TextBoxFor(model => model.EmpCode, new { @class = "form-control", disabled = "true", id = "EmpCode" })
-                                    @Html.ValidationMessageFor(model => model.EmpCode, "", new { @class = "text-danger" })
+                                <div class="col-md-6">
+                                    <input type="hidden" value="@TempData["CompanyId"]" id="hfCompanyId" />
+                                    @Html.LabelFor(model => model.RoleName, htmlAttributes: new { @class = "control-label" })
+                                    <label for="exampleInputEmail1"></label>
+                                    @Html.DropDownListFor(model => model.RoleId, clsMiscDDL.GetMiscDDL("Role"), "Select", new { @class = "form-control", @id = "RoleId" })
+
+                                    @*@Html.ValidationMessageFor(model => model.RoleName, "", new { @class = "text-danger" })*@
                                 </div>
-
                                 <div class="col-md-6">
-                                    @Html.LabelFor(model => model.EmpName, new { @class = "control-label" })
-                                    @Html.TextBoxFor(model => model.EmpName, new { @class = "form-control", disabled = "true", id = "EmpName" })
-                                    @Html.ValidationMessageFor(model => model.EmpName, "", new { @class = "text-danger" })
+
+                                    <label class="contol-label">Employee</label>
+                                    @Html.DropDownListFor(model => model.EmpId, clsEmoloyeeDDL.GetEmoloyeeDDL(), "Select", new { @class = "form-control", @id = "EmpID" })
+                                    @*@Html.ValidationMessageFor(model => model.EmpId, "", new { @class = "text-danger" })*@
                                 </div>
                             </div>
-                            <div class="card-body">
+                        </div>
 
-                                <table id="example1" class="table table-bordered table-striped">
-                                    <thead>
+                        <div class="row">
+
+                            <div class="col-md-6">
+
+                                @Html.LabelFor(model => model.EmpCode, new { @class = "control-label" })
+                                @Html.TextBoxFor(model => model.EmpCode, new { @class = "form-control", disabled = "true", id = "EmpCode" })
+                                @Html.ValidationMessageFor(model => model.EmpCode, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="col-md-6">
+                                @Html.LabelFor(model => model.EmpName, new { @class = "control-label" })
+                                @Html.TextBoxFor(model => model.EmpName, new { @class = "form-control", disabled = "true", id = "EmpName" })
+                                @Html.ValidationMessageFor(model => model.EmpName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="card-body">
+
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>S.No.</th>
+                                        <th>Menu Name</th>
+                                        <th>Sub Menu Name</th>
+                                        <th>Select</th>
+                                    </tr>
+                                </thead>
+
+
+                                @{ int rowNo = 0; }
+
+                                @if (Model.clsSubMenulst != null)
+                                {
+                                    @*@Html.Hidden("hdnCount1", Model.clsSubMenulst.Count)*@
+                                    foreach (var item in Model.clsSubMenulst)
+                                    {
                                         <tr>
-                                            <th>S.No.</th>
-                                            <th>Menu Name</th>
-                                            <th>Sub Menu Name</th>
-                                            <th>Select</th>
-                                        </tr>
-                                    </thead>
-                                    
+                                            <td>
+                                                @(rowNo += 1)
+                                                @*@Html.Hidden(i1 + "_hfMenuId", item.MenuId)*@
+                                                @*@Html.Hidden(item.MenuId.ToString(), new { @id = i1 + "_hfMenuId", @class = "form-control" })*@
+                                            </td>
+                                            <td>
+                                                <input type="hidden" id="hfMenuId" value=@item.MenuId.ToString()>
+                                                @Html.Label(item.MenuName.ToString(), new { @id = rowNo + "_lblMenuName", @class = "form-control" })
+                                            </td>
+                                            <td>
+                                                @Html.Label(item.Title.ToString(), new { @id = @rowNo + "_lblSubMenuName", @class = "form-control" })
+                                                @*@Html.Hidden(item.SubMenuId.ToString(), new { @id = @i1 + "_hfSubMenuId", @class = "form-control" })*@
+                                                <input type="hidden" id="hfSubMenuId" value=@item.SubMenuId.ToString()>
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" id="ChkSelected" class="checkbox" value=@item.IsSelected.ToString()>
 
-                                        @{int i1 = 1;}
-                                        @if (Model.clsSubMenulst != null)
-                                        {
-                                            @*@Html.Hidden("hdnCount1", Model.clsSubMenulst.Count)*@
-                                            foreach (var item in Model.clsSubMenulst)
-                                            {
-                                                <tr>
-                                                    <td>
-                                                        @int.Parse(i1.ToString())
-                                                      
-                                                        @*@Html.Hidden(i1 + "_hfMenuId", item.MenuId)*@
-                                                        @*@Html.Hidden(item.MenuId.ToString(), new { @id = i1 + "_hfMenuId", @class = "form-control" })*@
-                                                    </td>
-                                                    <td>
-                                                        <input type="hidden" id="hfMenuId" value=@item.MenuId.ToString()>
-                                                        @Html.Label(item.MenuName.ToString(), new { @id = i1 + "_lblMenuName", @class = "form-control" })
-                                                    </td>
-                                                    <td>
-                                                        @Html.Label(item.Title.ToString(), new { @id = @i1 + "_lblSubMenuName", @class = "form-control" })
-                                                        @*@Html.Hidden(item.SubMenuId.ToString(), new { @id = @i1 + "_hfSubMenuId", @class = "form-control" })*@
-                                                        <input type="hidden" id="hfSubMenuId" value=@item.SubMenuId.ToString()>
-                                                    </td>
-                                                    <td>
-                                                        <input type="checkbox" id="ChkSelected" class="checkbox" value=@item.IsSelected.ToString()>
-                                                        
-                                                    </td>
+                                            </td>
 
-                                                    @*<td>
+                                            @*<td>
                         <div class="d-flex order-actions">
                             <a href="@Url.Action("Companydelete", "Company", new { Id = @item.CompanyId })"
                                data-bs-toggle="tooltip" data-bs-placement="top" onclick="return Submit();" title="" data-bs-original-title="Delete"><u>Delete</u></a>
@@ -136,44 +133,41 @@
                     </td>*@
 
 
-                                                </tr>
-                                            }
+                                        </tr>
+                                    }
 
-                                        }
+                                }
 
-                                    
-                                    <tfoot>
-                                       @* <tr>
-                                            <th>S.No.</th>
-                                            <th>Menu Name</th>
-                                            <th>Sub Menu Name</th>
-                                            <th>Select</th>
-                                        </tr>*@
-                                    </tfoot>
-                                </table>
 
-                            </div>
-
-                            <div class="card-footer">
-                                
-                                <input type="submit" onclick="SubmitData();" value="Save" class="btn btn-primary" />
-                                @Html.ActionLink("Cancel", "MiscView", "Misc", null, new { @class = "btn btn-danger btn-large" })
-                            </div>
-
+                                <tfoot>
+                                    @* <tr>
+                <th>S.No.</th>
+                <th>Menu Name</th>
+                <th>Sub Menu Name</th>
+                <th>Select</th>
+            </tr>*@
+                                </tfoot>
+                            </table>
 
                         </div>
-                    </div>
 
+                        <div class="card-footer">
+
+                            <input type="submit" onclick="SubmitData();" value="Save" class="btn btn-primary" />
+                            @Html.ActionLink("Cancel", "MiscView", "Misc", null, new { @class = "btn btn-danger btn-large" })
+                        </div>
+
+
+                    </div>
                 </div>
+
             </div>
         </div>
+    </div>
 
-    </section>
+</section>
 
-}
 
-<script src="~/plugins/jquery/jquery.min.js"></script>
-<script src="~/plugins/jquery/jquery.validate.min.js"></script>
-<script src="~/plugins/jquery/jquery.validate.unobtrusive.min.js"></script>
+
 <script src="~/Scripts/CustomJS/RoleMaster.js"></script>
 
