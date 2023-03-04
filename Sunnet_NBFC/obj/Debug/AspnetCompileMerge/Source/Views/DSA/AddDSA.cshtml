@@ -69,7 +69,7 @@
                                        new SelectList(Enumerable.Empty<SelectListItem>(), "CityId", "CityName"),
                                        "Select city", new { @class = "form-control", @id = "DSACity" })
                                         @*@Html.DropDownListFor(model => model.DSACityId, ViewBag.CityList as SelectList, new { @class = "form-control", @id = "DSACity" })*@
-                                        @Html.ValidationMessageFor(model => model.DSAStateId, "", new { @class = "text-danger" })
+                                        @Html.ValidationMessageFor(model => model.DSACityId, "", new { @class = "text-danger" })
                                     </div>
                                     <div class="col-md-4">
                                         <label for="exampleInputEmail1">Pin Code</label>
@@ -219,6 +219,41 @@
                                    })
                                     </div>
                                     <div class="col-md-4">
+                                        <label for="exampleInputEmail1">PAN No</label>
+                                        @Html.TextBoxFor(model => model.PAN, new
+                                   {
+                                       @class = "form-control",
+                                       @placeholder = "Name",
+                                       @name = "Pan No",
+                                       @required = "true",
+                                       @maxlength = "10",
+                                       @autocomplete = "off",
+                                       @Id = "txtDsaPanNo"
+                                   })
+                                        @Html.ValidationMessageFor(model => model.PAN, "", new { @class = "text-danger", @id = "txtDsaPanNo", @maxlength = "10" })
+                                    </div>
+
+                                   
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="exampleInputEmail1">Aadhar No</label>
+                                        @Html.TextBoxFor(model => model.AAdharNo, new
+                                   {
+                                       @class = "form-control",
+                                       @placeholder = "Name",
+                                       @name = "Aadhar No",
+                                       @required = "true",
+                                       @maxlength = "12",
+                                       @autocomplete = "off",
+                                       @Id = "txtDsaAadharNo"
+                                   })
+                                        @Html.ValidationMessageFor(model => model.AAdharNo, "", new { @class = "text-danger", @id = "txtDsaAadharNo", @maxlength = "12" })
+                                    </div>
+
+                                    <div class="col-md-8">
 
                                         <label for="exampleInputEmail1">Remarks</label>
                                         @Html.TextBoxFor(model => model.DSARemarks, new

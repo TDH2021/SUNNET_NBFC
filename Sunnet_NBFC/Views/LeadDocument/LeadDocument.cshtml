@@ -3,7 +3,7 @@
 @using Sunnet_NBFC.Models
 
 @{
-	ViewBag.Title = "LeadCalling";
+	ViewBag.Title = "LeadDocument";
 	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -11,7 +11,7 @@
 	<div class="container-fluid">
 		<div class="row mb-2">
 			<div class="col-sm-6">
-				<h1>Lead Calling Details</h1>
+				<h1>Lead Document Details</h1>
 			</div>
 			<div class="col-sm-6">
 				<ol class="breadcrumb float-sm-right">
@@ -178,7 +178,8 @@
 	<script type="text/javascript">
 
             window.onload = function () {
-                alert("@ViewBag.Error");
+                //alert("@ViewBag.Error");
+				swal("TDH", "@ViewBag.Error", "error");
             };
 	</script>
 }
@@ -186,31 +187,14 @@
 {
 	<script type="text/javascript">
             window.onload = function () {
-                alert("@ViewBag.Success");
+                //alert("@ViewBag.Success");
+				swal("TDH", "@ViewBag.Success", "Success");
             };
 	</script>
 }
 
 
 
-<script>
-
-	$(document).ready(function () {
-		//$('.datepicker').datepicker();
-	});
-
-</script>
-
-<script>
-
-	//$("#ddlMiscType").change(function () {
-	//    debugger;
-	//    debugger;
-	//    var ddtext = $("#ddlMiscType option:selected").text();
-	//    $("#hfMiscType").val(ddtext);
-
-	//})
-</script>
 
 
 

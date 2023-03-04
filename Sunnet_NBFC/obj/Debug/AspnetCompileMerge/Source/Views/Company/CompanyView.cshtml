@@ -46,8 +46,10 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @if (ViewBag.lst != null)
+                                {
 
-                                @foreach (var item in ViewBag.lst)
+                                foreach (var item in ViewBag.lst)
                                 {
 
                                     <tr>
@@ -73,7 +75,7 @@
 
                                     </tr>
                                 }
-
+                                }
 
                             </tbody>
                             <tfoot>

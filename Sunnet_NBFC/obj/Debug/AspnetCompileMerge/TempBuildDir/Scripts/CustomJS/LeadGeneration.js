@@ -293,7 +293,12 @@ function ValidationChk() {
     var FatherMobileNumber = $("#FatherMobileNumber").val();
     var MotherMobileNumber = $("#MotherMobileNumber").val();
     var SpouseMobileNumber = $("#SpouseMobileNumber").val();
+    var SpouseMobileNumber = $("#SpouseMobileNumber").val();
+    var EmailId = $("#EmailId").val();
+    var CIFID = $("#CIFID").val();
     var AadharNo = $("#AadharNo").val();
+    var hdn_customer_aadhar_verify = $("#hdn_customer_aadhar_verify").val();
+    
     var PanNo = $("#PanNo").val();
     var hdn_type = $("#hdn_type").val();
     var CompanyID = 1;
@@ -795,6 +800,27 @@ function ValidationChk() {
                         }
                     });
             }
+            else if (EmailId.length == 0) {
+
+                swal({
+                    title: "Error",
+                    text: "Please enter customer email id",
+                    icon: "error",
+                    button: true,
+
+                })
+                    .then((willConfirm) => {
+                        if (willConfirm) {
+
+                        }
+                    });
+
+
+
+
+
+            }
+
             else if (CO_FName.length == 0) {
                 swal({
                     title: "Error",
@@ -1425,7 +1451,9 @@ function ValidationChk() {
                     "PanNo": PanNo,
                     "CompanyId": CompanyID,
                     "Hdn_type": hdn_type,
-
+                    "EmailId": EmailId,
+                    "CIFID": CIFID,
+                    "AAdharverfiy": hdn_customer_aadhar_verify,
 
 
                     "CO_FirstName": CO_FName,
@@ -1915,6 +1943,27 @@ function ValidationChk() {
                         }
                     });
             }
+            else if (EmailId.length == 0) {
+
+                swal({
+                    title: "Error",
+                    text: "Please enter customer email id",
+                    icon: "error",
+                    button: true,
+
+                })
+                    .then((willConfirm) => {
+                        if (willConfirm) {
+
+                        }
+                    });
+
+
+
+
+
+            }
+
 
             else if (CO_FName.length == 0) {
                 swal({
@@ -2502,6 +2551,10 @@ function ValidationChk() {
                     "PanNo": PanNo,
                     "CompanyId": CompanyID,
                     "Hdn_type": hdn_type,
+                    "EmailId": EmailId,
+                    "CIFID": CIFID,
+                    "AAdharverfiy": hdn_customer_aadhar_verify,
+
 
 
 
@@ -3024,6 +3077,26 @@ function ValidationChk() {
                         }
                     });
             }
+            else if (EmailId.length == 0) {
+
+                swal({
+                    title: "Error",
+                    text: "Please enter customer email id",
+                    icon: "error",
+                    button: true,
+
+                })
+                    .then((willConfirm) => {
+                        if (willConfirm) {
+
+                        }
+                    });
+
+
+
+
+
+            }
             else if (customers.length == 0) {
 
                 swal({
@@ -3292,6 +3365,9 @@ function ValidationChk() {
                     "PanNo": PanNo,
                     "CompanyId": CompanyID,
                     "Hdn_type": hdn_type,
+                    "EmailId": EmailId,
+                    "CIFID": CIFID,
+                    "AAdharverfiy": hdn_customer_aadhar_verify,
 
 
 
@@ -3442,30 +3518,30 @@ function underAgeValidate(birthday) {
 function AAdharVerification() {
     debugger
     var AadharNo = $("#AadharNo").val();
-    var emailid = "himanshu.agrawal50@gmail.com";
-    
-        debugger
-        var urlvariable;
+    var emailid = "";
 
-        urlvariable = "https://sm-kyc-sandbox.scoreme.in/kyc/external/aadhaarverificationdetails";
+    debugger
+    var urlvariable;
 
-        var ItemJSON;
+    urlvariable = "https://sm-kyc-sandbox.scoreme.in/kyc/external/aadhaarverificationdetails";
+
+    var ItemJSON;
 
     ItemJSON = '{"aadhaarNumber": "' + AadharNo + '","email":  "' + emailid + '"}';
     debugger
-        URL = urlvariable;  //Your URL
+    URL = urlvariable;  //Your URL
 
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = callbackFunction(xmlhttp);
-        xmlhttp.open("POST", URL, false);
-        xmlhttp.setRequestHeader("Content-Type", "application/json");
-        xmlhttp.setRequestHeader('ClientId', '9b7f56d730cb292199b7a49620fa80f6');
-        xmlhttp.setRequestHeader('ClientSecret', '60812117e31f68b0475960d167a6fc856a09de16cc89f17f8ece51e29f216b15');//in prod, you should encrypt user name and password and provide encrypted keys here instead
-        xmlhttp.onreadystatechange = callbackFunction(xmlhttp);
-        xmlhttp.send(ItemJSON);
-        debugger
-        
-        var data = JSON.parse(xmlhttp.responseText);
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = callbackFunction(xmlhttp);
+    xmlhttp.open("POST", URL, false);
+    xmlhttp.setRequestHeader("Content-Type", "application/json");
+    xmlhttp.setRequestHeader('ClientId', '9b7f56d730cb292199b7a49620fa80f6');
+    xmlhttp.setRequestHeader('ClientSecret', '60812117e31f68b0475960d167a6fc856a09de16cc89f17f8ece51e29f216b15');//in prod, you should encrypt user name and password and provide encrypted keys here instead
+    xmlhttp.onreadystatechange = callbackFunction(xmlhttp);
+    xmlhttp.send(ItemJSON);
+    debugger
+
+    var data = JSON.parse(xmlhttp.responseText);
 
     if (data.responseMessage == "OTP successfully sent to mobile number.") {
         document.getElementById("referenceId").value = data.data.referenceId;
@@ -3482,7 +3558,7 @@ function AAdharVerification() {
                     $("#myModal").modal()
                 }
             });
-            
+
     } else {
         swal({
             title: "Error",
@@ -3493,18 +3569,10 @@ function AAdharVerification() {
         })
             .then((willConfirm) => {
                 if (willConfirm) {
-                    
+
                 }
             });
-        }
-        
-
-
-    
-
-    
-
-   
+    }
 }
 function callbackFunction(xmlhttp) {
     //alert(xmlhttp.responseXML);
@@ -3528,6 +3596,8 @@ function ChkAadharOTP() {
 
 
     } else {
+        
+      
         debugger
         var referenceId = $("#referenceId").val();
         var urlvariable;
@@ -3547,18 +3617,187 @@ function ChkAadharOTP() {
         xmlhttp.setRequestHeader('ClientId', '9b7f56d730cb292199b7a49620fa80f6');
         xmlhttp.setRequestHeader('ClientSecret', '60812117e31f68b0475960d167a6fc856a09de16cc89f17f8ece51e29f216b15');//in prod, you should encrypt user name and password and provide encrypted keys here instead
         xmlhttp.onreadystatechange = callbackFunction(xmlhttp);
-        console.lo
-        xmlhttp.send(ItemJSON);
         debugger
 
+        xmlhttp.send(ItemJSON);
+       
         var data = JSON.parse(xmlhttp.responseText);
 
-        alert(data);
+        if (data.responseMessage == "Successfully Completed.") {
 
+            swal({
+                title: "Success",
+                text: "Aadhar verify successfully",
+                icon: "success",
+                button: true,
+
+            })
+                .then((willConfirm) => {
+                    if (willConfirm) {
+                        document.getElementById("hdn_customer_aadhar_verify").value = "Y";
+                        $("#myModal").modal("hide");
+                    }
+                });
+
+
+        } else {
+            swal({
+                title: "Error",
+                text: data.responseMessage,
+                icon: "error",
+                button: true,
+
+            })
+                .then((willConfirm) => {
+                    if (willConfirm) {
+                     
+                    }
+                });
+
+
+
+        }
+        
+        
 
     }
     
 }
+
+
+function PanVerification() {
+    debugger
+    var panNumber = $("#PanNo").val();
+    var fullName = $("#FName").val() + " " + $("#MName").val() + " " + $("#LName").val();
+    var dob = moment($("#Dob").val()).format('DD-MMM-YYYY');
+
+
+    debugger
+    var urlvariable;
+
+    urlvariable = "https://sm-kyc-sandbox.scoreme.in/kyc/external/panverification";
+
+    var ItemJSON;
+
+    ItemJSON = '{"panNumber": "' + panNumber + '","fullName":  "' + fullName + '", "dateOfBirth":  "' + dob + '", "status":  "' + "individual" + '"}';
+
+    debugger
+    alert(ItemJSON)
+    
+    URL = urlvariable;  //Your URL
+
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = callbackFunction(xmlhttp);
+    xmlhttp.open("POST", URL, false);
+    xmlhttp.setRequestHeader("Content-Type", "application/json");
+    xmlhttp.setRequestHeader('ClientId', '9b7f56d730cb292199b7a49620fa80f6');
+    xmlhttp.setRequestHeader('ClientSecret', '60812117e31f68b0475960d167a6fc856a09de16cc89f17f8ece51e29f216b15');//in prod, you should encrypt user name and password and provide encrypted keys here instead
+    xmlhttp.onreadystatechange = callbackFunction(xmlhttp);
+    xmlhttp.send(ItemJSON);
+    debugger
+
+    var data = JSON.parse(xmlhttp.responseText);
+
+    if (data.responseMessage == "Successfully Submitted.") {
+        document.getElementById("referenceId").value = data.data.referenceId;
+        swal({
+            title: "Success",
+            text: data.responseMessage,
+            icon: "success",
+            button: true,
+
+        })
+            .then((willConfirm) => {
+                if (willConfirm) {
+                    debugger
+                    data = JSON.parse(xmlhttp.responseText);
+                    var rid = data.data.referenceId;
+                    debugger
+
+                    $.ajax({
+                        url: "https://sm-kyc-sandbox.scoreme.in/kyc/external/getkycrequestresponse?referenceId=" + rid,
+                        type: 'GET',
+                        dataType: 'json',
+                        headers: {
+                            'ClientId': '9b7f56d730cb292199b7a49620fa80f6',
+                            'ClientSecret': '60812117e31f68b0475960d167a6fc856a09de16cc89f17f8ece51e29f216b15'
+                        },
+                        contentType: 'application/json; charset=utf-8',
+                        success: function (result) {
+                            // CallBack(result);
+                            debugger
+
+                            if (data.responseMessage == "Successfully Submitted.") {
+
+                                swal({
+                                    title: "Success",
+                                    text: "Pan verify successfully",
+                                    icon: "success",
+                                    button: true,
+
+                                })
+                                    .then((willConfirm) => {
+                                        if (willConfirm) {
+                                            document.getElementById("hdn_customer_aadhar_verify").value = "Y";
+                                           
+                                        }
+                                    });
+
+
+                            } else {
+                                swal({
+                                    title: "Error",
+                                    text: data.responseMessage,
+                                    icon: "error",
+                                    button: true,
+
+                                })
+                                    .then((willConfirm) => {
+                                        if (willConfirm) {
+
+                                        }
+                                    });
+
+
+
+                            }
+
+
+
+
+                            
+                        },
+                        error: function (error) {
+                            debugger
+                            alert(error);
+                        }
+                    })
+
+                
+                    
+                    
+                   
+                }
+            });
+
+    } else {
+        swal({
+            title: "Error",
+            text: data.responseMessage,
+            icon: "error",
+            button: true,
+
+        })
+            .then((willConfirm) => {
+                if (willConfirm) {
+
+                }
+            });
+    }
+}
+
+
+
 
 $('#MartialStatus').change(function () {
     debugger;
@@ -3722,6 +3961,311 @@ function SetValues3() {
     } else {
         document.getElementById("customerpermanentcity").value = "";
         document.getElementById("customerpermanentcity").disabled = false;
+
+    }
+
+}
+
+
+
+
+
+
+function Co_Applicantpermascorr() {
+    var yes = document.getElementById("co_chlpercorr").checked;
+    if (yes == true) {
+        var PresentAddress = $("#CO_PresentAddress").val();
+        var PresentPincode = $("#CO_PresentPincode").val();
+        var PresentStateId = $("#Co_State option:selected").val();
+        var PresentCityId = $("#CO_City option:selected").val();
+
+        document.getElementById("CO_PermanentAddress").value = PresentAddress;
+        document.getElementById("CO_PermanentPincode").value = PresentPincode;
+        document.getElementById("CO_permanentstate").value = PresentStateId;
+        var stateid = PresentStateId;
+        if (stateid.length == 0) {
+            var s = '<option value="">- Select City -</option>'
+            $('#CO_permanentcity').html(s);
+        } else {
+            var s = '<option value="">- Select City -</option>'
+            $('#CO_permanentcity').html(s);
+            $.ajax({
+                url: "/City/GetCity",
+                type: "Get",
+                /* url: '@Url.Action("GetCity", "City")',*/
+                dataType: "json",
+                data: {
+                    StateId: stateid
+                },
+                success: function (result) {
+                    debugger
+                    var data = JSON.parse(result);
+                    for (var i = 0; i < data.length; i++) {
+                        var opt = new Option(data[i].CityName, data[i].Cityid);
+                        $('#CO_permanentcity').append(opt);
+
+                    }
+                    document.getElementById("CO_permanentcity").value = PresentCityId;
+                }
+
+            });
+        }
+        document.getElementById("CO_PermanentAddress").disabled = true;
+        document.getElementById("CO_PermanentPincode").disabled = true;
+        document.getElementById("CO_permanentstate").disabled = true;
+        document.getElementById("CO_permanentcity").disabled = true;
+
+    } else {
+        document.getElementById("CO_PermanentAddress").value = "";
+        document.getElementById("CO_PermanentPincode").value = "";
+        document.getElementById("CO_permanentstate").value = "";
+        document.getElementById("CO_permanentcity").value = "";
+        document.getElementById("CO_PermanentAddress").disabled = false;
+        document.getElementById("CO_PermanentPincode").disabled = false;
+        document.getElementById("CO_permanentstate").disabled = false;
+        document.getElementById("CO_permanentcity").disabled = false;
+    }
+
+}
+function SetValues_CO() {
+    var yes = document.getElementById("co_chlpercorr").checked;
+    if (yes == true) {
+        var PresentAddress = $("#CO_PresentAddress").val();
+
+        document.getElementById("CO_PermanentAddress").value = PresentAddress;
+
+        document.getElementById("CO_PermanentAddress").disabled = true;
+
+    } else {
+        document.getElementById("CO_PermanentAddress").value = "";
+        document.getElementById("CO_PermanentAddress").disabled = false;
+
+    }
+
+}
+function SetValues1_CO() {
+    var yes = document.getElementById("co_chlpercorr").checked;
+    if (yes == true) {
+        var PresentPincode = $("#CO_PresentPincode").val();
+
+        document.getElementById("CO_PermanentPincode").value = PresentPincode;
+
+        document.getElementById("CO_PermanentPincode").disabled = true;
+
+    } else {
+        document.getElementById("CO_PermanentPincode").value = "";
+        document.getElementById("CO_PermanentPincode").disabled = false;
+
+    }
+
+}
+function SetValues2_CO() {
+    var yes = document.getElementById("co_chlpercorr").checked;
+    if (yes == true) {
+        var PresentStateId = $("#Co_State option:selected").val();
+        document.getElementById("CO_permanentstate").value = PresentStateId;
+        document.getElementById("CO_permanentstate").disabled = true;
+
+    } else {
+        document.getElementById("CO_permanentstate").value = "";
+        document.getElementById("CO_permanentstate").disabled = false;
+
+    }
+
+}
+function SetValues3_CO() {
+    debugger
+    var yes = document.getElementById("co_chlpercorr").checked;
+    if (yes == true) {
+        var PresentStateId = $("#Co_State option:selected").val();
+        var PresentCityId = $("#CO_City option:selected").val();
+        var stateid = PresentStateId;
+        if (stateid.length == 0) {
+            var s = '<option value="">- Select City -</option>'
+            $('#CO_permanentcity').html(s);
+        } else {
+            var s = '<option value="">- Select City -</option>'
+            $('#CO_permanentcity').html(s);
+            $.ajax({
+                url: "/City/GetCity",
+                type: "Get",
+                /* url: '@Url.Action("GetCity", "City")',*/
+                dataType: "json",
+                data: {
+                    StateId: stateid
+                },
+                success: function (result) {
+                    debugger
+                    var data = JSON.parse(result);
+                    for (var i = 0; i < data.length; i++) {
+                        var opt = new Option(data[i].CityName, data[i].Cityid);
+                        $('#CO_permanentcity').append(opt);
+
+                    }
+                    document.getElementById("CO_permanentcity").value = PresentCityId;
+                    document.getElementById("CO_permanentcity").disabled = true;
+                }
+
+            });
+        }
+
+    } else {
+        document.getElementById("CO_permanentcity").value = "";
+        document.getElementById("CO_permanentcity").disabled = false;
+
+    }
+
+}
+
+
+
+
+
+
+
+
+
+function G_Applicantpermascorr() {
+    var yes = document.getElementById("G_chlpercorr").checked;
+    if (yes == true) {
+        var PresentAddress = $("#G_PresentAddress").val();
+        var PresentPincode = $("#G_PresentPincode").val();
+        var PresentStateId = $("#G_C_State option:selected").val();
+        var PresentCityId = $("#G_C_City option:selected").val();
+
+        document.getElementById("G_PermanentAddress").value = PresentAddress;
+        document.getElementById("G_PermanentPincode").value = PresentPincode;
+        document.getElementById("G_P_State").value = PresentStateId;
+        var stateid = PresentStateId;
+        if (stateid.length == 0) {
+            var s = '<option value="">- Select City -</option>'
+            $('#G_P_City').html(s);
+        } else {
+            var s = '<option value="">- Select City -</option>'
+            $('#G_P_City').html(s);
+            $.ajax({
+                url: "/City/GetCity",
+                type: "Get",
+                /* url: '@Url.Action("GetCity", "City")',*/
+                dataType: "json",
+                data: {
+                    StateId: stateid
+                },
+                success: function (result) {
+                    debugger
+                    var data = JSON.parse(result);
+                    for (var i = 0; i < data.length; i++) {
+                        var opt = new Option(data[i].CityName, data[i].Cityid);
+                        $('#G_P_City').append(opt);
+
+                    }
+                    document.getElementById("G_P_City").value = PresentCityId;
+                }
+
+            });
+        }
+        document.getElementById("G_PermanentAddress").disabled = true;
+        document.getElementById("G_PermanentPincode").disabled = true;
+        document.getElementById("G_P_State").disabled = true;
+        document.getElementById("G_P_City").disabled = true;
+
+    } else {
+        document.getElementById("G_PermanentAddress").value = "";
+        document.getElementById("G_PermanentPincode").value = "";
+        document.getElementById("G_P_State").value = "";
+        document.getElementById("G_P_City").value = "";
+        document.getElementById("G_PermanentAddress").disabled = false;
+        document.getElementById("G_PermanentPincode").disabled = false;
+        document.getElementById("G_P_State").disabled = false;
+        document.getElementById("G_P_City").disabled = false;
+    }
+
+}
+function SetValues_G() {
+    var yes = document.getElementById("G_chlpercorr").checked;
+    if (yes == true) {
+        var PresentAddress = $("#G_PresentAddress").val();
+
+        document.getElementById("G_PermanentAddress").value = PresentAddress;
+
+        document.getElementById("G_PermanentAddress").disabled = true;
+
+    } else {
+        document.getElementById("G_PermanentAddress").value = "";
+        document.getElementById("G_PermanentAddress").disabled = false;
+
+    }
+
+}
+function SetValues1_G() {
+    var yes = document.getElementById("G_chlpercorr").checked;
+    if (yes == true) {
+        var PresentPincode = $("#G_PresentPincode").val();
+
+        document.getElementById("G_PermanentPincode").value = PresentPincode;
+
+        document.getElementById("G_PermanentPincode").disabled = true;
+
+    } else {
+        document.getElementById("G_PermanentPincode").value = "";
+        document.getElementById("G_PermanentPincode").disabled = false;
+
+    }
+
+}
+function SetValues2_G() {
+    var yes = document.getElementById("G_chlpercorr").checked;
+    if (yes == true) {
+        var PresentStateId = $("#G_C_State option:selected").val();
+        document.getElementById("G_P_State").value = PresentStateId;
+        document.getElementById("G_P_State").disabled = true;
+
+    } else {
+        document.getElementById("G_P_State").value = "";
+        document.getElementById("G_P_State").disabled = false;
+
+    }
+
+}
+function SetValues3_G() {
+    debugger
+    var yes = document.getElementById("G_chlpercorr").checked;
+    if (yes == true) {
+        var PresentStateId = $("#G_C_State option:selected").val();
+        var PresentCityId = $("#G_C_City option:selected").val();
+        var stateid = PresentStateId;
+        if (stateid.length == 0) {
+            var s = '<option value="">- Select City -</option>'
+            $('#G_P_City').html(s);
+        } else {
+            var s = '<option value="">- Select City -</option>'
+            $('#G_P_City').html(s);
+            $.ajax({
+                url: "/City/GetCity",
+                type: "Get",
+                /* url: '@Url.Action("GetCity", "City")',*/
+                dataType: "json",
+                data: {
+                    StateId: stateid
+                },
+                success: function (result) {
+                    debugger
+                    var data = JSON.parse(result);
+                    for (var i = 0; i < data.length; i++) {
+                        var opt = new Option(data[i].CityName, data[i].Cityid);
+                        $('#G_P_City').append(opt);
+
+                    }
+                    document.getElementById("G_P_City").value = PresentCityId;
+                    document.getElementById("G_P_City").disabled = true;
+                }
+
+            });
+        }
+
+    } else {
+        document.getElementById("G_P_City").value = "";
+        document.getElementById("G_P_City").disabled = false;
 
     }
 

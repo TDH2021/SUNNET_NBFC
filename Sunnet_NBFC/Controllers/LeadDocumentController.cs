@@ -46,8 +46,8 @@ namespace Sunnet_NBFC.Controllers
 
                 //M = DataInterface1.GetItem<clsLeadCalling>(dt.Rows[0]); //for single row
 
-                ViewBag.AnswerListDDL = ClsCommon.AnswerDDL();
-                ViewBag.StatusListDDL = ClsCommon.StatusDDL("PrimyTel");
+                //ViewBag.AnswerListDDL = ClsCommon.AnswerDDL();
+                //ViewBag.StatusListDDL = ClsCommon.StatusDDL("PrimyTel");
                 M.Status = M.Status ?? "P";
                 return View(M);
             }
@@ -79,11 +79,11 @@ namespace Sunnet_NBFC.Controllers
                 clsLeadDocument DocumentModel = new clsLeadDocument();
                 int Total = Convert.ToInt32(frm["hdnCount"]);
                 string DocID = "";
-                string DcId         = "";
-                string CustomerType  = "";
-                string LeadCustId   = "";
-                string IsReceived   = "";
-                string Remarks      = "";
+                string DcId = "";
+                string CustomerType = "";
+                string LeadCustId = "";
+                string IsReceived = "";
+                string Remarks = "";
 
                 for (int i = 1; i <= Total; i++)
                 {
@@ -93,12 +93,12 @@ namespace Sunnet_NBFC.Controllers
                     LeadCustId = "";
                     IsReceived = "";
                     Remarks = "";
-                     DocID            = frm[i + "_DocID"];
-                     DcId             = frm[i + "_DcId"];
-                     CustomerType     = frm[i + "_CustomerType"];
-                     LeadCustId   = frm[i + "_LeadCustId"];
-                     IsReceived    = frm[i + "_IsReceived"];
-                     Remarks      = frm[i + "_Remarks"];
+                    DocID = frm[i + "_DocID"];
+                    DcId = frm[i + "_DcId"];
+                    CustomerType = frm[i + "_CustomerType"];
+                    LeadCustId = frm[i + "_LeadCustId"];
+                    IsReceived = frm[i + "_IsReceived"];
+                    Remarks = frm[i + "_Remarks"];
 
                     string[] arr = IsReceived.Split(',');
 
@@ -137,7 +137,7 @@ namespace Sunnet_NBFC.Controllers
                 if (IsSave)
                 {
                     M.ReqType = "UpdateStatus";
-                    //dt = DataInterface2.UpdateLeadStatus(M);
+                    dt = DataInterface1.UpdateLeadStatus(M);
                     if (dt != null && dt.Rows.Count > 0)
                     {
                         clsRtn.ID = Convert.ToInt64("0" + Convert.ToString(dt.Rows[0]["ReturnID"]));

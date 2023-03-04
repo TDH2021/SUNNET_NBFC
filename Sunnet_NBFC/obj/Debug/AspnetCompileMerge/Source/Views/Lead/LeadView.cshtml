@@ -11,7 +11,7 @@
         width: 1120px !important;
         margin: 20px auto;
     }
-    </style>
+</style>
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -51,6 +51,7 @@
                                     <th>Reuested Loan Tenure</th>
                                     <th>Status</th>
                                     <th>-</th>
+                                    <th>-</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -61,28 +62,35 @@
                                     var m = ViewBag.lst;
                                     foreach (var item in m)
                                     {
-                                <tr>
-                                    <td>
+                                        <tr>
+                                            <td>
 
-                                        <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="return CallPickData('@item.LeadNo','@item.LeadId');"> <b> @item.LeadNo  </b> </button>
+                                                <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="return CallPickData('@item.LeadNo','@item.LeadId');"> <b> @item.LeadNo  </b> </button>
 
-                                    </td>
-                                    <td>@item.CustomerName</td>
-                                    <td>@item.MobileNo1</td>
-                                    <td>@item.PanNo</td>
-                                    <td>@item.AadharNo</td>
-                                    <td>@item.ReuestedLoanAmount</td>
-                                    <td>@item.ReuestedLoanTenure</td>
-                                    <td>@item.Status</td>
-                                    <td>
-                                        <div class="d-flex order-actions">
-                                            <a href="@Url.Action("LeadCalling","LeadCalling",new{LeadId=item.LeadId})"
-                                               data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Calling"><u>Calling</u></a>
-                                        </div>
+                                            </td>
+                                            <td>@item.CustomerName</td>
+                                            <td>@item.MobileNo1</td>
+                                            <td>@item.PanNo</td>
+                                            <td>@item.AadharNo</td>
+                                            <td>@item.ReuestedLoanAmount</td>
+                                            <td>@item.ReuestedLoanTenure</td>
+                                            <td>@item.Status</td>
+                                            <td>
+                                                <div class="d-flex order-actions">
+                                                    <a href="@Url.Action("LeadCalling","LeadCalling",new{LeadId=item.LeadId})"
+                                                       data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Calling"><u>Calling</u></a>
+                                                </div>
 
-                                    </td>
+                                            </td>
 
-                                </tr>
+                                            <td>
+                                                <div class="d-flex order-actions">
+                                                    <a href="@Url.Action("LeadDocument","LeadDocument",new{LeadId=item.LeadId})"
+                                                       data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Document"><u>Document</u></a>
+                                                </div>
+
+                                            </td>
+                                        </tr>
                                     }
                                 }
 
@@ -99,6 +107,8 @@
                                     <th>Reuested Loan Amount</th>
                                     <th>Reuested Loan Tenure</th>
                                     <th>Status</th>
+                                    <th>-</th>
+                                    <th>-</th>
                                 </tr>
                             </tfoot>
                         </table>
@@ -117,9 +127,9 @@
         <!-- /.row -->
     </div>
 
-    <div id="myModal" class="modal fade"  tabindex="1"  role="dialog"></div>
+    <div class="modal fade in" id="myModal" tabindex="1" role="dialog" aria-hidden="false" data-keyboard="false" data-backdrop="static"></div>
 
-    
+
 
 </section>
 <script type="text/javascript">
@@ -136,7 +146,7 @@
             success: function (data) {
                 //alert(data);
                 $('#myModal').html(data);
-                $('#myModal').show();
+
             },
             error: function (ex) {
                 alert(ex.error);

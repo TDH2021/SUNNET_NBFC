@@ -443,8 +443,177 @@ public class DataInterface1 : IDisposable
         return dt;
     }
 
-    
 
+    public static DataTable dbLeadDocumentCollection(clsLeadDocSign cls)
+    {
+        DataTable dt = new DataTable();
+        try
+        {
+            using (DBOperation db = new DBOperation())
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@ReqType", SqlDbType.VarChar).Value = cls.ReqType;
+
+                    cmd.Parameters.Add("@CompanyId", SqlDbType.Int).Value = ClsSession.CompanyID;
+                    cmd.Parameters.Add("@DocSignId", SqlDbType.Int).Value = cls.DocSignId;
+                    cmd.Parameters.Add("@LeadId", SqlDbType.Int).Value = cls.LeadId;
+                    //cmd.Parameters.Add("@LeadNo", SqlDbType.Int).Value = cls.LeadNo;
+
+                    cmd.Parameters.Add("@Documents", SqlDbType.Int).Value = cls.Documents;
+                    cmd.Parameters.Add("@SanctionLetter", SqlDbType.Int).Value = cls.SanctionLetter;
+                    cmd.Parameters.Add("@LoanAgrmentKit", SqlDbType.VarChar).Value = cls.LoanAgrmentKit;
+                    cmd.Parameters.Add("@PDC", SqlDbType.Bit).Value = cls.PDC;
+                    cmd.Parameters.Add("@NACH", SqlDbType.VarChar).Value = cls.NACH;
+                    cmd.Parameters.Add("@DisbursmentKit", SqlDbType.Bit).Value = cls.DisbursmentKit;
+                    cmd.Parameters.Add("@InsuranceWithHP", SqlDbType.Int).Value = cls.InsuranceWithHP;
+                    cmd.Parameters.Add("@NOC", SqlDbType.VarChar).Value = cls.NOC;
+                    cmd.Parameters.Add("@RTOSlip", SqlDbType.Bit).Value = cls.RTOSlip;
+                    cmd.Parameters.Add("@OrignalPropertyPaper", SqlDbType.VarChar).Value = cls.OrignalPropertyPaper;
+                    cmd.Parameters.Add("@RegisterdMortageDeed", SqlDbType.Bit).Value = cls.RegisterdMortageDeed;
+                    cmd.Parameters.Add("@EquitableMortageDeed", SqlDbType.Int).Value = cls.EquitableMortageDeed;
+                    cmd.Parameters.Add("@Affidavit", SqlDbType.Bit).Value = cls.Affidavit;
+                    cmd.Parameters.Add("@Remarks", SqlDbType.VarChar).Value = cls.Remarks;
+                    cmd.Parameters.Add("@CreatedBy", SqlDbType.Bit).Value = cls.CreatedBy;
+                    cmd.Parameters.Add("@UpdatedBy", SqlDbType.Int).Value = cls.UpdatedBy;
+                    cmd.Parameters.Add("@IsDelete", SqlDbType.Int).Value = cls.IsDelete;
+                    dt = db.FillTableProc(cmd, "USP_LeadDocSign");
+                }
+            }
+
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+        finally
+        {
+            dt.Dispose();
+        }
+        return dt;
+    }
+
+    #region Update Lead Status
+    public static DataTable UpdateLeadStatus(clsLeadmaind cls)
+    {
+        //ClsReturnData clsRtn = new ClsReturnData();
+        //clsRtn.MsgType = (int)MessageType.Fail;
+        DataTable dt = new DataTable();
+        try
+        {
+            DBOperation db = new DBOperation();
+            SqlCommand cmd = new SqlCommand();
+
+            //using (DBOperation db = new DBOperation())
+            //{
+            //    using (SqlCommand cmd = new SqlCommand())
+            //    {
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@ReqType", SqlDbType.VarChar).Value = cls.ReqType;
+            cmd.Parameters.Add("@LeadId", SqlDbType.Int).Value = cls.LeadId;
+            cmd.Parameters.Add("@StageId", SqlDbType.Int).Value = cls.StageId;
+            cmd.Parameters.Add("@StageName", SqlDbType.VarChar).Value = cls.StageName;
+            cmd.Parameters.Add("@IsActive", SqlDbType.Int).Value = cls.IsActive;
+            cmd.Parameters.Add("@IsCurrent", SqlDbType.Int).Value = cls.IsCurrent;
+            cmd.Parameters.Add("@ShortStage_Name", SqlDbType.VarChar).Value = cls.ShortStage_Name;
+            cmd.Parameters.Add("@Dependancy", SqlDbType.Int).Value = cls.Dependancy;
+            cmd.Parameters.Add("@Sequence", SqlDbType.Int).Value = cls.Sequence;
+            cmd.Parameters.Add("@Status", SqlDbType.VarChar).Value = cls.Status;
+            cmd.Parameters.Add("@Remarks", SqlDbType.VarChar).Value = cls.Remarks;
+            cmd.Parameters.Add("@CompanyId", SqlDbType.Int).Value = ClsSession.CompanyID;
+            dt = db.FillTableProc(cmd, "USP_LeadDetail");
+
+            //if (dt != null && dt.Rows.Count > 0)
+            //{
+            //    clsRtn.ID = Convert.ToInt64("0" + Convert.ToString(dt.Rows[0]["ReturnID"]));
+            //    clsRtn.Message = Convert.ToString(dt.Rows[0]["ReturnMessage"]);
+            //    clsRtn.MessageDesc = clsRtn.Message;
+            //    if (clsRtn.ID > 0)
+            //        clsRtn.MsgType = (int)MessageType.Success;
+            //    else
+            //        clsRtn.MsgType = (int)MessageType.Fail;
+            //}
+            //    }
+            //}
+
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+            //clsRtn.MsgType = (int)MessageType.Error;
+            //clsRtn.ID = 0;
+            //clsRtn.Message = ex.Message;
+            //clsRtn.MessageDesc = ex.Message;
+        }
+        finally
+        {
+            dt.Dispose();
+        }
+
+        return dt;
+    }
+
+    public static DataTable UpdateLeadStatusDc(clsLeadDocSignMain cls)
+    {
+        //ClsReturnData clsRtn = new ClsReturnData();
+        //clsRtn.MsgType = (int)MessageType.Fail;
+        DataTable dt = new DataTable();
+        try
+        {
+            DBOperation db = new DBOperation();
+            SqlCommand cmd = new SqlCommand();
+
+            //using (DBOperation db = new DBOperation())
+            //{
+            //    using (SqlCommand cmd = new SqlCommand())
+            //    {
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@ReqType", SqlDbType.VarChar).Value = cls.ReqType;
+            cmd.Parameters.Add("@LeadId", SqlDbType.Int).Value = cls.LeadId;
+            cmd.Parameters.Add("@StageId", SqlDbType.Int).Value = cls.StageId;
+            cmd.Parameters.Add("@StageName", SqlDbType.VarChar).Value = cls.StageName;
+            cmd.Parameters.Add("@IsActive", SqlDbType.Int).Value = cls.IsActive;
+            cmd.Parameters.Add("@IsCurrent", SqlDbType.Int).Value = cls.IsCurrent;
+            cmd.Parameters.Add("@ShortStage_Name", SqlDbType.VarChar).Value = cls.ShortStage_Name;
+            cmd.Parameters.Add("@Dependancy", SqlDbType.Int).Value = cls.Dependancy;
+            cmd.Parameters.Add("@Sequence", SqlDbType.Int).Value = cls.Sequence;
+            cmd.Parameters.Add("@Status", SqlDbType.VarChar).Value = cls.Status;
+            cmd.Parameters.Add("@Remarks", SqlDbType.VarChar).Value = cls.Remarks;
+            cmd.Parameters.Add("@CompanyId", SqlDbType.Int).Value = ClsSession.CompanyID;
+            dt = db.FillTableProc(cmd, "USP_LeadDetail");
+
+            //if (dt != null && dt.Rows.Count > 0)
+            //{
+            //    clsRtn.ID = Convert.ToInt64("0" + Convert.ToString(dt.Rows[0]["ReturnID"]));
+            //    clsRtn.Message = Convert.ToString(dt.Rows[0]["ReturnMessage"]);
+            //    clsRtn.MessageDesc = clsRtn.Message;
+            //    if (clsRtn.ID > 0)
+            //        clsRtn.MsgType = (int)MessageType.Success;
+            //    else
+            //        clsRtn.MsgType = (int)MessageType.Fail;
+            //}
+            //    }
+            //}
+
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+            //clsRtn.MsgType = (int)MessageType.Error;
+            //clsRtn.ID = 0;
+            //clsRtn.Message = ex.Message;
+            //clsRtn.MessageDesc = ex.Message;
+        }
+        finally
+        {
+            dt.Dispose();
+        }
+
+        return dt;
+    }
+
+    #endregion
 
     //=======commom fun
     public static T GetItem<T>(DataRow dr)

@@ -36,3 +36,27 @@ $('#EmpID').change(function () {
     }
 });
 
+function callfillemp() {
+    var empid = $("#EmpID option:selected").val();
+    if (empid.length == 0) {
+    } else {
+        //var s = '<option value="">- Select City -</option>'
+        //$('#CityID').html(s);
+        $.ajax({
+            url: "/Employee/GetEmpdtl",
+            type: "Get",
+            /* url: '@Url.Action("GetCity", "City")',*/
+            dataType: "json",
+            data: {
+                EmpId: empid
+            },
+            success: function (result) {
+                //debugger
+                var data = JSON.parse(result);
+                $('#EmpCode').val(data[0].EmpCode);
+                $('#EmpName').val(data[0].EmpName);
+            }
+        });
+    }
+}
+

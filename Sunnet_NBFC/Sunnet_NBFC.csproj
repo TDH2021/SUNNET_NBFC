@@ -139,6 +139,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LeadCallingController.cs" />
     <Compile Include="Controllers\LeadController.cs" />
+    <Compile Include="Controllers\LeadDocumentCollectionController.cs" />
+    <Compile Include="Controllers\LeadDocumentController.cs" />
     <Compile Include="Controllers\LeadGenerationController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MasterController.cs" />
@@ -151,6 +153,7 @@
     <Compile Include="Controllers\StatusController.cs" />
     <Compile Include="Controllers\SubMenuController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\UserRoleController.cs" />
     <Compile Include="Controllers\WhatsupController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -209,7 +212,6 @@
     <Content Include="bin\roslyn\VBCSCompiler.exe" />
     <Content Include="bin\System.Net.Http.dll" />
     <Content Include="bin\System.Web.Helpers.dll" />
-    <Content Include="bin\System.Web.Helpers.xml" />
     <Content Include="bin\System.Web.Mvc.dll" />
     <Content Include="bin\System.Web.Mvc.xml" />
     <Content Include="bin\System.Web.Optimization.dll" />
@@ -221,7 +223,6 @@
     <Content Include="bin\System.Web.WebPages.dll" />
     <Content Include="bin\System.Web.WebPages.Razor.dll" />
     <Content Include="bin\System.Web.WebPages.Razor.xml" />
-    <Content Include="bin\System.Web.WebPages.xml" />
     <Content Include="bin\WebGrease.dll" />
     <Content Include="CompanyLOGO\ffff.jpg" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -2230,12 +2231,14 @@
     <Content Include="plugins\toastr\toastr.js.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\CustomJS\CompanyJS.js" />
+    <Content Include="Scripts\CustomJS\Branch.js" />
     <Content Include="Scripts\CustomJS\LeadGeneration.js" />
     <Content Include="Scripts\CustomJS\Employee.js" />
     <Content Include="Scripts\CustomJS\Customer.js" />
     <Content Include="Scripts\CustomJS\DSA.js" />
     <Content Include="Scripts\CustomJS\Login.js" />
     <Content Include="Scripts\CustomJS\Question.js" />
+    <Content Include="Scripts\CustomJS\RoleMaster.js" />
     <Content Include="Scripts\CustomJS\StageRole.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2679,6 +2682,18 @@
     <Content Include="Views\StageRole\StageRole.cshtml" />
     <Content Include="Views\StageRole\StageRoleView.cshtml" />
     <Content Include="Views\LeadCalling\LeadCalling.cshtml" />
+    <Content Include="Views\UserRole\RoleMaster.cshtml" />
+    <Content Include="Views\LeadDocument\LeadDocument.cshtml" />
+    <Content Include="Views\Lead\LeadGeneration\LeadGeneration.cshtml" />
+    <Content Include="Views\Lead\LeadGeneration\_AddAdditionalDetails.cshtml" />
+    <Content Include="Views\Lead\LeadGeneration\_AddCo_Applicant_Details.cshtml" />
+    <Content Include="Views\Lead\LeadGeneration\_AddCustomerDetails.cshtml" />
+    <Content Include="Views\Lead\LeadGeneration\_AddGuranterDetails.cshtml" />
+    <Content Include="Views\Lead\Lead\LeadDisplay.cshtml" />
+    <Content Include="Views\Lead\Lead\LeadPage.cshtml" />
+    <Content Include="Views\Lead\Lead\LeadView.cshtml" />
+    <Content Include="Views\Lead\Lead\_LeadDetailsView.cshtml" />
+    <Content Include="Views\LeadDocument\LeadDocumentCollection.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -373,6 +373,127 @@ namespace Sunnet_NBFC.Models
             Dispose(false);
         }
     }
+    public class clsLeadmaind : clsLeadDocument
+    {
+        //public string ReqType { get; set; }
+        //public int LeadId { get; set; }
+        public string LeadNo { get; set; }
+        public List<clsLeadDocument> clsLeadDocument { get; set; }
+
+
+        bool disposed = false;
+
+        ~clsLeadmaind()
+        {
+            Dispose(false);
+        }
+
+    }
+
+    public class clsLeadDocSign : clsLeadDetail
+    {
+        public string ReqType { get; set; }
+        public int DocSignId { get; set; }
+        public int LeadId { get; set; }
+
+        //[Required(ErrorMessage = "Employee is required.")]
+        [DisplayName("Documents")]
+        public string Documents { get; set; }
+
+        [DisplayName("Sanction Letter")]
+        public string SanctionLetter { get; set; }
+
+        [DisplayName("Loan Agreement Kit")]
+        public string LoanAgrmentKit { get; set; }
+
+        [DisplayName("PDC")]
+        //[Required(ErrorMessage = "Role Name is required.")]
+        public string PDC { get; set; }
+
+        [DisplayName("NACH")]
+        public string NACH { get; set; }
+
+        [DisplayName("Disbursment Kit")]
+        public string DisbursmentKit { get; set; }
+
+        [DisplayName("Insurance With HP")]
+        public string InsuranceWithHP { get; set; }
+
+        [DisplayName("NOC")]
+        public string NOC { get; set; }
+
+        [DisplayName("RTO Slip")]
+        public string RTOSlip { get; set; }
+
+        [DisplayName("Orignal Property Paper")]
+        public string OrignalPropertyPaper { get; set; }
+
+        [DisplayName("Registerd Mortage Deed")]
+        public string RegisterdMortageDeed { get; set; }
+
+        [DisplayName("Equitable Mortage Deed")]
+        public string EquitableMortageDeed { get; set; }
+
+        [DisplayName("Affidavit")]
+        public string Affidavit { get; set; }
+
+        [DisplayName("Remark")]
+        public string Remarks { get; set; }
+
+        [DisplayName("CreatedBy")]
+        public int CreatedBy { get; set; }
+        public int UpdatedBy { get; set; }
+
+        public int CompanyID { get; set; }
+        public int IsDelete { get; set; }
+
+        bool disposed = false;
+
+        // Public implementation of Dispose pattern callable by consumers.
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        // Protected implementation of Dispose pattern.
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposed)
+                return;
+
+            if (disposing)
+            {
+                // Free any other managed objects here.
+                //
+            }
+
+            // Free any unmanaged objects here.
+            //
+            disposed = true;
+        }
+
+        ~clsLeadDocSign()
+        {
+            Dispose(false);
+        }
+    }
+
+    public class clsLeadDocSignMain : clsLeadDocSign
+    {
+        public string LeadNo { get; set; }
+        public List<clsLeadDocSign> clsLeadDocSign { get; set; }
+
+
+        bool disposed = false;
+
+        ~clsLeadDocSignMain()
+        {
+            Dispose(false);
+        }
+
+
+    }
 
     public class clsMiscDDL
     {
@@ -410,22 +531,6 @@ namespace Sunnet_NBFC.Models
 
         }
     }
-    public class clsLeadmaind : clsLeadDocument
-    {
-        //public string ReqType { get; set; }
-        //public int LeadId { get; set; }
-        public string LeadNo { get; set; }
-        public List<clsLeadDocument> clsLeadDocument { get; set; }
-
-
-        bool disposed = false;
-
-        ~clsLeadmaind()
-        {
-            Dispose(false);
-        }
-
-    }
-
+    
     //========================
 }

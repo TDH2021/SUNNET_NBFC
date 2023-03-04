@@ -1,7 +1,8 @@
 ﻿@model Sunnet_NBFC.Models.clsLeadGenerationMaster
 
-
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <div class="modal-dialog" style="max-width: 1000px;">
 
     <!-- Modal content-->
@@ -25,7 +26,7 @@
                         </tr>
                         <tr>
                             <th>Main Product</th>
-                            <td>@Model.MainProduct</td>
+                            <td>@Model.MainProductName</td>
                             <th>Sub Product</th>
                             <td>@Model.ProductName</td>
                         </tr>
@@ -53,7 +54,7 @@
                             <td>@Model.PresentAddress</td>
                             <th>Present City</th>
                             <td>@Model.PresentCityName</td>
-                          
+
                         </tr>
                         <tr>
                             <th>Present State</th>
@@ -67,12 +68,12 @@
                             <th>Permanent Address</th>
                             <td>@Model.PermanentAddress</td>
                             <th>Permanent City</th>
-                            <td>@Model.PermenetCityName</td>
-                           
+                            <td>@Model.PremenentCityName</td>
+
                         </tr>
                         <tr>
                             <th>Permanent State</th>
-                            <td>@Model.PermenetStateName</td>
+                            <td>@Model.PremenentStateName</td>
                             <th>Permanent Pincode</th>
                             <td>@Model.PermanentPincode</td>
                         </tr>
@@ -207,7 +208,7 @@
             </div>
 
 
-            
+
 
             <div class="panel-body">
                 <label class="col-sm-4 control-label">Approved Loan Amount<span style="color:red">*</span></label>
@@ -262,7 +263,7 @@
                         </i>
                     </button>
                     &nbsp; &nbsp; &nbsp;
-                    <button class="btn btn-danger text-right" data-dismiss="modal" aria-hidden="true">
+                    <button class="btn btn-danger text-right" data-dismiss="modal" aria-hidden="true" onclick="reloadfun();">
                         Close
                         &nbsp; &nbsp; <i class="fa fa-close"> </i>
                     </button>
@@ -270,9 +271,17 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-danger" onclick="reloadfun();">Close</button>
         </div>
     </div>
 
 </div>
 
+
+<script type="text/javascript">
+
+    function reloadfun() {
+        debugger
+        location.reload();
+    } 
+</script>

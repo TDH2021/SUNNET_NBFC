@@ -73,12 +73,33 @@
                                             @Html.ValidationMessageFor(model => model.BranchContactNo, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label for="exampleInputEmail1">State</label>
+                                                @Html.DropDownListFor(model => model.StateId, ViewBag.StateList as SelectList, new { @class = "form-control", @id = "BranchState" })
+                                                @Html.ValidationMessageFor(model => model.StateId, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="exampleInputEmail1">City</label>
+                                                @Html.DropDownListFor(model => model.CityId,
+                                               new SelectList(Enumerable.Empty<SelectListItem>(), "CityId", "CityName"),
+                                               "Select city", new { @class = "form-control", @id = "DSACity" })
+                                                @*@Html.DropDownListFor(model => model.DSACityId, ViewBag.CityList as SelectList, new { @class = "form-control", @id = "DSACity" })*@
+                                                @Html.ValidationMessageFor(model => model.CityId, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
 
                                     <div class="form-group">
                                         <div class="row">
 
                                             <div class="col-md-6">
-
+                                                <label for="exampleInputEmail1">Branch Manager</label>
+                                                @Html.EditorFor(model => model.BranchManger, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.BranchManger, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="col-md-6">
                                                 @if (Model.BranchId != null && Model.BranchId != 0)
                                                 {
                                                     <label class="control-label">Status</label>
@@ -92,9 +113,6 @@
                                                     @Html.ValidationMessageFor(model => model.IsDelete, "", new { @class = "text-danger" })
 
                                                 }
-                                            </div>
-                                            <div class="col-md-6">
-
                                             </div>
                                         </div>
                                     </div>
@@ -122,10 +140,7 @@
     </section>
 
 }
-
-<script src="~/plugins/jquery/jquery.min.js"></script>
-<script src="~/plugins/jquery/jquery.validate.min.js"></script>
-<script src="~/plugins/jquery/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/CustomJS/Branch.js"></script>
 
 @if (ViewBag.Error != null && ViewBag.Error != "")
 {

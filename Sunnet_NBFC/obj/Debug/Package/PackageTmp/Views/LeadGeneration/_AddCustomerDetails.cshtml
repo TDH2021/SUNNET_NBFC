@@ -161,11 +161,13 @@
            @name = "AadharNo",
            @required = "true",
            @type = "number",
-           @id = "AadharNo",
-          
+           @id = "AadharNo"@*,
+           @onchange = "AAdharVerification()"*@
+
 
 
        })
+            @Html.HiddenFor(model => model.AAdharverfiy, new { @class = "form-control", @id = "hdn_customer_aadhar_verify" })
         </div>
         <div class="col-md-4">
             <label for="exampleInputEmail1"> Pan No </label>
@@ -176,9 +178,11 @@
            @name = "PanNo",
            @required = "true",
            @id = "PanNo",
+           @onchange = "PanVerification()"
 
 
        })
+            @Html.HiddenFor(model => model.PanVerify, new { @class = "form-control", @id = "hdn_customer_PanVerify" })
         </div>
 
 
@@ -374,4 +378,31 @@
 
     </div>
 
+    <div class="row">
+        <div class="col-md-4">
+            <label for="exampleInputEmail1">Email Id</label>
+            @Html.TextBoxFor(model => model.EmailId, new
+            {
+                @class = "form-control",
+                @placeholder = "Email Id",
+                @name = "EmailId",
+                @required = "true",
+                @id = "EmailId"
+
+            })
+        </div>
+
+        <div class="col-md-4">
+            <label for="exampleInputEmail1">CIF Id</label>
+            @Html.TextBoxFor(model => model.CIFID, new
+       {
+           @class = "form-control",
+           @placeholder = "CIFID",
+           @name = "CIFID",
+           @required = "true",
+           @id = "CIFID"
+
+       })
+        </div>
+    </div>
 </div>

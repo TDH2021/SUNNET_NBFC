@@ -104,34 +104,38 @@
         <div class="col-md-4">
             <label for="exampleInputEmail1">Corrospondance Address</label>
             @Html.TextBoxFor(model => model.CO_PresentAddress, new
-            {
-                @class = "form-control",
-                @placeholder = "Present Address",
-                @name = "PresentAddress",
-                @required = "true",
-                @id = "CO_PresentAddress"
+       {
+           @class = "form-control",
+           @placeholder = "Present Address",
+           @name = "PresentAddress",
+           @required = "true",
+           @id = "CO_PresentAddress",
+           @onchange = "SetValues_CO();"
 
-            })
+       })
         </div>
 
         <div class="col-md-4">
             <label for="exampleInputEmail1">Corrospondance Pincode</label>
             @Html.TextBoxFor(model => model.CO_PresentPinCode, new
-            {
-                @class = "form-control",
-                @placeholder = "Present Pincode",
-                @name = "PresentPincode",
-                @required = "true",
-                @type = "number",
-                @id = "CO_PresentPincode"
+       {
+           @class = "form-control",
+           @placeholder = "Present Pincode",
+           @name = "PresentPincode",
+           @required = "true",
+           @type = "number",
+           @id = "CO_PresentPincode",
+           @onchange = "SetValues1_CO();"
 
-            })
+       })
         </div>
 
         <div class="col-md-4">
             <label for="exampleInputEmail1">Corrospondance State</label>
             @Html.DropDownListFor(model => model.CO_PresentStateId, ViewBag.StateList as SelectList, "- Select State-",
-                new { @class = "form-control", @id = "Co_State" })
+                new { @class = "form-control", @id = "Co_State",
+                    @onchange = "SetValues2_CO();"
+                })
             @Html.ValidationMessageFor(model => model.CO_PresentStateId, "", new { @class = "text-danger" })
 
 
@@ -142,7 +146,9 @@
             <label for="exampleInputEmail1">Corrospondance City</label>
             @Html.DropDownListFor(model => model.CO_PresentCityId,
                      new SelectList(Enumerable.Empty<SelectListItem>(), "CityId", "CityName"),
-                     "Select city", new { @class = "form-control", @id = "CO_City" })
+                     "Select city", new { @class = "form-control", @id = "CO_City",
+                         @onchange = "SetValues3_CO();"
+                     })
             @*@Html.DropDownListFor(model => model.CO_PresentCityId, ViewBag.CityList as SelectList, new { @class = "form-control" })*@
             @Html.ValidationMessageFor(model => model.CO_PresentCityId, "", new { @class = "text-danger" })
 
@@ -150,16 +156,32 @@
         </div>
 
         <div class="col-md-4">
+          
+        </div>
+
+        <div class="col-md-4">
+         
+        </div>
+    </div>
+    <div class="row" style="margin-bottom:10px; margin-top:10px;">
+        <div class="col-md-12">
+            <input type="checkbox" id="co_chlpercorr" name="co_chlpercorr" value="Yes" onchange="Co_Applicantpermascorr();">
+            <label for="co_chlpercorr"> Permanent Address As Same As Corrospondance Address</label><br>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-4">
             <label for="exampleInputEmail1">Permanent Address</label>
             @Html.TextBoxFor(model => model.CO_PermanentAddress, new
-            {
-                @class = "form-control",
-                @placeholder = "Permanent Address",
-                @name = "PermanentAddress",
-                @required = "true",
-                @id = "CO_PermanentAddress"
+       {
+           @class = "form-control",
+           @placeholder = "Permanent Address",
+           @name = "PermanentAddress",
+           @required = "true",
+           @id = "CO_PermanentAddress"
 
-            })
+       })
         </div>
 
         <div class="col-md-4">
@@ -173,24 +195,27 @@
            @type = "number",
            @id = "CO_PermanentPincode"
 
+
        })
         </div>
-    </div>
-    <div class="row">
+
         <div class="col-md-4">
             <label for="exampleInputEmail1">Permanent State</label>
 
             @Html.DropDownListFor(model => model.CO_PermanentStateId, ViewBag.StateList as SelectList, "- Select State-",
-                new { @class = "form-control", @id = "CO_permanentstate" })
+                new { @class = "form-control", @id = "CO_permanentstate"
+                })
             @Html.ValidationMessageFor(model => model.CO_PermanentStateId, "", new { @class = "text-danger" })
         </div>
-
+    </div>
+   <div class="row">
         <div class="col-md-4">
             <label for="exampleInputEmail1">Permanent City</label>
 
             @Html.DropDownListFor(model => model.CO_PermanentCityId,
                      new SelectList(Enumerable.Empty<SelectListItem>(), "CityId", "CityName"),
-                     "Select city", new { @class = "form-control", @id = "CO_permanentcity" })
+                     "Select city", new { @class = "form-control", @id = "CO_permanentcity"
+                     })
             @*@Html.DropDownListFor(model => model.PermanentCityId, ViewBag.CityList as SelectList, new { @class = "form-control" })*@
             @Html.ValidationMessageFor(model => model.CO_PermanentCityId, "", new { @class = "text-danger" })
 
@@ -208,9 +233,6 @@
 
             })
         </div>
-
-    </div>
-    <div class="row">
         <div class="col-md-4">
             <label for="exampleInputEmail1">Email Id</label>
             @Html.TextBoxFor(model => model.CO_Email_Id, new
@@ -224,65 +246,60 @@
             })
         </div>
 
+    </div>
+   <div class="row">
 
-        <div class="col-md-4">
-            <label for="exampleInputEmail1"> Pan No </label>
-            @Html.TextBoxFor(model => model.PanNo, new
-            {
-                @class = "form-control",
-                @placeholder = "PanNo",
-                @name = "CO_PanNo",
-                @required = "true",
-                @id = "CO_PanNo"
+       <div class="col-md-4">
+           <label for="exampleInputEmail1"> Pan No </label>
+           @Html.TextBoxFor(model => model.PanNo, new
+           {
+               @class = "form-control",
+               @placeholder = "PanNo",
+               @name = "CO_PanNo",
+               @required = "true",
+               @id = "CO_PanNo"
 
-            })
-        </div>
+           })
+       </div>
 
-        <div class="col-md-4">
-            <label for="exampleInputEmail1"> Aadhar No </label>
-            @Html.TextBoxFor(model => model.AadharNo, new
-       {
-           @class = "form-control",
-           @placeholder = "Aadhar No",
-           @name = "CO_AadharNo",
-           @required = "true",
-           @type = "number",
-           @id = "CO_AadharNo"
+       <div class="col-md-4">
+           <label for="exampleInputEmail1"> Aadhar No </label>
+           @Html.TextBoxFor(model => model.AadharNo, new
+      {
+          @class = "form-control",
+          @placeholder = "Aadhar No",
+          @name = "CO_AadharNo",
+          @required = "true",
+          @type = "number",
+          @id = "CO_AadharNo"
 
-       })
-        </div>
+      })
+       </div>
+       <div class="col-md-4">
+           <label for="exampleInputEmail1">
+               Cibil Score
+           </label>
+           @Html.TextBoxFor(model => model.CibilScore, new
+           {
+               @class = "form-control",
+               @placeholder = "Cibil Score",
+               @name = "CO_CibilScore",
+               @required = "true",
+               @id = "CO_CibilScore",
+               @type = "Number"
+
+           })
+       </div>
+   </div>
+
+
+      
+
+
+
+
 
     </div>
-
-
-    <div class="row">
-
-
-        <div class="col-md-4">
-            <label for="exampleInputEmail1">
-                Cibil Score
-            </label>
-            @Html.TextBoxFor(model => model.CibilScore, new
-            {
-                @class = "form-control",
-                @placeholder = "Cibil Score",
-                @name = "CO_CibilScore",
-                @required = "true",
-                @id = "CO_CibilScore",
-                @type = "Number"
-
-            })
-        </div>
-
-
-    </div>
-
-
-
-
-
-
-</div>
 
 
 

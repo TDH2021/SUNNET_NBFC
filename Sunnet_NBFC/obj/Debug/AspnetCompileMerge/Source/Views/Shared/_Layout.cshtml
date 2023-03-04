@@ -1,16 +1,17 @@
 ﻿<!DOCTYPE html>
 <html ng-app="MyApp">
 <head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<title>@ViewBag.Title</title>
-	<!-- Google Font: Source Sans Pro -->
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-	@* <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>*@
-	<script src="~/Scripts/sweetalert.min.js"></script>
-	<!-- Font Awesome -->
-	@Styles.Render("~/bundles/LayoutCss")
+    <title>@ViewBag.Title</title>
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    @* <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>*@
+    <script src="~/Scripts/sweetalert.min.js"></script>
+    <!-- Font Awesome -->
+    @Styles.Render("~/bundles/LayoutCss")
+    @Scripts.Render("~/bundles/js")
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 	<div class="wrapper">
@@ -493,6 +494,21 @@
                                     </a>
                                 </li>
 
+                                <li class="nav-item">
+                                    <a href='@Url.Action("RoleMaster", "UserRole")' class="nav-link">
+
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>User Role</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href='@Url.Action("RoleMaster", "UserRole")' class="nav-link">
+
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>User Role View</p>
+                                    </a>
+                                </li>
+
                             </ul>
 						</li>
 						<li class="nav-item">
@@ -521,6 +537,13 @@
                                     <a href='@Url.Action("LeadView", "Lead", new {ShortStage_Name="PrimyTel"})' class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>TCU Lead</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href='@Url.Action("LeadView", "Lead", new {ShortStage_Name="DocCol"})' class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Doument Calling</p>
                                     </a>
                                 </li>
 
@@ -577,7 +600,7 @@
 		</aside>
 	</div>
 	<!-- jQuery -->
-	@Scripts.Render("~/bundles/js")
+	
 
 	<!-- Page specific script -->
 	<script>

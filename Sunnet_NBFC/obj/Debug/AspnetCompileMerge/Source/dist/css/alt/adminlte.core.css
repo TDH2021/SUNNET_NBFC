@@ -12337,7 +12337,10 @@ body.sidebar-collapse:not(.sidebar-mini-xs):not(.sidebar-mini-md):not(.sidebar-m
 }
 
 .content-wrapper {
-  background-color: #f4f6f9;
+    background-image: url(/dist/img/sunitlogo.png);
+    background-repeat: no-repeat;
+    background-size: 500px;
+    background-position: center;
 }
 
 .content-wrapper > .content {
