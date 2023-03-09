@@ -1,7 +1,8 @@
 ﻿$('#MainProductId').change(function () {
-    debugger;
+   
 
     var MainProductId = $("#MainProductId option:selected").val();
+    var MainProducttext = $("#MainProductId option:selected").text();
     if (MainProductId.length == 0) {
         var s = '<option value="">- Select Product -</option>'
         $('#ProductId').html(s);
@@ -16,7 +17,19 @@
                 MainProductId: MainProductId
             },
             success: function (result) {
-                debugger
+                if (MainProducttext == "Personal Loan") {
+                    $('#business_div').hide();
+                    $('#vechical_div').hide();
+                    $('#personal_div').show();
+                } else if (MainProducttext == "Vehicle Loan") {
+                    $('#business_div').hide();
+                    $('#vechical_div').show();
+                    $('#personal_div').hide();
+                } else if (MainProducttext == "Bussiness Loan") {
+                    $('#business_div').show();
+                    $('#vechical_div').hide();
+                    $('#personal_div').hide();
+                }
                 var data = JSON.parse(result);
                 for (var i = 0; i < data.length; i++) {
                     var opt = new Option(data[i].ProductName, data[i].ProdId);
@@ -268,6 +281,7 @@ function ValidationChk() {
     var PANregex = /[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
     var ReqType = "Insert";
     var MainProductId = $("#MainProductId option:selected").val();
+    var MainProductText = $("#MainProductId option:selected").text();
     var ProductId = $("#ProductId option:selected").val();
     var FName = $("#FName").val();
     var MName = $("#MName").val();
@@ -349,9 +363,34 @@ function ValidationChk() {
     var ColletralSecurityType = $("#ColletralSecurityType").val();
 
     var customers = new Array();
-   
 
+    debugger
     var filedata = new FormData();
+
+
+    var fileUpload = $("#fileuploadapplicantimg").get(0);
+    var files = fileUpload.files;
+    debugger;
+    if (files.length <= 0) {
+        filedata.append('ApplicantImg', "");
+    }
+    for (var i = 0; i < files.length; i++) {
+
+        filedata.append('ApplicantImg', files[i]);
+    }
+
+    var cofileUpload = $("#cofileuploadapplicantimg").get(0);
+    var cofiles = cofileUpload.files;
+    debugger;
+    if (cofiles.length <= 0) {
+        filedata.append('COApplicantImg', "");
+    }
+    for (var i = 0; i < cofiles.length; i++) {
+
+        filedata.append('COApplicantImg', cofiles[i]);
+    }
+
+
     debugger
 
     if (MainProductId.length == 0) {
@@ -1261,23 +1300,7 @@ function ValidationChk() {
 
 
             }
-            else if (LoanPurpose.length == 0) {
-
-                swal({
-                    title: "Error",
-                    text: "Please enter purpose of loan",
-                    icon: "error",
-                    button: true,
-
-                })
-                    .then((willConfirm) => {
-                        if (willConfirm) {
-
-                        }
-                    });
-
-
-            }
+            
             else if (RefernceName.length == 0) {
 
                 swal({
@@ -1346,41 +1369,7 @@ function ValidationChk() {
 
 
             }
-            else if (NoofDependent.length == 0) {
-
-                swal({
-                    title: "Error",
-                    text: "Please enter no of dependent person",
-                    icon: "error",
-                    button: true,
-
-                })
-                    .then((willConfirm) => {
-                        if (willConfirm) {
-
-                        }
-                    });
-
-
-            }
-            else if (NoofDependent.length > 10) {
-
-                swal({
-                    title: "Error",
-                    text: "Invalid no of dependent person",
-                    icon: "error",
-                    button: true,
-
-                })
-                    .then((willConfirm) => {
-                        if (willConfirm) {
-
-                        }
-                    });
-
-
-            }
-            else if (EstMonthIncome.length == 0) {
+            else if (EstMonthIncome.length == 0 ) {
 
                 swal({
                     title: "Error",
@@ -1414,7 +1403,57 @@ function ValidationChk() {
 
 
             }
+            else if (NoofDependent.length == 0 && (MainProductText == "Vehicle Loan" || MainProductText == "Bussiness Loan")) {
 
+                swal({
+                    title: "Error",
+                    text: "Please enter no of dependent person",
+                    icon: "error",
+                    button: true,
+
+                })
+                    .then((willConfirm) => {
+                        if (willConfirm) {
+
+                        }
+                    });
+
+
+            }
+            else if (NoofDependent.length > 10 && (MainProductText == "Vehicle Loan" || MainProductText == "Bussiness Loan")) {
+
+                swal({
+                    title: "Error",
+                    text: "Invalid no of dependent person",
+                    icon: "error",
+                    button: true,
+
+                })
+                    .then((willConfirm) => {
+                        if (willConfirm) {
+
+                        }
+                    });
+
+
+            }
+            else if (LoanPurpose.length == 0 && (MainProductText == "Personal Loan" || MainProductText == "Bussiness Loan")) {
+
+                swal({
+                    title: "Error",
+                    text: "Please enter purpose of loan",
+                    icon: "error",
+                    button: true,
+
+                })
+                    .then((willConfirm) => {
+                        if (willConfirm) {
+
+                        }
+                    });
+
+
+            }
 
 
             else {
@@ -2361,23 +2400,7 @@ function ValidationChk() {
 
 
             }
-            else if (LoanPurpose.length == 0) {
-
-                swal({
-                    title: "Error",
-                    text: "Please enter purpose of loan",
-                    icon: "error",
-                    button: true,
-
-                })
-                    .then((willConfirm) => {
-                        if (willConfirm) {
-
-                        }
-                    });
-
-
-            }
+           
             else if (RefernceName.length == 0) {
 
                 swal({
@@ -2446,40 +2469,7 @@ function ValidationChk() {
 
 
             }
-            else if (NoofDependent.length == 0) {
 
-                swal({
-                    title: "Error",
-                    text: "Please enter no of dependent person",
-                    icon: "error",
-                    button: true,
-
-                })
-                    .then((willConfirm) => {
-                        if (willConfirm) {
-
-                        }
-                    });
-
-
-            }
-            else if (NoofDependent.length > 10) {
-
-                swal({
-                    title: "Error",
-                    text: "Invalid no of dependent person",
-                    icon: "error",
-                    button: true,
-
-                })
-                    .then((willConfirm) => {
-                        if (willConfirm) {
-
-                        }
-                    });
-
-
-            }
             else if (EstMonthIncome.length == 0) {
 
                 swal({
@@ -2502,6 +2492,59 @@ function ValidationChk() {
                 swal({
                     title: "Error",
                     text: "Please enter est month expense",
+                    icon: "error",
+                    button: true,
+
+                })
+                    .then((willConfirm) => {
+                        if (willConfirm) {
+
+                        }
+                    });
+
+
+            }
+
+
+            else if (NoofDependent.length == 0 && (MainProductText == "Vehicle Loan" || MainProductText == "Bussiness Loan")) {
+
+                swal({
+                    title: "Error",
+                    text: "Please enter no of dependent person",
+                    icon: "error",
+                    button: true,
+
+                })
+                    .then((willConfirm) => {
+                        if (willConfirm) {
+
+                        }
+                    });
+
+
+            }
+            else if (NoofDependent.length > 10 && (MainProductText == "Vehicle Loan" || MainProductText == "Bussiness Loan") ) {
+
+                swal({
+                    title: "Error",
+                    text: "Invalid no of dependent person",
+                    icon: "error",
+                    button: true,
+
+                })
+                    .then((willConfirm) => {
+                        if (willConfirm) {
+
+                        }
+                    });
+
+
+            }
+            else if (LoanPurpose.length == 0 && (MainProductText == "Personal Loan"  || MainProductText == "Bussiness Loan")) {
+
+                swal({
+                    title: "Error",
+                    text: "Please enter purpose of loan",
                     icon: "error",
                     button: true,
 
@@ -3176,23 +3219,6 @@ function ValidationChk() {
 
 
             }
-            else if (LoanPurpose.length == 0) {
-
-                swal({
-                    title: "Error",
-                    text: "Please enter purpose of loan",
-                    icon: "error",
-                    button: true,
-
-                })
-                    .then((willConfirm) => {
-                        if (willConfirm) {
-
-                        }
-                    });
-
-
-            }
             else if (RefernceName.length == 0) {
 
                 swal({
@@ -3261,40 +3287,6 @@ function ValidationChk() {
 
 
             }
-            else if (NoofDependent.length == 0) {
-
-                swal({
-                    title: "Error",
-                    text: "Please enter no of dependent person",
-                    icon: "error",
-                    button: true,
-
-                })
-                    .then((willConfirm) => {
-                        if (willConfirm) {
-
-                        }
-                    });
-
-
-            }
-            else if (NoofDependent.length > 10) {
-
-                swal({
-                    title: "Error",
-                    text: "Invalid no of dependent person",
-                    icon: "error",
-                    button: true,
-
-                })
-                    .then((willConfirm) => {
-                        if (willConfirm) {
-
-                        }
-                    });
-
-
-            }
             else if (EstMonthIncome.length == 0) {
 
                 swal({
@@ -3329,7 +3321,57 @@ function ValidationChk() {
 
 
             }
+            else if (NoofDependent.length == 0 && (MainProductText == "Vehicle Loan" || MainProductText == "Bussiness Loan")) {
 
+                swal({
+                    title: "Error",
+                    text: "Please enter no of dependent person",
+                    icon: "error",
+                    button: true,
+
+                })
+                    .then((willConfirm) => {
+                        if (willConfirm) {
+
+                        }
+                    });
+
+
+            }
+            else if (NoofDependent.length > 10 && (MainProductText == "Vehicle Loan" || MainProductText == "Bussiness Loan")) {
+
+                swal({
+                    title: "Error",
+                    text: "Invalid no of dependent person",
+                    icon: "error",
+                    button: true,
+
+                })
+                    .then((willConfirm) => {
+                        if (willConfirm) {
+
+                        }
+                    });
+
+
+            }
+            else if (LoanPurpose.length == 0 && (MainProductText == "Personal Loan" || MainProductText == "Bussiness Loan")) {
+
+                swal({
+                    title: "Error",
+                    text: "Please enter purpose of loan",
+                    icon: "error",
+                    button: true,
+
+                })
+                    .then((willConfirm) => {
+                        if (willConfirm) {
+
+                        }
+                    });
+
+
+            }
             else {
 
 

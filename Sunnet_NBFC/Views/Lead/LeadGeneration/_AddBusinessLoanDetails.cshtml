@@ -1,0 +1,113 @@
+﻿@model Sunnet_NBFC.Models.clsLeadGenerationMaster
+
+
+<div class="form-group" style="margin-top:20px;">
+    <div class="col-md-12">
+        <h5> Business Loan Details</h5>
+    </div>
+    <hr>
+
+    <div class="row">
+
+        <div class="col-md-3">
+            <label for="exampleInputEmail1">No of Dependent</label>
+            @Html.TextBoxFor(model => model.NoofDependent, new
+       {
+           @class = "form-control",
+           @placeholder = "No of Dependent",
+           @name = "MName",
+           @required = "true",
+           @type = "number",
+           @id = "BusinessNoofDependent"
+
+       })
+        </div>
+
+        <div class="col-md-3">
+            <label for="exampleInputEmail1">Colletral Security Type</label>
+            @Html.TextBoxFor(model => model.ColletralSecurityType, new
+       {
+           @class = "form-control",
+           @placeholder = "Colletral Security Type",
+           @name = "MName",
+           @required = "true",
+           @id = "BusinessColletralSecurityType"
+
+       })
+        </div>
+
+
+        <div class="col-md-3">
+            <label for="exampleInputEmail1">Cur Month Obligation</label>
+            @Html.TextBoxFor(model => model.CurMonthObligation, new
+       {
+           @class = "form-control",
+           @placeholder = "Cur Month Obligation",
+           @name = "MName",
+           @type = "number",
+           @required = "true",
+           @id = "BusinessCurMonthObligation"
+
+       })
+        </div>
+
+
+        <div class="col-md-3">
+            <label for="exampleInputEmail1">FORecomed Amt</label>
+            @Html.TextBoxFor(model => model.FORecomedAmt, new
+            {
+                @class = "form-control",
+                @placeholder = "FORecomed Amt",
+                @name = "FName",
+                @required = "true",
+                @maxlength = "50",
+                @type = "number",
+                @id = "BusinessFORecomedAmt",
+                @autocomplete = "off"
+            })
+
+        </div>
+
+    </div>
+
+
+    <div class="row">
+
+        <div class="col-md-3">
+            <label for="exampleInputEmail1">
+                Purpose of Loan
+            </label>
+            @Html.TextBoxFor(model => model.SpouseMobileNo, new
+       {
+           @class = "form-control",
+           @placeholder = "Purpose of Loan",
+           @name = "PurposeofLoan",
+           @id = "BusinessLoanPurpose",
+           @type = "text"
+
+
+       })
+        </div>
+
+
+        <div class="col-md-3">
+            <label for="exampleInputEmail1">
+                Est Value of Security
+            </label>
+            @Html.TextBoxFor(model => model.EstValueofscurity, new
+       {
+           @class = "form-control",
+           @placeholder = "EstValueofscurity",
+           @name = "Est Value of Security",
+           @id = "EstValueofscurity",
+           @type = "text"
+
+
+       })
+        </div>
+    </div>
+
+
+</div>
+
+

@@ -479,6 +479,258 @@ namespace Sunnet_NBFC.Models
         }
     }
 
+    public class clsLeadFinalApprove : clsLeadDetail
+    {
+        //public string ReqType { get; set; }
+        public int FinalApproveId { get; set; }
+        //public int LeadId { get; set; }
+
+        //[Required(ErrorMessage = "Employee is required.")]
+        [DisplayName("Particulers")]
+        public string Particulers { get; set; }
+
+        [DisplayName("Procces fees")]
+        public decimal Proccesfees { get; set; }
+
+        [DisplayName("Advance EMI")]
+        public decimal AdvanceEMI { get; set; }
+
+        [DisplayName("GST")]
+        public decimal GST { get; set; }
+
+        [DisplayName("NetDisbAmt")]
+        public decimal NetDisbAmt { get; set; }
+
+        [DisplayName("TrnchsNo")]
+        public decimal TrnchsNo { get; set; }
+
+        [DisplayName("CersaiCharges")]
+        public decimal CersaiCharges { get; set; }
+
+        [DisplayName("StamppingCharges")]
+        public decimal StamppingCharges { get; set; }
+
+        [DisplayName("Remarks")]
+        public string Remarks { get; set; }
+
+        [DisplayName("CreatedBy")]
+        public int CreatedBy { get; set; }
+        public class clsLeadFinalApprove : clsLeadDetail
+        {
+            public string ReqType { get; set; }
+            public int FinalApproveId { get; set; }
+            public int LeadId { get; set; }
+
+            //[Required(ErrorMessage = "Employee is required.")]
+            [DisplayName("Particulers")]
+            public string Particulers { get; set; }
+
+            [DisplayName("Procces fees")]
+            public decimal Proccesfees { get; set; }
+
+            [DisplayName("Advance EMI")]
+            public decimal AdvanceEMI { get; set; }
+
+            [DisplayName("GST")]
+            public decimal GST { get; set; }
+
+            [DisplayName("NetDisbAmt")]
+            public decimal NetDisbAmt { get; set; }
+
+            [DisplayName("TrnchsNo")]
+            public decimal TrnchsNo { get; set; }
+
+            [DisplayName("CersaiCharges")]
+            public decimal CersaiCharges { get; set; }
+
+            [DisplayName("StamppingCharges")]
+            public decimal StamppingCharges { get; set; }
+
+            [DisplayName("Remarks")]
+            public string Remarks { get; set; }
+
+            [DisplayName("CreatedBy")]
+            public int CreatedBy { get; set; }
+
+            [DisplayName("UpdatedBy")]
+            public int UpdatedBy { get; set; }
+
+            [DisplayName("IsDelete")]
+            public int IsDelete { get; set; }
+
+            [DisplayName("CompanyId")]
+            public int CompanyId { get; set; }
+
+            [DisplayName("BorrowerKyc")]
+            public string BorrowerKyc { get; set; }
+
+            [DisplayName("GuarantorKyc")]
+            public string GuarantorKyc { get; set; }
+
+            [DisplayName("PDC")]
+            public string PDC { get; set; }
+
+            [DisplayName("BorrowerPhoto")]
+            public string BorrowerPhoto { get; set; }
+
+            [DisplayName("CoBorrowerPhoto")]
+            public string CoBorrowerPhoto { get; set; }
+
+            [DisplayName("GuarantorPhoto")]
+            public string GuarantorPhoto { get; set; }
+
+            [DisplayName("SanctionLetter")]
+            public string SanctionLetter { get; set; }
+
+            [DisplayName("LoanAgreementkit")]
+            public string LoanAgreementkit { get; set; }
+
+            [DisplayName("DisbursementRequestLetter")]
+            public string DisbursementRequestLetter { get; set; }
+
+            [DisplayName("NocPreviousFinanced")]
+            public string NocPreviousFinanced { get; set; }
+
+            [DisplayName("Rtoslip")]
+            public string Rtoslip { get; set; }
+
+            bool disposed = false;
+
+            // Public implementation of Dispose pattern callable by consumers.
+            public void Dispose()
+            {
+                Dispose(true);
+                GC.SuppressFinalize(this);
+            }
+
+            // Protected implementation of Dispose pattern.
+            protected virtual void Dispose(bool disposing)
+            {
+                if (disposed)
+                    return;
+
+                if (disposing)
+                {
+                    // Free any other managed objects here.
+                    //
+                }
+
+                // Free any unmanaged objects here.
+                //
+                disposed = true;
+            }
+
+            ~clsLeadFinalApprove()
+            {
+                Dispose(false);
+            }
+        }
+
+        public class clsLeadFinalApproveMain : clsLeadFinalApprove
+        {
+            public string LeadNo { get; set; }
+            public List<clsLeadFinalApprove> clsLeadFinalApprove { get; set; }
+
+
+            bool disposed = false;
+
+            ~clsLeadFinalApproveMain()
+            {
+                Dispose(false);
+            }
+
+
+        }
+        [DisplayName("UpdatedBy")]
+        public int UpdatedBy { get; set; }
+
+        [DisplayName("IsDelete")]
+        public int IsDelete { get; set; }
+
+        [DisplayName("CompanyId")]
+        public int CompanyId { get; set; }
+
+        [DisplayName("BorrowerKyc")]
+        public string BorrowerKyc { get; set; }
+
+        [DisplayName("GuarantorKyc")]
+        public string GuarantorKyc { get; set; }
+
+        [DisplayName("PDC")]
+        public string PDC { get; set; }
+
+        [DisplayName("BorrowerPhoto")]
+        public string BorrowerPhoto { get; set; }
+
+        [DisplayName("CoBorrowerPhoto")]
+        public string CoBorrowerPhoto { get; set; }
+
+        [DisplayName("GuarantorPhoto")]
+        public string GuarantorPhoto { get; set; }
+
+        [DisplayName("SanctionLetter")]
+        public string SanctionLetter { get; set; }
+
+        [DisplayName("LoanAgreementkit")]
+        public string LoanAgreementkit { get; set; }
+
+        [DisplayName("DisbursementRequestLetter")]
+        public string DisbursementRequestLetter { get; set; }
+
+        [DisplayName("NocPreviousFinanced")]
+        public string NocPreviousFinanced { get; set; }
+
+        [DisplayName("Rtoslip")]
+        public string Rtoslip { get; set; }
+
+        bool disposed = false;
+
+        // Public implementation of Dispose pattern callable by consumers.
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        // Protected implementation of Dispose pattern.
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposed)
+                return;
+
+            if (disposing)
+            {
+                // Free any other managed objects here.
+                //
+            }
+
+            // Free any unmanaged objects here.
+            //
+            disposed = true;
+        }
+
+        ~clsLeadFinalApprove()
+        {
+            Dispose(false);
+        }
+    }
+
+    public class clsLeadFinalApproveMain : clsLeadFinalApprove
+    {
+        public string LeadNo { get; set; }
+        public List<clsLeadFinalApprove> clsLeadFinalApprove { get; set; }
+
+
+        bool disposed = false;
+
+        ~clsLeadFinalApproveMain()
+        {
+            Dispose(false);
+        }
+
+
+    }
+
     public class clsLeadDocSignMain : clsLeadDocSign
     {
         public string LeadNo { get; set; }

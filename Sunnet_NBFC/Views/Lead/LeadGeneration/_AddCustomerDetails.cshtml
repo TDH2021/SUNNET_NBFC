@@ -8,7 +8,7 @@
 
     <div class="row">
 
-        <div class="col-md-4">
+        <div class="col-md-3">
             <label for="exampleInputEmail1">First Name</label>
             @Html.TextBoxFor(model => model.FirstName, new
             {
@@ -24,7 +24,7 @@
 
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-3">
             <label for="exampleInputEmail1">Middle Name</label>
             @Html.TextBoxFor(model => model.MiddleName, new
             {
@@ -37,7 +37,7 @@
             })
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-3">
             <label for="exampleInputEmail1">Last Name</label>
             @Html.TextBoxFor(model => model.LastName, new
        {
@@ -49,11 +49,8 @@
 
        })
         </div>
-    </div>
 
-    <div class="row">
-
-        <div class="col-md-4">
+        <div class="col-md-3">
             <label for="exampleInputEmail1">Father Name</label>
             @Html.TextBoxFor(model => model.FatherName, new
             {
@@ -68,8 +65,13 @@
 
 
         </div>
+    </div>
 
-        <div class="col-md-4">
+    <div class="row">
+
+
+
+        <div class="col-md-3">
             <label for="exampleInputEmail1">Mother Name</label>
             @Html.TextBoxFor(model => model.MotherName, new
             {
@@ -82,7 +84,7 @@
             })
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-3">
             <label for="exampleInputEmail1">Spouse Name</label>
             @Html.TextBoxFor(model => model.SpouseName, new
        {
@@ -94,12 +96,8 @@
 
        })
         </div>
-    </div>
 
-
-    <div class="row">
-
-        <div class="col-md-4">
+        <div class="col-md-3">
             <label for="exampleInputEmail1">Gender</label>
             @Html.DropDownListFor(model => model.Gender,
             new List<SelectListItem> {
@@ -109,13 +107,9 @@
             },
             new { @class = "form-control", @id = "Gender" })
 
-
-
-
-
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-3">
             <label for="exampleInputEmail1">Date of Birth</label>
             @Html.TextBoxFor(model => model.DateofBirth, new
             {
@@ -129,11 +123,14 @@
             })
         </div>
 
-        <div class="col-md-4">
+    </div>
+
+
+    <div class="row">
+
+
+        <div class="col-md-3">
             <label for="exampleInputEmail1">Martial Status</label>
-
-
-
 
             @Html.DropDownListFor(model => model.MartialStatus,
       new List<SelectListItem> {
@@ -148,11 +145,8 @@
 
 
         </div>
-    </div>
 
-    <div class="row">
-
-        <div class="col-md-4">
+        <div class="col-md-3">
             <label for="exampleInputEmail1"> Aadhar No </label>
             @Html.TextBoxFor(model => model.AadharNo, new
        {
@@ -160,16 +154,14 @@
            @placeholder = "Aadhar No",
            @name = "AadharNo",
            @required = "true",
-           @type = "number",
-           @id = "AadharNo"@*,
-           @onchange = "AAdharVerification()"*@
-
-
-
-       })
+           @type = "text",
+           @id = "AadharNo",
+          @onchange = "AAdharVerification()"
+})
             @Html.HiddenFor(model => model.AAdharverfiy, new { @class = "form-control", @id = "hdn_customer_aadhar_verify" })
         </div>
-        <div class="col-md-4">
+
+        <div class="col-md-3">
             <label for="exampleInputEmail1"> Pan No </label>
             @Html.TextBoxFor(model => model.PanNo, new
        {
@@ -185,8 +177,7 @@
             @Html.HiddenFor(model => model.PanVerify, new { @class = "form-control", @id = "hdn_customer_PanVerify" })
         </div>
 
-
-        <div class="col-md-4">
+        <div class="col-md-3">
             <label for="exampleInputEmail1">Corrospondance Address</label>
             @Html.TextBoxFor(model => model.PresentAddress, new
        {
@@ -195,16 +186,21 @@
            @name = "PresentAddress",
            @required = "true",
            @id = "PresentAddress",
-           @onchange= "SetValues();"
+           @onchange = "SetValues();"
 
        })
         </div>
 
 
+
+
+
+
+
     </div>
 
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3">
             <label for="exampleInputEmail1">Corrospondance Pincode</label>
             @Html.TextBoxFor(model => model.PresentPincode, new
        {
@@ -214,12 +210,12 @@
            @required = "true",
            @type = "number",
            @id = "PresentPincode",
-           @onchange= "SetValues1();"
+           @onchange = "SetValues1();"
 
        })
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-3">
             <label for="exampleInputEmail1">Corrospondance State</label>
             @Html.DropDownListFor(model => model.PresentStateId, ViewBag.StateList as SelectList, "- Select State -", new { @class = "form-control", @id = "customerpresentState", @onchange = "SetValues2();" })
             @Html.ValidationMessageFor(model => model.PresentStateId, "", new { @class = "text-danger" })
@@ -227,7 +223,7 @@
 
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-3">
             <label for="exampleInputEmail1">Corrospondance City</label>
             @Html.DropDownListFor(model => model.PresentCityId,
                 new SelectList(Enumerable.Empty<SelectListItem>(), "CityId", "CityName"),
@@ -246,12 +242,10 @@
             <label for="vehicle1"> Permanent Address As Same As Corrospondance Address</label><br>
         </div>
 
-        </div>
+    </div>
 
     <div class="row">
-
-
-        <div class="col-md-4">
+        <div class="col-md-3">
             <label for="exampleInputEmail1">Permanent Address</label>
             @Html.TextBoxFor(model => model.PermanentAddress, new
        {
@@ -263,8 +257,7 @@
 
        })
         </div>
-
-        <div class="col-md-4">
+        <div class="col-md-3">
             <label for="exampleInputEmail1">Permanent Pincode</label>
             @Html.TextBoxFor(model => model.PermanentPincode, new
        {
@@ -277,18 +270,13 @@
 
        })
         </div>
-
-        <div class="col-md-4">
+        <div class="col-md-3">
             <label for="exampleInputEmail1">Permanent State</label>
 
             @Html.DropDownListFor(model => model.PermanentStateId, ViewBag.StateList as SelectList, "- Select State -", new { @class = "form-control", @id = "customerpermanentstate" })
             @Html.ValidationMessageFor(model => model.PermanentStateId, "", new { @class = "text-danger" })
         </div>
-    </div>
-    <div class="row">
-
-
-        <div class="col-md-4">
+        <div class="col-md-3">
             <label for="exampleInputEmail1">Permanent City</label>
 
             @Html.DropDownListFor(model => model.PermanentCityId,
@@ -299,7 +287,11 @@
 
 
         </div>
-        <div class="col-md-4">
+    </div>
+    <div class="row">
+
+
+        <div class="col-md-3">
             <label for="exampleInputEmail1">Cibil Score</label>
             @Html.TextBoxFor(model => model.CibilScore, new
        {
@@ -311,8 +303,7 @@
 
        })
         </div>
-
-        <div class="col-md-4">
+        <div class="col-md-3">
             <label for="exampleInputEmail1">Mobile Number1</label>
             @Html.TextBoxFor(model => model.MobileNo1, new
        {
@@ -325,10 +316,7 @@
 
        })
         </div>
-
-    </div>
-    <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3">
             <label for="exampleInputEmail1">Father Number1</label>
             @Html.TextBoxFor(model => model.FatherMobileNo, new
        {
@@ -341,7 +329,7 @@
 
        })
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
             <label for="exampleInputEmail1">
                 Mother Mobile Number
             </label>
@@ -357,7 +345,11 @@
             })
         </div>
 
-        <div class="col-md-4">
+
+    </div>
+    <div class="row">
+
+        <div class="col-md-3">
             <label for="exampleInputEmail1">
                 Spouse Mobile Number
             </label>
@@ -374,12 +366,7 @@
        })
         </div>
 
-
-
-    </div>
-
-    <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3">
             <label for="exampleInputEmail1">Email Id</label>
             @Html.TextBoxFor(model => model.EmailId, new
             {
@@ -392,7 +379,7 @@
             })
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-3">
             <label for="exampleInputEmail1">CIF Id</label>
             @Html.TextBoxFor(model => model.CIFID, new
        {
@@ -404,5 +391,11 @@
 
        })
         </div>
+
+        <div class="col-md-3">
+            <label for="exampleInputEmail1">Applicant Image</label>
+            <input type="file" id="fileuploadapplicantimg" />
+        </div>
     </div>
+
 </div>

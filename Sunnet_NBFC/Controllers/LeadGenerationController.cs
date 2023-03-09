@@ -87,9 +87,40 @@ namespace Sunnet_NBFC.Controllers
 
 
                                 DataTable dt1 = DataInterface.GetLeadGenerationCustomer(master);
+                                HttpPostedFileBase file = null;
+                                if (Request.Files[0] != null)
+                                {
+                                    file = Request.Files["ApplicantImg"];
+                                    //Extract Image File Name.
+                                    string fileName = System.IO.Path.GetFileName(file.FileName);
+
+                                    fileName = master.LeadNo + "_Applicant_" + fileName;
+
+                                    //Set the Image File Path.
+                                    string filePath = Server.MapPath("~/Img/ApplicantImgs");
+
+                                    //Save the Image File in Folder.
+                                    file.SaveAs(filePath + "\\" + fileName);
+
+                                }
                                 if (master.Hdn_type.ToUpper() == "B" || master.Hdn_type.ToUpper() == "C")
                                 {
                                     dt1 = DataInterface.GetLeadGenerationCO_ApplicantCustomer(master);
+                                    if (Request.Files[1] != null)
+                                    {
+                                        file = Request.Files["COApplicantImg"];
+                                        //Extract Image File Name.
+                                        string fileName = System.IO.Path.GetFileName(file.FileName);
+
+                                        fileName = master.LeadNo + "_CO_Applicant_" + fileName;
+
+                                        //Set the Image File Path.
+                                        string filePath = Server.MapPath("~/Img/COApplicantImgs");
+
+                                        //Save the Image File in Folder.
+                                        file.SaveAs(filePath + "\\" + fileName);
+
+                                    }
                                 }
 
 

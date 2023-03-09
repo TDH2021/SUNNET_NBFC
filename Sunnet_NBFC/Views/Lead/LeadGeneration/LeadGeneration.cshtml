@@ -70,11 +70,32 @@
                                 }
                             </div>
 
+
                             <div>
                                 @{
                                     Html.RenderPartial("_AddAdditionalDetails");
                                 }
                             </div>
+
+                            <div style="display:none" class="container-fluid" id="business_div">
+                                @{
+                                    Html.RenderPartial("_AddBusinessLoanDetails");
+                                }
+                            </div>
+
+                            <div style="display:none" class="container-fluid" id="vechical_div">
+                                @{
+                                    Html.RenderPartial("_AddVechicalLoanDetails");
+                                }
+                            </div>
+
+                            <div style="display:none" class="container-fluid" id="personal_div">
+                                @{
+                                    Html.RenderPartial("_AddPersloanLoanDetails");
+                                }
+                            </div>
+
+
                             <div class="card-footer" style="margin-top:10px;">
                                 <button type="submit" class="btn btn-primary" onclick="ValidationChk();"> Submit </button>
 

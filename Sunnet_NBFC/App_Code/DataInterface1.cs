@@ -493,6 +493,63 @@ public class DataInterface1 : IDisposable
         }
         return dt;
     }
+    public static DataTable dbLeadFinalApprove(clsLeadFinalApprove cls)
+    {
+        DataTable dt = new DataTable();
+        try
+        {
+            using (DBOperation db = new DBOperation())
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@ReqType", SqlDbType.VarChar).Value = cls.ReqType;
+                    cmd.Parameters.Add("@CompanyId", SqlDbType.Int).Value = ClsSession.CompanyID;
+                    cmd.Parameters.Add("@FinalApproveId", SqlDbType.Int).Value = cls.FinalApproveId;
+                    cmd.Parameters.Add("@LeadId", SqlDbType.Int).Value = cls.LeadId;
+                    //cmd.Parameters.Add("@LeadNo", SqlDbType.Int).Value = cls.LeadNo;
+                    //cmd.Parameters.AddWithValue("@LeadNo",cls.LeadNo);
+                    cmd.Parameters.AddWithValue("@Particulers", cls.Particulers);
+
+                    cmd.Parameters.AddWithValue("@AdvanceEMI", cls.AdvanceEMI);
+                    cmd.Parameters.AddWithValue("@GST", cls.GST);
+                    cmd.Parameters.AddWithValue("@NetDisbAmt", cls.NetDisbAmt);
+                    cmd.Parameters.AddWithValue("@TrnchsNo", cls.TrnchsNo);
+                    cmd.Parameters.AddWithValue("@CersaiCharges", cls.CersaiCharges);
+                    cmd.Parameters.AddWithValue("@StamppingCharges", cls.StamppingCharges);
+                    cmd.Parameters.AddWithValue("@Remarks", cls.Remarks);
+                    cmd.Parameters.AddWithValue("@CreatedBy", cls.CreatedBy);
+                    cmd.Parameters.AddWithValue("@UpdatedBy", cls.UpdatedBy);
+                    cmd.Parameters.AddWithValue("@IsDelete", cls.IsDelete);
+                    cmd.Parameters.AddWithValue("@CompanyId", cls.CompanyId);
+                    cmd.Parameters.AddWithValue("@BorrowerKyc", cls.BorrowerKyc);
+                    cmd.Parameters.AddWithValue("@GuarantorKyc", cls.GuarantorKyc);
+                    cmd.Parameters.AddWithValue("@PDC", cls.PDC);
+                    cmd.Parameters.AddWithValue("@BorrowerPhoto", cls.BorrowerPhoto);
+                    cmd.Parameters.AddWithValue("@CoBorrowerPhoto", cls.CoBorrowerPhoto);
+                    cmd.Parameters.AddWithValue("@GuarantorPhoto", cls.GuarantorPhoto);
+                    cmd.Parameters.AddWithValue("@SanctionLetter", cls.SanctionLetter);
+                    cmd.Parameters.AddWithValue("@LoanAgreementkit", cls.LoanAgreementkit);
+                    cmd.Parameters.AddWithValue("@DisbursementRequestLetter", cls.DisbursementRequestLetter);
+                    cmd.Parameters.AddWithValue("@NocPreviousFinanced", cls.NocPreviousFinanced);
+                    cmd.Parameters.AddWithValue("@Rtoslip", cls.Rtoslip);
+
+                    dt = db.FillTableProc(cmd, "USP_LeadFinalApprove");
+                }
+            }
+
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+        finally
+        {
+            dt.Dispose();
+        }
+        return dt;
+    }
+
 
     #region Update Lead Status
     public static DataTable UpdateLeadStatus(clsLeadmaind cls)
@@ -612,6 +669,66 @@ public class DataInterface1 : IDisposable
 
         return dt;
     }
+
+    public static DataTable UpdateLeadStatusFa(clsLeadFinalApproveMain cls)
+    {
+        //ClsReturnData clsRtn = new ClsReturnData();
+        //clsRtn.MsgType = (int)MessageType.Fail;
+        DataTable dt = new DataTable();
+        try
+        {
+            DBOperation db = new DBOperation();
+            SqlCommand cmd = new SqlCommand();
+
+            //using (DBOperation db = new DBOperation())
+            //{
+            //    using (SqlCommand cmd = new SqlCommand())
+            //    {
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@ReqType", SqlDbType.VarChar).Value = cls.ReqType;
+            cmd.Parameters.Add("@LeadId", SqlDbType.Int).Value = cls.LeadId;
+            cmd.Parameters.Add("@StageId", SqlDbType.Int).Value = cls.StageId;
+            cmd.Parameters.Add("@StageName", SqlDbType.VarChar).Value = cls.StageName;
+            cmd.Parameters.Add("@IsActive", SqlDbType.Int).Value = cls.IsActive;
+            cmd.Parameters.Add("@IsCurrent", SqlDbType.Int).Value = cls.IsCurrent;
+            cmd.Parameters.Add("@ShortStage_Name", SqlDbType.VarChar).Value = cls.ShortStage_Name;
+            cmd.Parameters.Add("@Dependancy", SqlDbType.Int).Value = cls.Dependancy;
+            cmd.Parameters.Add("@Sequence", SqlDbType.Int).Value = cls.Sequence;
+            cmd.Parameters.Add("@Status", SqlDbType.VarChar).Value = cls.Status;
+            cmd.Parameters.Add("@Remarks", SqlDbType.VarChar).Value = cls.Remarks;
+            cmd.Parameters.Add("@CompanyId", SqlDbType.Int).Value = ClsSession.CompanyID;
+            dt = db.FillTableProc(cmd, "USP_LeadDetail");
+
+            //if (dt != null && dt.Rows.Count > 0)
+            //{
+            //    clsRtn.ID = Convert.ToInt64("0" + Convert.ToString(dt.Rows[0]["ReturnID"]));
+            //    clsRtn.Message = Convert.ToString(dt.Rows[0]["ReturnMessage"]);
+            //    clsRtn.MessageDesc = clsRtn.Message;
+            //    if (clsRtn.ID > 0)
+            //        clsRtn.MsgType = (int)MessageType.Success;
+            //    else
+            //        clsRtn.MsgType = (int)MessageType.Fail;
+            //}
+            //    }
+            //}
+
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+            //clsRtn.MsgType = (int)MessageType.Error;
+            //clsRtn.ID = 0;
+            //clsRtn.Message = ex.Message;
+            //clsRtn.MessageDesc = ex.Message;
+        }
+        finally
+        {
+            dt.Dispose();
+        }
+
+        return dt;
+    }
+
 
     #endregion
 

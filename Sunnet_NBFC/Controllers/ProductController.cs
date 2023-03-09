@@ -339,7 +339,7 @@ namespace Sunnet_NBFC.Controllers
                 {
                     cls.ReqType = "GetProduct";
                     cls.Mode = "WEB";
-                    cls.ErrorDescrption = e1.Message + "-" + e1.InnerException.Message;
+                    cls.ErrorDescrption = e1.Message.ToString();
                     cls.FunctionName = "GetProduct";
                     cls.Link = "Company/GetProduct";
                     cls.PageName = "Product Controller";
