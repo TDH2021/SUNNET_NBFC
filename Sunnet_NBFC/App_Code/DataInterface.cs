@@ -629,7 +629,7 @@ public class DataInterface : IDisposable
                 sqlCommand.Parameters.AddWithValue("@BranchID", cls.BranchID);
 
                 sqlCommand.Parameters.AddWithValue("@LeadID", cls.LeadId);
-                sqlCommand.Parameters.AddWithValue("@CompanyId", cls.BranchID);
+                sqlCommand.Parameters.AddWithValue("@CompanyId", cls.CompanyId);
 
 
 

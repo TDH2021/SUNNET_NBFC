@@ -71,6 +71,23 @@ namespace Sunnet_NBFC.Controllers
                         master.CompanyId = ClsSession.CompanyID;
                         master.BranchID = ClsSession.BranchId;
                         string message = "";
+
+                        if (master.MainProductId == "1" || master.MainProductId == "3")
+                        {
+                            master.ViechleRegYear = "0";
+                            master.MFGYear = "0";
+                            master.EstValueViechle = "0";
+                        }
+                        if (master.MainProductId == "1")
+                        {
+
+                            master.NoofDependent = "0";
+                            master.CurMonthObligation = "0";
+                            master.FORecomedAmt = "0";
+
+
+                        }
+
                         using (DataTable dt = DataInterface.GetLeadGeneration(master))
                         {
 

@@ -660,6 +660,9 @@ namespace Sunnet_NBFC.Models
         public string EstMonthExpense { get; set; }
         public string CurMonthObligation { get; set; }
         public string FORecomedAmt { get; set; }
+
+        public string EstValueofscurity { get; set; }
+
         public string NoofDependent { get; set; }
         public string ViechleNo { get; set; }
         public string ViechleRegYear { get; set; }

@@ -3596,8 +3596,8 @@ function AAdharVerification() {
         })
             .then((willConfirm) => {
                 if (willConfirm) {
-
-                    $("#myModal").modal()
+                    debugger
+                    $("#myModal").modal('show')
                 }
             });
 
